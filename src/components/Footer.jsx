@@ -1,6 +1,6 @@
 const footerLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/damwi/' },
-  { label: 'Google Scholar', href: 'https://scholar.google.com/' },
+  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ' },
   { label: 'ResearchGate', href: 'https://www.researchgate.net/' },
   { label: 'IEEE Xplore', href: 'https://ieeexplore.ieee.org/' },
 ]
