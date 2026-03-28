@@ -43,6 +43,10 @@ export default function App() {
   }, [dark])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
+  useEffect(() => {
     let frame = null
     const move = (e) => {
       if (frame) cancelAnimationFrame(frame)

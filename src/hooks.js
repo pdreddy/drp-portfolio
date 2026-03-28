@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 
 export function useScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal')
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -12,10 +11,16 @@ export function useScrollReveal() {
           }
         })
       },
-      { threshold: 0.08 }
+      { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
     )
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+    // Use rAF to ensure DOM layout is complete before observing
+    const raf = requestAnimationFrame(() => {
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    })
+    return () => {
+      cancelAnimationFrame(raf)
+      observer.disconnect()
+    }
   }, [])
 }
 
