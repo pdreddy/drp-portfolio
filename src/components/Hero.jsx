@@ -1,13 +1,5 @@
 import { motion } from 'framer-motion'
 
-const TICKER = [
-  'Agentic AI','✦','Zero Trust Architecture','✦','Behavioral Biometrics','✦',
-  'Federated Learning','✦','Healthcare Security','✦','IEEE Senior Member','✦',
-  'IETE Fellow','✦','CNN-LSTM Auth','✦',
-  'Agentic AI','✦','Zero Trust Architecture','✦','Behavioral Biometrics','✦',
-  'Federated Learning','✦','Healthcare Security','✦','IEEE Senior Member','✦',
-  'IETE Fellow','✦','CNN-LSTM Auth','✦',
-]
 
 const HIGHLIGHTS = [
   ['16+','Years Experience'],
@@ -153,25 +145,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Ticker tape */}
-      <motion.div
-        className="ticker-wrap w-full border-y py-3.5"
-        style={{ borderColor:'var(--border)',background:'var(--surface)' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.9 }}
-      >
-        <div className="ticker">
-          {TICKER.map((t, i) => (
-            <span key={i} className="px-6 text-xs font-medium whitespace-nowrap"
-              style={{ fontFamily:'var(--font-mono)',
-                       color: t==='✦' ? 'var(--accent)' : 'var(--text3)',
-                       letterSpacing:'0.1em' }}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </motion.div>
     </section>
   )
 }

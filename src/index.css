@@ -88,6 +88,7 @@
 .app-shell {
   position: relative;
   isolation: isolate;
+  padding-bottom: 44px; /* space for fixed ticker bar */
 }
 
 .app-ambient {

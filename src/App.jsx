@@ -13,6 +13,7 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PublicationDetail from './pages/PublicationDetail.jsx'
 import { useScrollReveal } from './hooks.js'
+import TickerBar from './components/TickerBar.jsx'
 
 function HomePage() {
   useScrollReveal()
@@ -77,6 +78,7 @@ export default function App() {
         <div className="app-ambient-beam app-ambient-beam-b" />
       </div>
       <Nav dark={dark} setDark={setDark} />
+      <TickerBar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
