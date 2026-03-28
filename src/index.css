@@ -54,6 +54,13 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.45s ease, color 0.45s ease;
+    cursor: pointer;
+  }
+
+  *,
+  *::before,
+  *::after {
+    cursor: inherit;
   }
 
   a,
