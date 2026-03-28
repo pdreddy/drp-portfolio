@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
@@ -9,11 +11,32 @@ import { Judging, Memberships } from './components/JudgingMemberships.jsx'
 import Impact from './components/Impact.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import PublicationDetail from './pages/PublicationDetail.jsx'
 import { useScrollReveal } from './hooks.js'
+
+function HomePage() {
+  useScrollReveal()
+  return (
+    <>
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Research />
+        <Publications />
+        <Articles />
+        <Judging />
+        <Memberships />
+        <Impact />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  )
+}
 
 export default function App() {
   const [dark, setDark] = useState(true)
-  useScrollReveal()
+  const location = useLocation()
 
   useEffect(() => {
     if (dark) {
@@ -28,7 +51,6 @@ export default function App() {
 
     const updatePointer = (event) => {
       if (frame) cancelAnimationFrame(frame)
-
       frame = requestAnimationFrame(() => {
         document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`)
         document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`)
@@ -64,18 +86,12 @@ export default function App() {
         <div className="app-ambient-beam app-ambient-beam-b" />
       </div>
       <Nav dark={dark} setDark={setDark} />
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Research />
-        <Publications />
-        <Articles />
-        <Judging />
-        <Memberships />
-        <Impact />
-        <Contact />
-      </main>
-      <Footer />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/publications/:id" element={<PublicationDetail />} />
+        </Routes>
+      </AnimatePresence>
     </div>
   )
 }

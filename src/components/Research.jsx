@@ -1,4 +1,15 @@
+import { motion } from 'framer-motion'
 import { researchAreas } from '../data.js'
+
+const sectionVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 export default function Research() {
   return (
@@ -22,18 +33,30 @@ export default function Research() {
           government and healthcare infrastructure.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {researchAreas.map((area, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`grad-border card-glow reveal reveal-d${(i % 3) + 1} p-7`}
+              variants={cardVariants}
+              className="grad-border card-glow p-7"
               style={{
                 border: '1px solid var(--border)',
                 position: 'relative',
                 overflow: 'hidden',
               }}
+              whileHover={{
+                y: -6,
+                boxShadow: `0 20px 48px ${area.color}20`,
+                borderColor: `${area.color}40`,
+                transition: { duration: 0.22, ease: 'easeOut' },
+              }}
             >
-              {/* Accent top strip on hover done via grad-border */}
               <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 text-2xl"
                 style={{
@@ -66,9 +89,9 @@ export default function Research() {
                 className="absolute bottom-5 right-5 w-2 h-2 rounded-full"
                 style={{ background: area.color, opacity: 0.5 }}
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

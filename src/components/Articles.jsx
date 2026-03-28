@@ -1,4 +1,15 @@
+import { motion } from 'framer-motion'
 import { articles } from '../data.js'
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 export default function Articles() {
   return (
@@ -21,18 +32,32 @@ export default function Articles() {
           Technical deep-dives and practical guides on DZone, Medium, and industry platforms.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {articles.map((a, i) => (
-            <a
+            <motion.a
               key={i}
               href={a.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`grad-border card-glow reveal reveal-d${(i % 2) + 1} p-7 no-underline flex flex-col gap-4`}
+              variants={cardVariants}
+              className="grad-border card-glow p-7 no-underline flex flex-col gap-4"
               style={{
                 border: '1px solid var(--border)',
                 color: 'inherit',
               }}
+              whileHover={{
+                y: -6,
+                boxShadow: `0 20px 48px ${a.platformColor}18`,
+                borderColor: `${a.platformColor}35`,
+                transition: { duration: 0.22, ease: 'easeOut' },
+              }}
+              whileTap={{ scale: 0.99 }}
             >
               {/* Platform badge */}
               <div className="flex items-center justify-between">
@@ -107,9 +132,9 @@ export default function Articles() {
                   <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

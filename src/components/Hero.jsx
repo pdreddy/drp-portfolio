@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const tickerItems = [
   'Agentic AI', '✦', 'Zero Trust Architecture', '✦',
   'Behavioral Biometrics', '✦', 'Federated Learning', '✦',
@@ -8,6 +10,23 @@ const tickerItems = [
   'Healthcare Security', '✦', 'IEEE Senior Member', '✦',
   'IETE Fellow', '✦', 'CNN-LSTM Auth', '✦',
 ]
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
+
+const statsVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+}
 
 export default function Hero() {
   return (
@@ -50,14 +69,19 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pt-16 pb-8">
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10 pt-16 pb-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {/* Status badge */}
-        <div
+        <motion.div
+          variants={fadeUp}
           className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8"
           style={{
             background: 'rgba(56,189,248,0.06)',
             borderColor: 'rgba(56,189,248,0.22)',
-            animation: 'fadeUp 0.6s ease both',
           }}
         >
           <span
@@ -70,56 +94,54 @@ export default function Hero() {
           >
             OPEN TO COLLABORATION
           </span>
-        </div>
+        </motion.div>
 
         {/* Main headline */}
-        <h1
+        <motion.h1
+          variants={fadeUp}
           className="text-hero mb-4"
-          style={{ animation: 'fadeUp 0.7s 0.1s ease both', opacity: 0 }}
         >
           <span className="block gradient-text-hero">Damodhara</span>
           <span className="block gradient-text-hero">Reddy Palavali</span>
-        </h1>
+        </motion.h1>
 
         {/* Role line */}
-        <p
+        <motion.p
+          variants={fadeUp}
           className="shimmer-text mb-5"
           style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
             fontWeight: 600,
             letterSpacing: '-0.01em',
-            animation: 'fadeUp 0.7s 0.2s ease both',
-            opacity: 0,
           }}
         >
           AI Researcher · Zero Trust Architect · Cybersecurity Innovator
-        </p>
+        </motion.p>
 
         {/* Tagline */}
-        <p
+        <motion.p
+          variants={fadeUp}
           className="max-w-xl mb-10 leading-relaxed"
           style={{
             fontFamily: 'var(--font-body)',
             fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)',
             color: 'var(--text2)',
-            animation: 'fadeUp 0.7s 0.3s ease both',
-            opacity: 0,
           }}
         >
           Building intelligent, secure, and scalable systems using Agentic AI and
           Zero Trust Architecture — protecting millions of Americans across government
           healthcare infrastructure.
-        </p>
+        </motion.p>
 
         {/* CTA Buttons */}
-        <div
+        <motion.div
+          variants={fadeUp}
           className="flex flex-wrap gap-4 mb-16"
-          style={{ animation: 'fadeUp 0.7s 0.4s ease both', opacity: 0 }}
         >
-          <a
+          <motion.a
             href="#publications"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm no-underline transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm no-underline"
             style={{
               fontFamily: 'var(--font-display)',
               background: 'var(--accent)',
@@ -127,23 +149,21 @@ export default function Hero() {
               boxShadow: '0 0 28px rgba(56,189,248,0.35)',
               letterSpacing: '-0.01em',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 0 40px rgba(56,189,248,0.55)'
+            whileHover={{
+              y: -3,
+              boxShadow: '0 0 44px rgba(56,189,248,0.55)',
+              transition: { duration: 0.2 },
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 0 28px rgba(56,189,248,0.35)'
-            }}
+            whileTap={{ scale: 0.97 }}
           >
             View Publications
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="#contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm no-underline border transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm no-underline border"
             style={{
               fontFamily: 'var(--font-display)',
               color: 'var(--text)',
@@ -151,33 +171,32 @@ export default function Hero() {
               background: 'transparent',
               letterSpacing: '-0.01em',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--accent)'
-              e.currentTarget.style.color = 'var(--accent)'
-              e.currentTarget.style.transform = 'translateY(-2px)'
+            whileHover={{
+              y: -3,
+              borderColor: 'var(--accent)',
+              color: 'var(--accent)',
+              transition: { duration: 0.2 },
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border2)'
-              e.currentTarget.style.color = 'var(--text)'
-              e.currentTarget.style.transform = 'translateY(0)'
-            }}
+            whileTap={{ scale: 0.97 }}
           >
             Get in Touch
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* Stats row */}
-        <div
+        <motion.div
+          variants={statsVariants}
           className="flex flex-wrap gap-10 pt-10 border-t"
-          style={{
-            borderColor: 'var(--border)',
-            animation: 'fadeUp 0.7s 0.5s ease both',
-            opacity: 0,
-          }}
+          style={{ borderColor: 'var(--border)' }}
         >
           {[['16+', 'Years Experience'], ['9+', 'MMIS Systems'], ['8+', 'Publications'], ['500K+', 'Users Protected']].map(
-            ([n, l]) => (
-              <div key={l}>
+            ([n, l], i) => (
+              <motion.div
+                key={l}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.1, ease: 'easeOut' }}
+              >
                 <div
                   className="gradient-text"
                   style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, lineHeight: 1 }}
@@ -189,16 +208,19 @@ export default function Hero() {
                 >
                   {l}
                 </div>
-              </div>
+              </motion.div>
             )
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Ticker tape */}
-      <div
+      <motion.div
         className="ticker-wrap w-full border-y py-3.5 mt-4"
         style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
       >
         <div className="ticker">
           {tickerItems.map((item, i) => (
@@ -215,7 +237,7 @@ export default function Hero() {
             </span>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

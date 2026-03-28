@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const links = [
   ['About', '#about'],
@@ -8,6 +9,12 @@ const links = [
   ['Judging', '#judging'],
   ['Contact', '#contact'],
 ]
+
+const mobileMenuVariants = {
+  hidden: { opacity: 0, y: -8, scaleY: 0.95 },
+  show:   { opacity: 1, y: 0, scaleY: 1, transition: { duration: 0.22, ease: 'easeOut' } },
+  exit:   { opacity: 0, y: -8, scaleY: 0.95, transition: { duration: 0.16, ease: 'easeIn' } },
+}
 
 export default function Nav({ dark, setDark }) {
   const [scrolled, setScrolled] = useState(false)
@@ -55,7 +62,6 @@ export default function Nav({ dark, setDark }) {
     )
 
     sections.forEach((section) => observer.observe(section))
-
     return () => observer.disconnect()
   }, [])
 
@@ -70,9 +76,7 @@ export default function Nav({ dark, setDark }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'py-3 backdrop-blur-2xl border-b'
-          : 'py-5'
+        scrolled ? 'py-3 backdrop-blur-2xl border-b' : 'py-5'
       }`}
       style={{
         background: scrolled
@@ -81,14 +85,16 @@ export default function Nav({ dark, setDark }) {
         borderColor: 'var(--border)',
       }}
     >
+      {/* Scroll progress bar */}
       <div className="h-0.5 absolute left-0 top-0 w-full" style={{ background: 'transparent' }}>
-        <div
-          className="h-full transition-[width] duration-150"
+        <motion.div
+          className="h-full"
           style={{
-            width: `${scrollProgress}%`,
             background: 'linear-gradient(90deg, var(--accent), #a78bfa)',
             boxShadow: '0 0 14px var(--glow)',
           }}
+          animate={{ width: `${scrollProgress}%` }}
+          transition={{ duration: 0.15, ease: 'linear' }}
         />
       </div>
 
@@ -121,7 +127,7 @@ export default function Nav({ dark, setDark }) {
               <a
                 key={label}
                 href={href}
-                className="text-xs font-medium transition-all duration-200 no-underline nav-link"
+                className="text-xs font-medium transition-all duration-200 no-underline nav-link relative"
                 style={{
                   fontFamily: 'var(--font-mono)',
                   letterSpacing: '0.08em',
@@ -131,6 +137,14 @@ export default function Nav({ dark, setDark }) {
                 aria-current={isActive ? 'page' : undefined}
               >
                 {label}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1 left-0 right-0 h-px"
+                    style={{ background: 'var(--accent)' }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
               </a>
             )
           })}
@@ -138,9 +152,9 @@ export default function Nav({ dark, setDark }) {
 
         <div className="flex items-center gap-3">
           {/* Theme toggle */}
-          <button
+          <motion.button
             onClick={() => setDark(!dark)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border"
             style={{
               fontFamily: 'var(--font-mono)',
               background: 'var(--surface)',
@@ -148,54 +162,78 @@ export default function Nav({ dark, setDark }) {
               color: 'var(--text2)',
               letterSpacing: '0.06em',
             }}
+            whileHover={{ borderColor: 'var(--accent)', color: 'var(--accent)', transition: { duration: 0.15 } }}
+            whileTap={{ scale: 0.95 }}
           >
             {dark ? '☀︎' : '◑'} {dark ? 'Light' : 'Dark'}
-          </button>
+          </motion.button>
 
           {/* Mobile hamburger */}
-          <button
+          <motion.button
             className="md:hidden p-2 rounded-lg border"
             style={{ borderColor: 'var(--border2)', color: 'var(--text2)' }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
             aria-label="Toggle navigation"
+            whileTap={{ scale: 0.93 }}
           >
             <div className="w-4 h-3 flex flex-col justify-between">
-              <span className="block h-px w-full" style={{ background: 'var(--accent)' }} />
-              <span className="block h-px w-3/4" style={{ background: 'var(--accent)' }} />
-              <span className="block h-px w-full" style={{ background: 'var(--accent)' }} />
+              <motion.span
+                className="block h-px w-full"
+                style={{ background: 'var(--accent)', originX: 0 }}
+                animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.span
+                className="block h-px w-3/4"
+                style={{ background: 'var(--accent)' }}
+                animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.15 }}
+              />
+              <motion.span
+                className="block h-px w-full"
+                style={{ background: 'var(--accent)', originX: 0 }}
+                animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.2 }}
+              />
             </div>
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          className="md:hidden absolute top-full left-0 right-0 border-b"
-          style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}
-        >
-          {links.map(([label, href]) => {
-            const isActive = activeSection === href.replace('#', '')
-            return (
-              <a
-                key={label}
-                href={href}
-                className="block px-6 py-3.5 text-sm border-b no-underline transition-colors"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  color: isActive ? 'var(--accent)' : 'var(--text2)',
-                  borderColor: 'var(--border)',
-                }}
-                onClick={() => setMobileOpen(false)}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {label}
-              </a>
-            )
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            className="md:hidden absolute top-full left-0 right-0 border-b origin-top"
+            style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}
+          >
+            {links.map(([label, href]) => {
+              const isActive = activeSection === href.replace('#', '')
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  className="block px-6 py-3.5 text-sm border-b no-underline transition-colors"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    color: isActive ? 'var(--accent)' : 'var(--text2)',
+                    borderColor: 'var(--border)',
+                  }}
+                  onClick={() => setMobileOpen(false)}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {label}
+                </a>
+              )
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

@@ -1,4 +1,15 @@
+import { motion } from 'framer-motion'
 import { judgingRoles, memberships } from '../data.js'
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 22 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 export function Judging() {
   return (
@@ -36,17 +47,28 @@ export function Judging() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {judgingRoles.map((r, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`card-glow reveal reveal-d${(i % 3) + 1} p-5 rounded-2xl border flex items-start gap-4`}
+              variants={cardVariants}
+              className="card-glow p-5 rounded-2xl border flex items-start gap-4"
               style={{
                 background: 'var(--surface)',
                 borderColor: 'var(--border)',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(251,191,36,0.35)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)' }}
+              whileHover={{
+                y: -4,
+                borderColor: 'rgba(251,191,36,0.4)',
+                boxShadow: '0 16px 40px rgba(251,191,36,0.08)',
+                transition: { duration: 0.2 },
+              }}
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
@@ -81,9 +103,9 @@ export function Judging() {
                   {r.org}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
@@ -110,12 +132,24 @@ export function Memberships() {
           Recognized member of leading global engineering and technology organizations.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-5"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {memberships.map((m, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`grad-border card-glow reveal reveal-d${i + 1} p-7 text-center`}
+              variants={cardVariants}
+              className="grad-border card-glow p-7 text-center"
               style={{ border: '1px solid var(--border)' }}
+              whileHover={{
+                y: -6,
+                boxShadow: '0 20px 48px rgba(56,189,248,0.12)',
+                transition: { duration: 0.22 },
+              }}
             >
               <div
                 className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center text-2xl"
@@ -161,9 +195,9 @@ export function Memberships() {
               >
                 {m.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
