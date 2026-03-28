@@ -152,7 +152,7 @@
   /* Hero display headline */
   .text-hero {
     font-family: var(--font-display);
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
+    font-size: clamp(2.45rem, 5.8vw, 5.2rem);
     font-weight: 700;
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -235,6 +235,36 @@
     from { background-position: 0% center; }
     to   { background-position: 200% center; }
   }
+}
+
+
+
+.hero-panel {
+  display: grid;
+  gap: 1.25rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface2) 82%, transparent));
+  border-radius: 1.1rem;
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+  box-shadow: 0 16px 45px color-mix(in srgb, var(--glow) 55%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.hero-stat-card {
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--surface2) 78%, transparent);
+  padding: 0.85rem 0.95rem;
+}
+
+.article-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border2) !important;
+  box-shadow: 0 16px 28px color-mix(in srgb, var(--glow) 55%, transparent);
 }
 
 /* ─── Scroll Reveal ─── */
