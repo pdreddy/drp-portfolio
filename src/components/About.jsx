@@ -31,16 +31,27 @@ export default function About() {
               <span className="gradient-text">Healthcare with AI</span>
             </h2>
             <div className="reveal reveal-d1 space-y-4"
-              style={{ color:'var(--text2)',fontFamily:'var(--font-body)',fontSize:'1.02rem',lineHeight:1.75 }}>
-              <p>With 16+ years building mission-critical government systems, I specialize in the intersection of
-                artificial intelligence and cybersecurity — designing frameworks that protect sensitive data at
-                scale while enabling innovation.</p>
-              <p>I've architected secure authentication systems for <strong style={{ color:'var(--text)' }}>SSA</strong> and{' '}
-                <strong style={{ color:'var(--text)' }}>Login.gov</strong>, deployed Zero Trust frameworks across{' '}
-                <strong style={{ color:'var(--text)' }}>9 U.S. state MMIS platforms</strong>, and pioneered behavioral
-                biometric systems achieving <strong style={{ color:'var(--accent)' }}>99.5% authentication accuracy</strong>.</p>
-              <p>My research spans agentic AI, federated learning, and privacy-preserving machine learning —
-                contributing to a safer, more intelligent healthcare ecosystem for millions of Americans.</p>
+                 style={{ color:'var(--text2)',fontFamily:'var(--font-body)',fontSize:'1.02rem',lineHeight:1.75 }}>
+
+              <p>
+                With 16+ years of experience building mission-critical government systems, I specialize in the intersection of
+                artificial intelligence and cybersecurity — engineering intelligent frameworks that protect sensitive data at
+                scale while enabling secure, scalable innovation.
+              </p>
+
+              <p>
+                I have implemented secure authentication and federated identity systems across large-scale enterprise platforms,
+                deployed Zero Trust architectures across{' '}
+                <strong style={{ color:'var(--text)' }}>multi-state healthcare systems</strong>, and engineered advanced behavioral
+                biometric solutions achieving{' '}
+                <strong style={{ color:'var(--accent)' }}>99.5% authentication accuracy</strong>.
+              </p>
+
+              <p>
+                My research focuses on agentic AI, federated learning, and privacy-preserving machine learning — designing adaptive,
+                autonomous security systems that strengthen modern healthcare and cloud-native ecosystems.
+              </p>
+
             </div>
 
             {/* Tags */}
