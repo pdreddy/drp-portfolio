@@ -1,201 +1,117 @@
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const links = [
-  ['About', '#about'],
-  ['Research', '#research'],
-  ['Publications', '#publications'],
-  ['Articles', '#articles'],
-  ['Judging', '#judging'],
-  ['Contact', '#contact'],
+const NAV_ITEMS = [
+  { label: 'About', href: '#about' },
+  { label: 'Research', href: '#research' },
+  { label: 'Publications', href: '#publications' },
+  { label: 'Impact', href: '#impact' },
 ]
 
-export default function Nav({ dark, setDark }) {
+export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const [progress, setProgress] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => {
-      const doc = document.documentElement
-      const scrollableHeight = doc.scrollHeight - doc.clientHeight
-      const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0
-
-      setScrolled(window.scrollY > 40)
-      setScrollProgress(Math.min(100, Math.max(0, progress)))
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+      const docH = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(docH > 0 ? (window.scrollY / docH) * 100 : 0)
     }
-
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    const sections = ['home', ...links.map(([, href]) => href.replace('#', ''))]
-      .map((id) => document.getElementById(id))
-      .filter(Boolean)
+    setMobileOpen(false)
+  }, [location])
 
-    if (!sections.length) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        if (visibleEntries.length) {
-          setActiveSection(visibleEntries[0].target.id)
-        }
-      },
-      {
-        root: null,
-        rootMargin: '-40% 0px -45% 0px',
-        threshold: [0.1, 0.25, 0.45, 0.65],
-      }
-    )
-
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const closeMenuOnResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false)
+  const handleNavClick = (href) => {
+    setMobileOpen(false)
+    if (isHome) {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/' + href)
     }
-    window.addEventListener('resize', closeMenuOnResize)
-    return () => window.removeEventListener('resize', closeMenuOnResize)
-  }, [])
+  }
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'py-3 backdrop-blur-2xl border-b'
-          : 'py-5'
-      }`}
-      style={{
-        background: scrolled
-          ? dark ? 'rgba(5,12,24,0.88)' : 'rgba(244,247,252,0.88)'
-          : 'transparent',
-        borderColor: 'var(--border)',
-      }}
-    >
-      <div className="h-0.5 absolute left-0 top-0 w-full" style={{ background: 'transparent' }}>
-        <div
-          className="h-full transition-[width] duration-150"
-          style={{
-            width: `${scrollProgress}%`,
-            background: 'linear-gradient(90deg, var(--accent), #a78bfa)',
-            boxShadow: '0 0 14px var(--glow)',
-          }}
-        />
-      </div>
+    <>
+      <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+        <div className="nav-inner">
+          <Link to="/" className="nav-logo">
+            DRP<span style={{ opacity: 0.4 }}>·</span>Research
+          </Link>
 
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#home" className="group flex items-center gap-2.5 no-underline">
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold"
-            style={{
-              background: 'linear-gradient(135deg, #38bdf8, #a78bfa)',
-              color: '#050c18',
-              fontFamily: 'var(--font-display)',
-            }}
-          >
-            DRP
-          </div>
-          <span
-            className="font-display font-semibold text-sm hidden sm:block"
-            style={{ color: 'var(--text)', fontFamily: 'var(--font-display)' }}
-          >
-            Damodhara Reddy
-          </span>
-        </a>
+          <ul className="nav-links">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label}>
+                <button className="nav-link" onClick={() => handleNavClick(item.href)}>
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-7">
-          {links.map(([label, href]) => {
-            const isActive = activeSection === href.replace('#', '')
-            return (
-              <a
-                key={label}
-                href={href}
-                className="text-xs font-medium transition-all duration-200 no-underline nav-link"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: isActive ? 'var(--accent)' : 'var(--text3)',
-                }}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {label}
-              </a>
-            )
-          })}
-        </div>
-
-        <div className="flex items-center gap-3">
-          {/* Theme toggle */}
-          <button
-            onClick={() => setDark(!dark)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              background: 'var(--surface)',
-              borderColor: 'var(--border2)',
-              color: 'var(--text2)',
-              letterSpacing: '0.06em',
-            }}
-          >
-            {dark ? '☀︎' : '◑'} {dark ? 'Light' : 'Dark'}
+          <button className="nav-cta" onClick={() => handleNavClick('#contact')}>
+            Contact
           </button>
 
-          {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg border"
-            style={{ borderColor: 'var(--border2)', color: 'var(--text2)' }}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-expanded={mobileOpen}
-            aria-label="Toggle navigation"
+            className="nav-mobile-toggle"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Toggle menu"
           >
-            <div className="w-4 h-3 flex flex-col justify-between">
-              <span className="block h-px w-full" style={{ background: 'var(--accent)' }} />
-              <span className="block h-px w-3/4" style={{ background: 'var(--accent)' }} />
-              <span className="block h-px w-full" style={{ background: 'var(--accent)' }} />
-            </div>
+            <span style={{ transform: mobileOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+            <span style={{ opacity: mobileOpen ? 0 : 1 }} />
+            <span style={{ transform: mobileOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
           </button>
         </div>
-      </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          className="md:hidden absolute top-full left-0 right-0 border-b"
-          style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}
-        >
-          {links.map(([label, href]) => {
-            const isActive = activeSection === href.replace('#', '')
-            return (
-              <a
-                key={label}
-                href={href}
-                className="block px-6 py-3.5 text-sm border-b no-underline transition-colors"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  color: isActive ? 'var(--accent)' : 'var(--text2)',
-                  borderColor: 'var(--border)',
-                }}
-                onClick={() => setMobileOpen(false)}
-                aria-current={isActive ? 'page' : undefined}
+        {isHome && <div className="nav-progress" style={{ width: `${progress}%` }} />}
+      </nav>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            style={{
+              position: 'fixed',
+              top: 'var(--nav-height)',
+              left: 0,
+              right: 0,
+              zIndex: 99,
+              background: 'rgba(6, 7, 20, 0.97)',
+              backdropFilter: 'blur(20px)',
+              borderBottom: '1px solid var(--border)',
+              padding: '1rem 1.5rem 1.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.25rem',
+            }}
+          >
+            {[...NAV_ITEMS, { label: 'Contact', href: '#contact' }].map((item) => (
+              <button
+                key={item.label}
+                className="nav-link"
+                style={{ textAlign: 'left', padding: '0.75rem 1rem', fontSize: '1rem' }}
+                onClick={() => handleNavClick(item.href)}
               >
-                {label}
-              </a>
-            )
-          })}
-        </div>
-      )}
-    </nav>
+                {item.label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

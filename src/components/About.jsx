@@ -1,121 +1,128 @@
-const tags = [
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { memberships } from '../data.js'
+
+const TAGS = [
   'Agentic AI', 'Zero Trust', 'Behavioral Biometrics', 'Federated Learning',
   'MMIS Systems', 'Cloud-Native', 'Microservices', 'SSA / Login.gov',
-  'Healthcare IT', 'CNN-LSTM', 'FedRAMP', 'DevSecOps',
+  'Reinforcement Learning', 'Explainable AI', 'HIPAA / FedRAMP', 'DevSecOps',
 ]
 
-const metrics = [
-  ['16+', 'Years Experience'],
-  ['9+', 'MMIS Systems'],
-  ['8+', 'Publications'],
-  ['500K+', 'Users Impacted'],
+const METRICS = [
+  { value: '16+', label: 'Years Experience', color: 'var(--cyan)' },
+  { value: '8+', label: 'Peer-Reviewed Papers', color: 'var(--purple)' },
+  { value: '9+', label: 'State MMIS Platforms', color: 'var(--emerald)' },
+  { value: '6+', label: 'Judging Roles', color: 'var(--amber)' },
 ]
 
 export default function About() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
   return (
-    <section id="about" style={{ background: 'var(--bg2)', padding: 'clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 7rem)' }}>
-      <div className="max-w-7xl mx-auto">
-        <div
-          className="text-eyebrow mb-4 reveal"
-          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
-        >
-          <span style={{ display: 'inline-block', width: 24, height: 1, background: 'var(--accent)' }} />
-          Who I Am
+    <section className="section" id="about" ref={ref}>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="section-header">
+          <span className="eyebrow">About</span>
+          <h2 className="section-title">Researcher &amp; Engineer</h2>
+          <p className="section-desc">
+            16+ years at the intersection of AI, cybersecurity, and government healthcare systems.
+          </p>
         </div>
+      </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-          {/* Left: text */}
-          <div>
-            <h2
-              className="text-section reveal mb-6"
-              style={{ color: 'var(--text)' }}
-            >
-              Securing the Future of<br />
-              <span className="gradient-text">Healthcare with AI</span>
-            </h2>
+      <div className="about-grid">
+        {/* Left: Text + Tags */}
+        <motion.div
+          className="about-text"
+          initial={{ opacity: 0, x: -20 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.15 }}
+        >
+          <p>
+            I am an AI researcher and cybersecurity architect with over 16 years of experience
+            designing and deploying intelligent security systems for government healthcare platforms,
+            including Medicaid Management Information Systems (MMIS) and Social Security Administration
+            infrastructure.
+          </p>
+          <p>
+            My research focuses on Agentic AI for autonomous threat response, Zero Trust Architecture
+            at government scale, and privacy-preserving machine learning for sensitive health data.
+            I bridge rigorous academic research with production engineering — publishing in IEEE
+            journals while building systems that protect millions of beneficiaries.
+          </p>
+          <p>
+            As an IEEE Senior Member and international award judge, I actively contribute to
+            the broader AI and cybersecurity community through peer review, conference speaking,
+            and mentorship.
+          </p>
 
-            <div className="reveal reveal-d1 space-y-4" style={{ color: 'var(--text2)', fontFamily: 'var(--font-body)', fontSize: '1.02rem', lineHeight: 1.75 }}>
-              <p>
-                With 16+ years building mission-critical government systems, I specialize in the intersection of
-                artificial intelligence and cybersecurity — designing frameworks that protect sensitive data at
-                scale while enabling innovation.
-              </p>
-              <p>
-                I've architected secure authentication systems for <strong style={{ color: 'var(--text)' }}>SSA</strong> and{' '}
-                <strong style={{ color: 'var(--text)' }}>Login.gov</strong>, deployed Zero Trust frameworks across{' '}
-                <strong style={{ color: 'var(--text)' }}>9 U.S. state MMIS platforms</strong>, and pioneered behavioral
-                biometric systems achieving <strong style={{ color: 'var(--accent)' }}>99.5% authentication accuracy</strong>.
-              </p>
-              <p>
-                My research spans agentic AI, federated learning, and privacy-preserving machine learning —
-                contributing to a safer, more intelligent healthcare ecosystem for millions of Americans.
-              </p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-8 reveal reveal-d2">
-              {tags.map((t) => (
-                <span
-                  key={t}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 cursor-default"
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    background: 'rgba(56,189,248,0.05)',
-                    borderColor: 'rgba(56,189,248,0.18)',
-                    color: 'var(--accent)',
-                    letterSpacing: '0.04em',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(56,189,248,0.12)'
-                    e.currentTarget.style.borderColor = 'rgba(56,189,248,0.4)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(56,189,248,0.05)'
-                    e.currentTarget.style.borderColor = 'rgba(56,189,248,0.18)'
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: metric cards */}
-          <div className="grid grid-cols-2 gap-4">
-            {metrics.map(([num, label], i) => (
-              <div
-                key={label}
-                className={`grad-border card-glow reveal reveal-d${i + 1} p-6`}
-                style={{ border: '1px solid var(--border)' }}
+          <div className="about-tags">
+            {TAGS.map((tag, i) => (
+              <motion.span
+                key={tag}
+                className="tag"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.4 + i * 0.04 }}
               >
-                <div
-                  className="gradient-text mb-1"
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '2.8rem',
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    letterSpacing: '-0.04em',
-                  }}
-                >
-                  {num}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.72rem',
-                    color: 'var(--text3)',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    marginTop: '6px',
-                  }}
-                >
-                  {label}
-                </div>
-              </div>
+                {tag}
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
+
+        {/* Right: Metrics + Memberships */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.2 }}
+        >
+          {/* Metric cards */}
+          <div className="about-metrics">
+            {METRICS.map((m, i) => (
+              <motion.div
+                key={m.label}
+                className="about-metric glass"
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
+                <span className="about-metric-value" style={{ color: m.color }}>
+                  {m.value}
+                </span>
+                <span className="about-metric-label">{m.label}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Professional memberships */}
+          <div className="about-memberships">
+            {memberships.map((m, i) => (
+              <motion.div
+                key={m.acronym}
+                className="membership-card glass"
+                initial={{ opacity: 0, x: 16 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.6 + i * 0.07 }}
+                whileHover={{ x: 4, transition: { duration: 0.2 } }}
+              >
+                <span className="membership-acronym" style={{ color: m.color }}>
+                  {m.acronym}
+                </span>
+                <div className="membership-info">
+                  <div className="membership-tier">{m.tier}</div>
+                  <div className="membership-desc">{m.desc}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

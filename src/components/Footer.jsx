@@ -1,62 +1,76 @@
-const footerLinks = [
+import { Link } from 'react-router-dom'
+
+const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/damwi/' },
   { label: 'Google Scholar', href: 'https://scholar.google.com/' },
-  { label: 'ResearchGate', href: 'https://www.researchgate.net/' },
   { label: 'IEEE Xplore', href: 'https://ieeexplore.ieee.org/' },
+  { label: 'ResearchGate', href: 'https://www.researchgate.net/' },
 ]
 
-const navLinks = [
-  ['About', '#about'], ['Research', '#research'], ['Publications', '#publications'],
-  ['Articles', '#articles'], ['Judging', '#judging'], ['Contact', '#contact'],
+const NAV_LINKS = [
+  { label: 'About', href: '#about' },
+  { label: 'Research', href: '#research' },
+  { label: 'Publications', href: '#publications' },
+  { label: 'Impact', href: '#impact' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Footer() {
+  const scrollTo = (href) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <footer style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div>
-          <div className="inline-flex items-center gap-2.5 mb-4">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold" style={{ background: 'linear-gradient(135deg, #38bdf8, #a78bfa)', color: '#050c18', fontFamily: 'var(--font-display)' }}>DRP</div>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text)', fontSize: '0.95rem' }}>Damodhara Reddy Palavali</span>
-          </div>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', color: 'var(--text3)', lineHeight: 1.7, maxWidth: '280px' }}>
-            AI Researcher · Zero Trust Architect · Cybersecurity Innovator with 16+ years securing government healthcare at scale.
+    <footer className="footer">
+      <div className="footer-inner">
+        {/* Brand column */}
+        <div className="footer-brand">
+          <h3>DRP · Research</h3>
+          <p>
+            AI Researcher & Cybersecurity Architect. IEEE Senior Member. Building
+            intelligent security systems for healthcare and government cloud platforms.
           </p>
-        </div>
-
-        <div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text3)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '14px' }}>Navigation</div>
-          <div className="flex flex-col gap-2.5">
-            {navLinks.map(([label, href]) => (
-              <a key={label} href={href} className="no-underline text-sm transition-colors duration-200" style={{ fontFamily: 'var(--font-body)', color: 'var(--text2)' }}
-                onMouseEnter={(e) => (e.target.style.color = 'var(--accent)')}
-                onMouseLeave={(e) => (e.target.style.color = 'var(--text2)')}>{label}</a>
-            ))}
+          <div style={{ marginTop: '1.25rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            <span className="badge badge-cyan">IEEE Senior Member</span>
+            <span className="badge badge-purple">IETE Fellow</span>
           </div>
         </div>
 
-        <div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text3)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '14px' }}>Connect</div>
-          <div className="flex flex-col gap-2.5">
-            {footerLinks.map(({ label, href }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 no-underline text-sm transition-colors duration-200" style={{ fontFamily: 'var(--font-body)', color: 'var(--text2)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text2)')}>
-                {label}
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </a>
+        {/* Navigation */}
+        <div className="footer-col">
+          <h4>Navigation</h4>
+          <ul className="footer-links">
+            {NAV_LINKS.map((l) => (
+              <li key={l.label}>
+                <button onClick={() => scrollTo(l.href)}>{l.label}</button>
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+
+        {/* Connect */}
+        <div className="footer-col">
+          <h4>Connect</h4>
+          <ul className="footer-links">
+            {SOCIAL_LINKS.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-wrap items-center justify-between gap-3" style={{ borderTop: '1px solid var(--border)' }}>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--text3)', letterSpacing: '0.05em' }}>
+      {/* Bottom bar */}
+      <div className="footer-bottom">
+        <p>
           © {new Date().getFullYear()} Damodhara Reddy Palavali. All rights reserved.
         </p>
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#34d399', boxShadow: '0 0 6px #34d399' }} />
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text3)', letterSpacing: '0.08em' }}>IEEE Senior Member · IETE Fellow</span>
+        <div className="footer-badges">
+          <span className="badge">React + Vite</span>
+          <span className="badge">Framer Motion</span>
         </div>
       </div>
     </footer>

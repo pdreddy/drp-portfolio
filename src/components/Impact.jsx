@@ -1,91 +1,73 @@
-import { useCountUp, useInView } from '../hooks.js'
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion'
+import { useRef, useEffect } from 'react'
 import { impactStats } from '../data.js'
 
-function CountCard({ stat }) {
-  const [ref, inView] = useInView(0.3)
-  const count = useCountUp(stat.number, 2200, inView)
+function CountUp({ target, suffix, color, inView }) {
+  const count = useMotionValue(0)
+  const ref = useRef(null)
 
-  const display =
-    stat.number % 1 !== 0
-      ? count.toFixed(1) + stat.suffix
-      : Math.floor(count) + stat.suffix
+  useEffect(() => {
+    if (!inView) return
+    const controls = animate(count, target, {
+      duration: 2,
+      ease: 'easeOut',
+      onUpdate: (v) => {
+        if (ref.current) {
+          const display = target % 1 !== 0 ? v.toFixed(1) : Math.floor(v).toString()
+          ref.current.textContent = display + suffix
+        }
+      },
+    })
+    return controls.stop
+  }, [inView, target, suffix, count])
 
   return (
-    <div
-      ref={ref}
-      className="card-glow p-8 rounded-2xl border text-center reveal"
-      style={{
-        background: 'var(--surface)',
-        borderColor: 'var(--border)',
-      }}
-    >
-      <div
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2.8rem, 5vw, 4rem)',
-          fontWeight: 700,
-          lineHeight: 1,
-          letterSpacing: '-0.04em',
-          color: stat.color,
-          textShadow: `0 0 40px ${stat.color}40`,
-          marginBottom: '10px',
-        }}
-      >
-        {display}
-      </div>
-      <div
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '0.95rem',
-          fontWeight: 600,
-          color: 'var(--text)',
-          marginBottom: '5px',
-          letterSpacing: '-0.01em',
-        }}
-      >
-        {stat.label}
-      </div>
-      <div
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.68rem',
-          color: 'var(--text3)',
-          letterSpacing: '0.08em',
-        }}
-      >
-        {stat.sub}
-      </div>
-    </div>
+    <span ref={ref} className="impact-value" style={{ color }}>
+      0{suffix}
+    </span>
   )
 }
 
 export default function Impact() {
-  return (
-    <section
-      id="impact"
-      style={{
-        background: 'var(--bg2)',
-        padding: 'clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 7rem)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-eyebrow mb-4 reveal" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ display: 'inline-block', width: 24, height: 1, background: 'var(--accent)' }} />
-          Results at Scale
-        </div>
-        <h2 className="text-section reveal mb-4" style={{ color: 'var(--text)' }}>
-          Project <span className="gradient-text">Impact</span>
-        </h2>
-        <p className="reveal reveal-d1 mb-12" style={{ color: 'var(--text2)', fontSize: '1.05rem', maxWidth: '560px', lineHeight: 1.7 }}>
-          Measurable outcomes from 16+ years of engineering mission-critical
-          government healthcare systems.
-        </p>
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {impactStats.map((stat, i) => (
-            <CountCard key={i} stat={stat} />
-          ))}
-        </div>
+  return (
+    <section className="section" id="impact" ref={ref}>
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 16 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="eyebrow">Impact</span>
+        <h2 className="section-title">Research Impact</h2>
+        <p className="section-desc">
+          Measurable outcomes from 16+ years of applied research in government healthcare systems.
+        </p>
+      </motion.div>
+
+      <div className="impact-grid">
+        {impactStats.map((stat, i) => (
+          <motion.div
+            key={stat.label}
+            className="impact-card glass"
+            style={{ '--card-color-dim': stat.color + '18' }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}
+            whileHover={{ y: -6, transition: { duration: 0.22 } }}
+          >
+            <CountUp
+              target={stat.number}
+              suffix={stat.suffix}
+              color={stat.color}
+              inView={inView}
+            />
+            <span className="impact-label">{stat.label}</span>
+            <span className="impact-sub">{stat.sub}</span>
+          </motion.div>
+        ))}
       </div>
     </section>
   )
