@@ -91,42 +91,79 @@ export const publications = [
 
 export const articles = [
   {
-    title: 'Zero Trust at Scale: Lessons from Securing 9 State Medicaid Systems',
+    title: 'Caching Spring Boot Data with Redis on AWS ElastiCache',
     platform: 'DZone',
     platformColor: '#e07b39',
     description:
-      'Practical insights on implementing zero trust architecture across heterogeneous government IT ecosystems without disrupting mission-critical service delivery.',
-    link: 'https://dzone.com/',
+      'Hands-on guide to improve Spring Boot performance using Redis caching with AWS ElastiCache deployment patterns.',
+    link: 'https://dzone.com/articles/caching-spring-boot-redis-elasticache',
     readTime: '8 min read',
   },
   {
-    title: 'Agentic AI in Cybersecurity: Beyond Rule-Based Defenses',
-    platform: 'Medium',
-    platformColor: '#00ab6c',
-    description:
-      'How autonomous AI agents are transforming SOCs from reactive to predictive, and what this means for healthcare data protection at scale.',
-    link: 'https://medium.com/',
-    readTime: '11 min read',
-  },
-  {
-    title: 'Federated Identity for Government: The Login.gov Architecture',
+    title: 'Spring Batch XML Processing: Delete or Move Files After Processing',
     platform: 'DZone',
     platformColor: '#e07b39',
     description:
-      'Deep dive into building robust federated identity pipelines meeting FedRAMP requirements while delivering seamless citizen authentication.',
-    link: 'https://dzone.com/',
+      'A practical workflow for processing XML using Spring Batch and safely moving or deleting source files after job completion.',
+    link: 'https://dzone.com/articles/spring-batch-process-xml-deletemove-files-after-pr',
     readTime: '9 min read',
   },
   {
-    title: 'From 60% to 99.5%: Achieving Near-Perfect Auth with Deep Learning',
+    title: 'Download Files from a Spring Boot REST Service',
+    platform: 'DZone',
+    platformColor: '#e07b39',
+    description:
+      'Implementation details for creating a robust Spring Boot REST endpoint that streams downloadable files to clients.',
+    link: 'https://dzone.com/articles/springboot-rest-service-download-files',
+    readTime: '6 min read',
+  },
+  {
+    title: 'Spring Boot Batch Integration with HBase REST API',
+    platform: 'DZone',
+    platformColor: '#e07b39',
+    description:
+      'Architecture and code patterns for integrating Spring Batch pipelines with HBase using REST APIs for scalable data workloads.',
+    link: 'https://dzone.com/articles/spring-boot-batch-integration-with-hbase-rest-api',
+    readTime: '10 min read',
+  },
+  {
+    title: 'Avoiding Deadlocks in OpenJPA Select Queries with DB2',
     platform: 'Medium',
     platformColor: '#00ab6c',
     description:
-      'The journey of improving behavioral biometric authentication accuracy using CNN-LSTM architectures trained on real-world access pattern data.',
-    link: 'https://medium.com/',
-    readTime: '13 min read',
+      'Troubleshooting and query design strategies to prevent deadlocks in OpenJPA-based DB2 workloads.',
+    link: 'https://medium.com/@damureddy/avoiding-deadlocks-in-openjpa-select-queries-with-db2-5166956c2789',
+    readTime: '7 min read',
+  },
+  {
+    title: 'Production-Ready Symmetric Java Encryption Algorithm',
+    platform: 'Medium',
+    platformColor: '#00ab6c',
+    description:
+      'Secure and production-focused approach for implementing symmetric encryption in Java services.',
+    link: 'https://medium.com/@damureddy/proudction-ready-symmetric-java-encryption-algorithm-eace360b5440',
+    readTime: '8 min read',
+  },
+  {
+    title: 'Spring Batch XML-to-DB with Tasklet for Delete/Move File',
+    platform: 'Medium',
+    platformColor: '#00ab6c',
+    description:
+      'Step-by-step implementation to ingest XML into a database and post-process files with custom Spring Batch tasklets.',
+    link: 'https://medium.com/@damureddy/spring-batch-xml-to-db-and-task-let-to-delete-move-file-f74e7ab6bda8',
+    readTime: '8 min read',
+  },
+  {
+    title: 'Download a File from Spring Boot REST Service',
+    platform: 'Medium',
+    platformColor: '#00ab6c',
+    description:
+      'Clear example for serving downloadable files from Spring Boot APIs with proper headers and response handling.',
+    link: 'https://medium.com/@damureddy/download-a-file-from-springboot-rest-service-c10700f3e88d',
+    readTime: '6 min read',
   },
 ]
+
 
 export const judgingRoles = [
   { icon: '🏆', title: 'AI Excellence Awards', org: 'Artificial Intelligence Excellence Awards — International Judge' },
