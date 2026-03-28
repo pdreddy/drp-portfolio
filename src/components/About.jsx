@@ -1,16 +1,35 @@
 import { motion } from 'framer-motion'
 
 const TAGS = [
-  'Agentic AI','Zero Trust','Behavioral Biometrics','Federated Learning',
-  'MMIS Systems','Cloud-Native','Microservices','SSA / Login.gov',
-  'Healthcare IT','CNN-LSTM','FedRAMP','DevSecOps',
+  'Artificial Intelligence in Cybersecurity',
+  'Agentic AI',
+  'Zero Trust Architecture',
+  'Behavioral Biometrics',
+  'Federated Learning',
+  'Privacy-Preserving Machine Learning',
+  'AI-Driven Threat Detection',
+  'Cloud-Native Security',
+  'Microservices Security',
+  'Healthcare Data Security',
+  'Explainable AI (XAI)',
+  'DevSecOps','Continuous Authentication',
+  'Anomaly Detection Systems',
+  'Cyber Threat Intelligence',
+  'Secure AI Systems',
+  'Identity and Access Management (IAM)','Distributed Systems Security',
+  'Autonomous Security Systems',
+  'AI Security Governance',
+  'Federated AI Systems',
+  'Deep Learning for Cybersecurity',
+  'Trustworthy AI',
 ]
 
 const METRICS = [
-  ['16+','Years Experience'],['9+','MMIS Systems'],
-  ['8+','Publications'],['500K+','Users Impacted'],
+  ['16+','Years in Software Engineering'],
+  ['9+','Large-Scale Systems'],
+  ['8+','Peer-Reviewed Publications'],
+  ['500K+','Users Impacted'],
 ]
-
 const stagger = { animate: { transition: { staggerChildren: 0.08 } } }
 const fadeUp = {
   initial: { opacity:0,y:22 },
@@ -34,24 +53,22 @@ export default function About() {
                  style={{ color:'var(--text2)',fontFamily:'var(--font-body)',fontSize:'1.02rem',lineHeight:1.75 }}>
 
               <p>
-                With 16+ years of experience building mission-critical government systems, I specialize in the intersection of
-                artificial intelligence and cybersecurity — engineering intelligent frameworks that protect sensitive data at
-                scale while enabling secure, scalable innovation.
-              </p>
+                Damodhara Reddy Palavali is a Software Engineer and IEEE Senior Member with 16+ years of experience in
+                cloud-native architectures, microservices, and secure large-scale enterprise and government systems.
 
-              <p>
-                I have implemented secure authentication and federated identity systems across large-scale enterprise platforms,
-                deployed Zero Trust architectures across{' '}
-                <strong style={{ color:'var(--text)' }}>multi-state healthcare systems</strong>, and engineered advanced behavioral
-                biometric solutions achieving{' '}
-                <strong style={{ color:'var(--accent)' }}>99.5% authentication accuracy</strong>.
-              </p>
+                His research focuses on <strong>Artificial Intelligence in Cybersecurity</strong>,
+                <strong>Zero Trust Architecture</strong>, <strong>Federated Learning</strong>,
+                <strong>Agentic AI Systems</strong>, and <strong>Privacy-Preserving Machine Learning</strong>.
 
-              <p>
-                My research focuses on agentic AI, federated learning, and privacy-preserving machine learning — designing adaptive,
-                autonomous security systems that strengthen modern healthcare and cloud-native ecosystems.
-              </p>
+                He has contributed to large-scale healthcare and distributed systems, including Medicaid Management Information Systems (MMIS),
+                impacting millions of users across the United States.
 
+                His recent work explores <strong>AI-driven threat detection</strong>,
+                <strong>behavioral biometrics for continuous authentication</strong>,
+                and <strong>autonomous security frameworks for cloud-native environments</strong>.
+
+                He is an active contributor to IEEE conferences and research communities, focusing on scalable, secure, and intelligent systems.
+              </p>
             </div>
 
             {/* Tags */}
