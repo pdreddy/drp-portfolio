@@ -8,6 +8,9 @@
     --font-display: 'Clash Display', 'SF Pro Display', system-ui, sans-serif;
     --font-body: 'Cabinet Grotesk', 'SF Pro Text', system-ui, sans-serif;
     --font-mono: 'Fira Code', 'SF Mono', monospace;
+    --pointer-x: 50vw;
+    --pointer-y: 30vh;
+    --pointer-opacity: 0;
 
     /* Light */
     --bg:       #f4f7fc;
@@ -50,6 +53,18 @@
     color: var(--text);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.45s ease, color 0.45s ease;
+  }
+
+  a,
+  button,
+  [role='button'],
+  input[type='button'],
+  input[type='submit'],
+  input[type='reset'],
+  summary,
+  label[for] {
+    cursor: pointer;
   }
 
   ::selection {
@@ -60,6 +75,64 @@
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.app-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.app-ambient-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+}
+
+.app-ambient-spotlight {
+  position: absolute;
+  inset: -20%;
+  opacity: var(--pointer-opacity);
+  background:
+    radial-gradient(circle 280px at var(--pointer-x) var(--pointer-y), rgba(56, 189, 248, 0.14), transparent 65%),
+    radial-gradient(circle 420px at calc(var(--pointer-x) - 10%) calc(var(--pointer-y) + 8%), rgba(167, 139, 250, 0.08), transparent 70%);
+  transition: opacity 0.25s ease;
+}
+
+.app-ambient-beam {
+  position: absolute;
+  width: 42rem;
+  height: 42rem;
+  border-radius: 999px;
+  filter: blur(90px);
+  opacity: 0.2;
+  animation: ambientFloat 18s ease-in-out infinite;
+}
+
+.app-ambient-beam-a {
+  top: -12rem;
+  right: -10rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 65%);
+}
+
+.app-ambient-beam-b {
+  bottom: -16rem;
+  left: -14rem;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.12), transparent 65%);
+  animation-duration: 22s;
+  animation-delay: -4s;
 }
 
 /* ─── Typography Scale ─── */
@@ -259,4 +332,54 @@
 .card-glow:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 48px var(--glow), 0 0 0 1px var(--border2);
+}
+
+.card-glow,
+.grad-border,
+.ticker-wrap a,
+.ticker-wrap button {
+  will-change: transform;
+}
+
+section {
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%, transparent 76%, rgba(56, 189, 248, 0.03));
+  opacity: 0.7;
+}
+
+@keyframes ambientFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2rem, -1.5rem, 0) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.visible,
+  .ticker,
+  .orb1,
+  .orb2,
+  .pulse-ring::before,
+  .pulse-ring::after,
+  .app-ambient-beam,
+  .shimmer-text,
+  .grad-border::before {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .app-ambient-spotlight {
+    display: none;
+  }
 }
