@@ -1,5 +1,16 @@
+import { motion } from 'framer-motion'
 import { useCountUp, useInView } from '../hooks.js'
 import { impactStats } from '../data.js'
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24, scale: 0.97 },
+  show:   { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 function CountCard({ stat }) {
   const [ref, inView] = useInView(0.3)
@@ -11,12 +22,19 @@ function CountCard({ stat }) {
       : Math.floor(count) + stat.suffix
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className="card-glow p-8 rounded-2xl border text-center reveal"
+      variants={cardVariants}
+      className="card-glow p-8 rounded-2xl border text-center"
       style={{
         background: 'var(--surface)',
         borderColor: 'var(--border)',
+      }}
+      whileHover={{
+        y: -6,
+        boxShadow: `0 20px 48px ${stat.color}20`,
+        borderColor: `${stat.color}35`,
+        transition: { duration: 0.22 },
       }}
     >
       <div
@@ -55,7 +73,7 @@ function CountCard({ stat }) {
       >
         {stat.sub}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -81,11 +99,17 @@ export default function Impact() {
           government healthcare systems.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-5"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {impactStats.map((stat, i) => (
             <CountCard key={i} stat={stat} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

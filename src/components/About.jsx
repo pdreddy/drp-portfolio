@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const tags = [
   'Agentic AI', 'Zero Trust', 'Behavioral Biometrics', 'Federated Learning',
   'MMIS Systems', 'Cloud-Native', 'Microservices', 'SSA / Login.gov',
@@ -10,6 +12,11 @@ const metrics = [
   ['8+', 'Publications'],
   ['500K+', 'Users Impacted'],
 ]
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 export default function About() {
   return (
@@ -53,11 +60,18 @@ export default function About() {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-8 reveal reveal-d2">
+            <motion.div
+              className="flex flex-wrap gap-2 mt-8"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
+            >
               {tags.map((t) => (
-                <span
+                <motion.span
                   key={t}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 cursor-default"
+                  variants={{ hidden: { opacity: 0, scale: 0.9 }, show: { opacity: 1, scale: 1, transition: { duration: 0.3 } } }}
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border"
                   style={{
                     fontFamily: 'var(--font-mono)',
                     background: 'rgba(56,189,248,0.05)',
@@ -65,28 +79,38 @@ export default function About() {
                     color: 'var(--accent)',
                     letterSpacing: '0.04em',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(56,189,248,0.12)'
-                    e.currentTarget.style.borderColor = 'rgba(56,189,248,0.4)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(56,189,248,0.05)'
-                    e.currentTarget.style.borderColor = 'rgba(56,189,248,0.18)'
+                  whileHover={{
+                    background: 'rgba(56,189,248,0.12)',
+                    borderColor: 'rgba(56,189,248,0.4)',
+                    y: -2,
+                    transition: { duration: 0.15 },
                   }}
                 >
                   {t}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right: metric cards */}
-          <div className="grid grid-cols-2 gap-4">
+          <motion.div
+            className="grid grid-cols-2 gap-4"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+          >
             {metrics.map(([num, label], i) => (
-              <div
+              <motion.div
                 key={label}
-                className={`grad-border card-glow reveal reveal-d${i + 1} p-6`}
+                variants={cardVariants}
+                className="grad-border card-glow p-6"
                 style={{ border: '1px solid var(--border)' }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: '0 20px 48px rgba(56,189,248,0.12)',
+                  transition: { duration: 0.2 },
+                }}
               >
                 <div
                   className="gradient-text mb-1"
@@ -112,9 +136,9 @@ export default function About() {
                 >
                   {label}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

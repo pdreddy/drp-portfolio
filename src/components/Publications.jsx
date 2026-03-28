@@ -1,4 +1,16 @@
+import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { publications } from '../data.js'
+
+const listVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 function PubLinks({ pub }) {
   const links = [
@@ -10,12 +22,12 @@ function PubLinks({ pub }) {
   return (
     <div className="flex flex-wrap gap-2 mt-4">
       {links.map(({ label, href, color }) => (
-        <a
+        <motion.a
           key={label}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border no-underline transition-all duration-200"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border no-underline"
           style={{
             fontFamily: 'var(--font-mono)',
             color,
@@ -23,25 +35,24 @@ function PubLinks({ pub }) {
             background: `${color}08`,
             letterSpacing: '0.05em',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = `${color}18`
-            e.currentTarget.style.borderColor = `${color}55`
-            e.currentTarget.style.transform = 'translateY(-1px)'
+          whileHover={{
+            y: -2,
+            background: `${color}18`,
+            borderColor: `${color}55`,
+            transition: { duration: 0.15 },
           }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = `${color}08`
-            e.currentTarget.style.borderColor = `${color}30`
-            e.currentTarget.style.transform = 'translateY(0)'
-          }}
+          whileTap={{ scale: 0.97 }}
         >
           ↗ {label}
-        </a>
+        </motion.a>
       ))}
     </div>
   )
 }
 
 export default function Publications() {
+  const navigate = useNavigate()
+
   return (
     <section
       id="publications"
@@ -63,11 +74,18 @@ export default function Publications() {
           federated learning, and healthcare informatics.
         </p>
 
-        <div className="flex flex-col gap-4">
+        <motion.div
+          className="flex flex-col gap-4"
+          variants={listVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.05 }}
+        >
           {publications.map((pub, i) => (
-            <div
+            <motion.div
               key={i}
-              className="card-glow reveal p-7 rounded-2xl border"
+              variants={itemVariants}
+              className="card-glow p-7 rounded-2xl border"
               style={{
                 background: 'var(--surface)',
                 borderColor: 'var(--border)',
@@ -75,6 +93,12 @@ export default function Publications() {
                 gridTemplateColumns: '1fr auto',
                 gap: '1.5rem',
                 alignItems: 'start',
+              }}
+              whileHover={{
+                y: -4,
+                boxShadow: '0 16px 48px rgba(56,189,248,0.1)',
+                borderColor: 'rgba(56,189,248,0.25)',
+                transition: { duration: 0.2 },
               }}
             >
               {/* Left */}
@@ -92,7 +116,9 @@ export default function Publications() {
                 </div>
                 <h3
                   className="text-card mb-2"
-                  style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', lineHeight: 1.3 }}
+                  style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', lineHeight: 1.3, cursor: 'pointer' }}
+                  onClick={() => navigate(`/publications/${pub.num}`)}
+                  title="View full details"
                 >
                   {pub.title}
                 </h3>
@@ -106,7 +132,27 @@ export default function Publications() {
                 >
                   {pub.description}
                 </p>
-                <PubLinks pub={pub} />
+
+                {/* Action row */}
+                <div className="flex flex-wrap items-center gap-3 mt-4">
+                  <motion.button
+                    onClick={() => navigate(`/publications/${pub.num}`)}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border"
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--accent)',
+                      borderColor: 'rgba(56,189,248,0.25)',
+                      background: 'rgba(56,189,248,0.06)',
+                      letterSpacing: '0.06em',
+                      cursor: 'pointer',
+                    }}
+                    whileHover={{ y: -2, background: 'rgba(56,189,248,0.12)', transition: { duration: 0.15 } }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    View Details →
+                  </motion.button>
+                  <PubLinks pub={pub} />
+                </div>
               </div>
 
               {/* Year badge */}
@@ -121,9 +167,9 @@ export default function Publications() {
               >
                 {pub.year}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

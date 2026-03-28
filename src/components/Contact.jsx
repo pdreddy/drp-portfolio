@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const contactLinks = [
   { icon: '📧', label: 'Email', value: 'damodhara.palavali@gmail.com', href: 'mailto:damodhara.palavali@gmail.com', color: '#38bdf8' },
   { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/damwi', href: 'https://www.linkedin.com/in/damwi/', color: '#60a5fa' },
@@ -5,6 +7,16 @@ const contactLinks = [
   { icon: '🔬', label: 'ResearchGate', value: 'researchgate.net/profile/Palavali', href: 'https://www.researchgate.net/', color: '#34d399' },
   { icon: '🔷', label: 'IEEE Profile', value: 'ieeexplore.ieee.org', href: 'https://ieeexplore.ieee.org/', color: '#a78bfa' },
 ]
+
+const listVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -16 },
+  show:   { opacity: 1, x: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+}
 
 export default function Contact() {
   return (
@@ -26,17 +38,29 @@ export default function Contact() {
               and discussions about AI security and zero trust architecture.
             </p>
 
-            <div className="flex flex-col gap-3">
+            <motion.div
+              className="flex flex-col gap-3"
+              variants={listVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.1 }}
+            >
               {contactLinks.map((l, i) => (
-                <a
+                <motion.a
                   key={i}
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`reveal reveal-d${(i % 3) + 1} flex items-center gap-4 p-4 rounded-2xl border no-underline`}
-                  style={{ background: 'var(--surface)', borderColor: 'var(--border)', color: 'inherit', transition: 'all 0.25s' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${l.color}50`; e.currentTarget.style.transform = 'translateX(6px)'; e.currentTarget.style.background = `${l.color}08` }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.style.background = 'var(--surface)' }}
+                  variants={itemVariants}
+                  className="flex items-center gap-4 p-4 rounded-2xl border no-underline"
+                  style={{ background: 'var(--surface)', borderColor: 'var(--border)', color: 'inherit' }}
+                  whileHover={{
+                    x: 6,
+                    borderColor: `${l.color}50`,
+                    background: `${l.color}08`,
+                    transition: { duration: 0.2 },
+                  }}
+                  whileTap={{ scale: 0.99 }}
                 >
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style={{ background: `${l.color}12`, border: `1px solid ${l.color}30` }}>
                     {l.icon}
@@ -48,13 +72,24 @@ export default function Contact() {
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ color: 'var(--text3)', flexShrink: 0 }}>
                     <path d="M3 11L11 3M11 3H6M11 3v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </a>
+                </motion.a>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right CTA card */}
-          <div className="reveal reveal-d2 rounded-3xl p-8 border relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05) 50%, rgba(52,211,153,0.05))', borderColor: 'var(--border2)' }}>
+          <motion.div
+            className="rounded-3xl p-8 border relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05) 50%, rgba(52,211,153,0.05))', borderColor: 'var(--border2)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            whileHover={{
+              boxShadow: '0 24px 64px rgba(56,189,248,0.1)',
+              transition: { duration: 0.3 },
+            }}
+          >
             <div style={{ position: 'absolute', top: -40, right: -40, width: 180, height: 180, borderRadius: '50%', background: 'radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'absolute', bottom: -30, left: -30, width: 140, height: 140, borderRadius: '50%', background: 'radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%)', pointerEvents: 'none' }} />
             <div className="relative z-10">
@@ -65,16 +100,16 @@ export default function Contact() {
               <p style={{ color: 'var(--text2)', fontSize: '0.92rem', lineHeight: 1.75, marginBottom: '2rem' }}>
                 With 16+ years securing government healthcare at scale, I bring deep expertise in AI-driven security architecture — from theoretical research to production deployments protecting millions of Americans.
               </p>
-              <a
+              <motion.a
                 href="mailto:damodhara.palavali@gmail.com"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm no-underline"
-                style={{ fontFamily: 'var(--font-display)', background: 'var(--accent)', color: '#050c18', boxShadow: '0 0 24px rgba(56,189,248,0.3)', letterSpacing: '-0.01em', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(56,189,248,0.5)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(56,189,248,0.3)' }}
+                style={{ fontFamily: 'var(--font-display)', background: 'var(--accent)', color: '#050c18', boxShadow: '0 0 24px rgba(56,189,248,0.3)', letterSpacing: '-0.01em' }}
+                whileHover={{ y: -3, boxShadow: '0 0 44px rgba(56,189,248,0.5)', transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.97 }}
               >
                 Send a Message
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </a>
+              </motion.a>
               <div className="mt-6 p-4 rounded-xl border" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text3)', lineHeight: 1.8 }}>
                   <span style={{ color: 'var(--text2)', fontWeight: 600 }}>Current focus: </span>
@@ -82,7 +117,7 @@ export default function Contact() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
