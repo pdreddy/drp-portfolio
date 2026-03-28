@@ -44,7 +44,7 @@
 
   html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 17px;
   }
 
   body {
@@ -54,13 +54,14 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.45s ease, color 0.45s ease;
-    cursor: pointer;
+    cursor: pointer !important;
+    line-height: 1.7;
   }
 
   *,
   *::before,
   *::after {
-    cursor: inherit;
+    cursor: pointer !important;
   }
 
   a,
@@ -160,7 +161,7 @@
   /* Section title */
   .text-section {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-size: clamp(2.35rem, 4.4vw, 3.85rem);
     font-weight: 600;
     line-height: 1.0;
     letter-spacing: -0.035em;
@@ -169,7 +170,7 @@
   /* Card title */
   .text-card {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: -0.02em;
   }
