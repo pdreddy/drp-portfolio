@@ -1,89 +1,185 @@
-const contactLinks = [
-  { icon: '📧', label: 'Email', value: 'damodhara.palavali@gmail.com', href: 'mailto:damodhara.palavali@gmail.com', color: '#38bdf8' },
-  { icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/damwi', href: 'https://www.linkedin.com/in/damwi/', color: '#60a5fa' },
-  { icon: '🎓', label: 'Google Scholar', value: 'scholar.google.com', href: 'https://scholar.google.com/', color: '#fb923c' },
-  { icon: '🔬', label: 'ResearchGate', value: 'researchgate.net/profile/Palavali', href: 'https://www.researchgate.net/', color: '#34d399' },
-  { icon: '🔷', label: 'IEEE Profile', value: 'ieeexplore.ieee.org', href: 'https://ieeexplore.ieee.org/', color: '#a78bfa' },
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+
+const CONTACT_LINKS = [
+  {
+    icon: '✉',
+    label: 'Email',
+    value: 'damodhara.palavali@gmail.com',
+    href: 'mailto:damodhara.palavali@gmail.com',
+  },
+  {
+    icon: '💼',
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/damwi',
+    href: 'https://www.linkedin.com/in/damwi/',
+  },
+  {
+    icon: '🎓',
+    label: 'Google Scholar',
+    value: 'Scholar Profile',
+    href: 'https://scholar.google.com/',
+  },
+  {
+    icon: '⚡',
+    label: 'IEEE Xplore',
+    value: 'IEEE Author Profile',
+    href: 'https://ieeexplore.ieee.org/',
+  },
+  {
+    icon: '🔬',
+    label: 'ResearchGate',
+    value: 'ResearchGate Profile',
+    href: 'https://www.researchgate.net/',
+  },
 ]
 
 export default function Contact() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
   return (
-    <section id="contact" style={{ background: 'var(--bg)', padding: 'clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 7rem)' }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-eyebrow mb-4 reveal" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ display: 'inline-block', width: 24, height: 1, background: 'var(--accent)' }} />
-          Get in Touch
-        </div>
+    <section className="section" id="contact" ref={ref}>
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: 16 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="eyebrow">Contact</span>
+        <h2 className="section-title">Get In Touch</h2>
+        <p className="section-desc">
+          Open to research collaborations, speaking invitations, and consulting opportunities.
+        </p>
+      </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-          {/* Left */}
-          <div>
-            <h2 className="text-section reveal mb-4" style={{ color: 'var(--text)' }}>
-              Let's <span className="gradient-text">Connect</span>
-            </h2>
-            <p className="reveal reveal-d1 mb-10" style={{ color: 'var(--text2)', fontSize: '1.05rem', lineHeight: 1.75, maxWidth: '480px' }}>
-              Open to research collaborations, speaking engagements, advisory roles,
-              and discussions about AI security and zero trust architecture.
-            </p>
+      <div className="contact-grid">
+        {/* Contact links */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '0.5rem' }}>
+            Whether you're interested in discussing research, potential collaboration, or have
+            questions about my work — I'd be glad to connect.
+          </p>
 
-            <div className="flex flex-col gap-3">
-              {contactLinks.map((l, i) => (
-                <a
-                  key={i}
-                  href={l.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`reveal reveal-d${(i % 3) + 1} flex items-center gap-4 p-4 rounded-2xl border no-underline`}
-                  style={{ background: 'var(--surface)', borderColor: 'var(--border)', color: 'inherit', transition: 'all 0.25s' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${l.color}50`; e.currentTarget.style.transform = 'translateX(6px)'; e.currentTarget.style.background = `${l.color}08` }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.style.background = 'var(--surface)' }}
-                >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style={{ background: `${l.color}12`, border: `1px solid ${l.color}30` }}>
-                    {l.icon}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '2px' }}>{l.label}</div>
-                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', fontWeight: 500, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.value}</div>
-                  </div>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ color: 'var(--text3)', flexShrink: 0 }}>
-                    <path d="M3 11L11 3M11 3H6M11 3v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Right CTA card */}
-          <div className="reveal reveal-d2 rounded-3xl p-8 border relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05) 50%, rgba(52,211,153,0.05))', borderColor: 'var(--border2)' }}>
-            <div style={{ position: 'absolute', top: -40, right: -40, width: 180, height: 180, borderRadius: '50%', background: 'radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', bottom: -30, left: -30, width: 140, height: 140, borderRadius: '50%', background: 'radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%)', pointerEvents: 'none' }} />
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-6" style={{ background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.25)' }}>🤝</div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '12px' }}>
-                Advancing Secure<br />AI Systems
-              </h3>
-              <p style={{ color: 'var(--text2)', fontSize: '0.92rem', lineHeight: 1.75, marginBottom: '2rem' }}>
-                With 16+ years securing government healthcare at scale, I bring deep expertise in AI-driven security architecture — from theoretical research to production deployments protecting millions of Americans.
-              </p>
-              <a
-                href="mailto:damodhara.palavali@gmail.com"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm no-underline"
-                style={{ fontFamily: 'var(--font-display)', background: 'var(--accent)', color: '#050c18', boxShadow: '0 0 24px rgba(56,189,248,0.3)', letterSpacing: '-0.01em', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(56,189,248,0.5)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(56,189,248,0.3)' }}
+          <div className="contact-links">
+            {CONTACT_LINKS.map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                className="contact-link"
+                initial={{ opacity: 0, x: -12 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.35, delay: 0.3 + i * 0.07 }}
+                whileHover={{ x: 6, transition: { duration: 0.2 } }}
               >
-                Send a Message
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </a>
-              <div className="mt-6 p-4 rounded-xl border" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text3)', lineHeight: 1.8 }}>
-                  <span style={{ color: 'var(--text2)', fontWeight: 600 }}>Current focus: </span>
-                  Agentic AI security frameworks for critical infrastructure &amp; AI-powered zero trust for multi-state MMIS platforms.
-                </p>
-              </div>
+                <div className="contact-link-icon">{link.icon}</div>
+                <div className="contact-link-text">
+                  <span className="contact-link-label">{link.label}</span>
+                  <span className="contact-link-value">{link.value}</span>
+                </div>
+                <span style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                  →
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA card */}
+        <motion.div
+          className="contact-cta glass"
+          initial={{ opacity: 0, x: 20 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          style={{ borderRadius: 'var(--card-radius)' }}
+        >
+          <div>
+            <div
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 14,
+                background: 'linear-gradient(135deg, rgba(34,211,238,0.2), rgba(167,139,250,0.15))',
+                border: '1px solid rgba(34,211,238,0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.5rem',
+                marginBottom: '1.25rem',
+              }}
+            >
+              🤝
+            </div>
+            <h3>Let's Collaborate</h3>
+          </div>
+
+          <p>
+            I'm available for academic collaborations, industry research partnerships, conference
+            speaking, and advisory roles in AI security and healthcare informatics.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+            <div
+              style={{
+                padding: '0.875rem 1.125rem',
+                borderRadius: 10,
+                background: 'rgba(34,211,238,0.06)',
+                border: '1px solid rgba(34,211,238,0.15)',
+                fontSize: '0.875rem',
+                color: 'var(--text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.625rem',
+              }}
+            >
+              <span>📄</span> Research Collaboration
+            </div>
+            <div
+              style={{
+                padding: '0.875rem 1.125rem',
+                borderRadius: 10,
+                background: 'rgba(167,139,250,0.06)',
+                border: '1px solid rgba(167,139,250,0.15)',
+                fontSize: '0.875rem',
+                color: 'var(--text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.625rem',
+              }}
+            >
+              <span>🎤</span> Conference Speaking
+            </div>
+            <div
+              style={{
+                padding: '0.875rem 1.125rem',
+                borderRadius: 10,
+                background: 'rgba(52,211,153,0.06)',
+                border: '1px solid rgba(52,211,153,0.15)',
+                fontSize: '0.875rem',
+                color: 'var(--text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.625rem',
+              }}
+            >
+              <span>🛡</span> Security Consulting
             </div>
           </div>
-        </div>
+
+          <a
+            href="mailto:damodhara.palavali@gmail.com"
+            className="btn btn-primary"
+            style={{ textAlign: 'center', justifyContent: 'center' }}
+          >
+            Send a Message →
+          </a>
+        </motion.div>
       </div>
     </section>
   )
