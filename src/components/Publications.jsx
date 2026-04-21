@@ -24,29 +24,24 @@ export default function Publications() {
       </motion.div>
 
       <div className="publications-list">
-        {publications.map((pub, i) => (
-          <motion.div
-            key={pub.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.45, delay: 0.1 + i * 0.06 }}
-            whileHover={{ y: -2, transition: { duration: 0.2 } }}
-          >
-            <Link to={`/publication/${pub.id}`} className="pub-card glass" style={{ display: 'grid' }}>
+        {publications.map((pub, i) => {
+          const doiUrl = `https://doi.org/${pub.doi}`
+
+          return (
+            <motion.div
+              key={pub.id}
+              className="pub-card glass"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: 0.1 + i * 0.06 }}
+              whileHover={{ y: -2, transition: { duration: 0.2 } }}
+            >
               <span className="pub-num">{pub.num}</span>
 
               <div className="pub-body">
                 <div className="pub-meta">
                   <span className="pub-year">{pub.year}</span>
-                  <span
-                    style={{
-                      width: '3px',
-                      height: '3px',
-                      borderRadius: '50%',
-                      background: 'var(--text-muted)',
-                      display: 'inline-block',
-                    }}
-                  />
+                  <span className="pub-dot" />
                   <span className="pub-journal">{pub.journal}</span>
                 </div>
 
@@ -54,17 +49,30 @@ export default function Publications() {
                 <p className="pub-desc">{pub.description}</p>
 
                 <div className="pub-links">
-                  <span className="pub-link">IEEE Xplore</span>
-                  <span className="pub-link">Google Scholar</span>
-                  <span className="pub-link">ResearchGate</span>
-                  <span className="pub-link">PDF</span>
+                  <a className="pub-link" href={doiUrl} target="_blank" rel="noopener noreferrer">
+                    DOI
+                  </a>
+                  <a className="pub-link" href={pub.ieee} target="_blank" rel="noopener noreferrer">
+                    IEEE Xplore
+                  </a>
+                  <a className="pub-link" href={pub.scholar} target="_blank" rel="noopener noreferrer">
+                    Google Scholar
+                  </a>
+                  <a className="pub-link" href={pub.researchgate} target="_blank" rel="noopener noreferrer">
+                    ResearchGate
+                  </a>
+                  <Link to={`/publication/${pub.id}`} className="pub-link pub-link-primary">
+                    View Details
+                  </Link>
                 </div>
               </div>
 
-              <span className="pub-arrow">→</span>
-            </Link>
-          </motion.div>
-        ))}
+              <Link to={`/publication/${pub.id}`} className="pub-arrow" aria-label={`Open ${pub.title}`}>
+                →
+              </Link>
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
