@@ -10,6 +10,7 @@ export default function PublicationPage() {
 
   const pub = publications.find((p) => p.id === id)
   const currentIndex = publications.findIndex((p) => p.id === id)
+  const doiUrl = pub ? `https://doi.org/${pub.doi}` : ''
   const prevPub = currentIndex > 0 ? publications[currentIndex - 1] : null
   const nextPub = currentIndex < publications.length - 1 ? publications[currentIndex + 1] : null
 
@@ -214,8 +215,10 @@ export default function PublicationPage() {
                       fontSize: '0.78rem',
                       wordBreak: 'break-all',
                     }}
-                  >
-                    {pub.doi}
+>
+                    <a href={doiUrl} target="_blank" rel="noopener noreferrer" className="pub-doi-link">
+                      {pub.doi}
+                    </a>
                   </span>
                 </div>
                 <div className="pub-meta-item">
@@ -236,6 +239,14 @@ export default function PublicationPage() {
                   rel="noopener noreferrer"
                 >
                   ⬇ Download PDF
+                </a>
+                <a
+                  href={doiUrl}
+                  className="pub-action-link primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 Open DOI
                 </a>
                 <a
                   href={pub.ieee}

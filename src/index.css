@@ -793,6 +793,58 @@ img {
   transform: translateX(4px);
 }
 
+
+.publications-list-featured {
+  gap: 1.5rem;
+}
+
+.pub-card-featured {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(34, 211, 238, 0.08), transparent 32%),
+    linear-gradient(300deg, rgba(167, 139, 250, 0.07), transparent 40%),
+    var(--surface);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.pub-card-featured::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 88% 12%, rgba(34, 211, 238, 0.2), transparent 42%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.pub-card-featured:hover::before {
+  opacity: 1;
+}
+
+.pub-rank {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--cyan);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  padding-top: 0.15rem;
+}
+
+.pub-title-link {
+  color: inherit;
+}
+
+.pub-doi-link {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pub-doi-link:hover {
+  color: #67e8f9;
+}
+
 /* ============================================================
    IMPACT
    ============================================================ */
