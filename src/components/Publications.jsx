@@ -1,176 +1,61 @@
+// src/pages/PublicationPage.jsx
+import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
 import { publications } from '../data.js'
 
-const listVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
-}
-
-function PubLinks({ pub }) {
-  const links = [
-    { label: 'IEEE Xplore', href: pub.ieee, color: '#60a5fa' },
-    { label: 'ResearchGate', href: pub.researchgate, color: '#34d399' },
-    { label: 'Google Scholar', href: pub.scholar, color: '#fb923c' },
-    { label: 'PDF', href: pub.pdf, color: '#a78bfa' },
-  ]
-  return (
-    <div className="flex flex-wrap gap-2 mt-4">
-      {links.map(({ label, href, color }) => (
-        <motion.a
-          key={label}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border no-underline"
-          style={{
-            fontFamily: 'var(--font-mono)',
-            color,
-            borderColor: `${color}30`,
-            background: `${color}08`,
-            letterSpacing: '0.05em',
-          }}
-          whileHover={{
-            y: -2,
-            background: `${color}18`,
-            borderColor: `${color}55`,
-            transition: { duration: 0.15 },
-          }}
-          whileTap={{ scale: 0.97 }}
-        >
-          ↗ {label}
-        </motion.a>
-      ))}
-    </div>
-  )
-}
-
-export default function Publications() {
+export default function PublicationPage() {
+  const { id } = useParams()
   const navigate = useNavigate()
+  const pub = publications.find((p) => p.id === id)
+
+  if (!pub) return <div className="pub-page">Contribution not found.</div>
 
   return (
-    <section
-      id="publications"
-      style={{
-        background: 'var(--bg2)',
-        padding: 'clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 7rem)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-eyebrow mb-4 reveal" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ display: 'inline-block', width: 24, height: 1, background: 'var(--accent)' }} />
-          Peer-Reviewed Work
+      <div className="pub-page">
+        <div className="pub-page-inner">
+          <button className="pub-page-back" onClick={() => navigate('/#publications')}>
+            ← Return to Evidence Gallery
+          </button>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="pub-page-meta">
+              <span className="badge-citation">Major Scientific Contribution</span>
+              <span className="badge badge-purple">{pub.journal}</span>
+            </div>
+
+            <h1 className="text-hero text-3xl mb-4">{pub.title}</h1>
+
+            <div className="pub-page-grid">
+              <div className="pub-main-col">
+                {/* Significance Box - CRITICAL FOR EB-1A */}
+                <div className="evidence-card p-6 border-l-4 border-amber-500 bg-amber-500/5 mb-6">
+                  <h3 className="text-eyebrow text-amber-500 mb-2">Scientific Significance</h3>
+                  <p className="text-text2 italic">{pub.significance}</p>
+                </div>
+
+                <div className="pub-page-abstract glass">
+                  <h3 className="text-eyebrow mb-4">Abstract</h3>
+                  <p>{pub.abstract}</p>
+                </div>
+              </div>
+
+              <aside className="pub-sidebar">
+                <div className="pub-sidebar-card glass">
+                  <h3 className="text-eyebrow">Publication Evidence</h3>
+                  <div className="pub-meta-list mt-4">
+                    <div className="pub-meta-item">
+                      <span className="pub-meta-item-label">Verified DOI</span>
+                      <span className="pub-meta-item-value font-mono">{pub.doi}</span>
+                    </div>
+                  </div>
+                </div>
+                <a href={pub.ieee} className="btn-primary w-full text-center py-3 rounded-lg block">
+                  View on IEEE Xplore
+                </a>
+              </aside>
+            </div>
+          </motion.div>
         </div>
-        <h2 className="text-section reveal mb-4" style={{ color: 'var(--text)' }}>
-          Publications
-        </h2>
-        <p className="reveal reveal-d1 mb-12" style={{ color: 'var(--text2)', fontSize: '1.05rem', maxWidth: '560px', lineHeight: 1.7 }}>
-          8+ IEEE and international journal publications spanning AI security, zero trust,
-          federated learning, and healthcare informatics.
-        </p>
-
-        <motion.div
-          className="flex flex-col gap-4"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.05 }}
-        >
-          {publications.map((pub, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="card-glow p-7 rounded-2xl border"
-              style={{
-                background: 'var(--surface)',
-                borderColor: 'var(--border)',
-                display: 'grid',
-                gridTemplateColumns: '1fr auto',
-                gap: '1.5rem',
-                alignItems: 'start',
-              }}
-              whileHover={{
-                y: -4,
-                boxShadow: '0 16px 48px rgba(56,189,248,0.1)',
-                borderColor: 'rgba(56,189,248,0.25)',
-                transition: { duration: 0.2 },
-              }}
-            >
-              {/* Left */}
-              <div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.65rem',
-                    color: 'var(--accent)',
-                    letterSpacing: '0.15em',
-                    marginBottom: '8px',
-                  }}
-                >
-                  PAPER #{pub.num}
-                </div>
-                <h3
-                  className="text-card mb-2"
-                  style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', lineHeight: 1.3, cursor: 'pointer' }}
-                  onClick={() => navigate(`/publications/${pub.num}`)}
-                  title="View full details"
-                >
-                  {pub.title}
-                </h3>
-                <p
-                  style={{
-                    color: 'var(--text2)',
-                    fontSize: '0.875rem',
-                    lineHeight: 1.7,
-                    fontFamily: 'var(--font-body)',
-                  }}
-                >
-                  {pub.description}
-                </p>
-
-                {/* Action row */}
-                <div className="flex flex-wrap items-center gap-3 mt-4">
-                  <motion.button
-                    onClick={() => navigate(`/publications/${pub.num}`)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border"
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      color: 'var(--accent)',
-                      borderColor: 'rgba(56,189,248,0.25)',
-                      background: 'rgba(56,189,248,0.06)',
-                      letterSpacing: '0.06em',
-                      cursor: 'pointer',
-                    }}
-                    whileHover={{ y: -2, background: 'rgba(56,189,248,0.12)', transition: { duration: 0.15 } }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    View Details →
-                  </motion.button>
-                  <PubLinks pub={pub} />
-                </div>
-              </div>
-
-              {/* Year badge */}
-              <div
-                className="px-3 py-1.5 rounded-lg text-xs font-medium border flex-shrink-0"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  background: 'rgba(56,189,248,0.06)',
-                  borderColor: 'rgba(56,189,248,0.2)',
-                  color: 'var(--accent)',
-                }}
-              >
-                {pub.year}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
-    </section>
   )
 }

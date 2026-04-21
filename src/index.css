@@ -2,342 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Custom Fonts Fallback ─── */
+/* ─── Prestige Design System ─── */
 @layer base {
   :root {
-    --font-display: 'Clash Display', 'SF Pro Display', system-ui, sans-serif;
+    /* Scholarly Typography Hierarchy */
+    --font-display: 'Clash Display', 'SF Pro Display', serif; /* Serif fallback for authority */
     --font-body: 'Cabinet Grotesk', 'SF Pro Text', system-ui, sans-serif;
-    --font-mono: 'Fira Code', 'SF Mono', monospace;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
     --pointer-x: 50vw;
     --pointer-y: 30vh;
     --pointer-opacity: 0;
 
-    /* Light */
-    --bg:       #f4f7fc;
-    --bg2:      #eaeff8;
+    /* Light Theme - Clean Research Lab feel */
+    --bg:       #f8fafc;
+    --bg2:      #f1f5f9;
     --surface:  #ffffff;
-    --surface2: #f0f5ff;
-    --border:   rgba(56,189,248,0.15);
-    --border2:  rgba(56,189,248,0.30);
-    --text:     #07111f;
-    --text2:    #2d4059;
+    --surface2: #f8fafc;
+    --border:   rgba(148, 163, 184, 0.1);
+    --border2:  rgba(2, 132, 199, 0.3);
+    --text:     #0f172a;
+    --text2:    #334155;
     --text3:    #64748b;
-    --accent:   #0284c7;
-    --accent-h: #38bdf8;
-    --glow:     rgba(2,132,199,0.15);
+    --accent:   #0284c7; /* Science Blue */
+    --accent-prestige: #d97706; /* Citation Gold */
+    --glow:     rgba(2, 132, 199, 0.08);
   }
 
   .dark {
-    --bg:       #050c18;
-    --bg2:      #080f1e;
-    --surface:  #0d1628;
-    --surface2: #121e35;
-    --border:   rgba(56,189,248,0.10);
-    --border2:  rgba(56,189,248,0.22);
-    --text:     #e8f0fe;
-    --text2:    #94afc8;
-    --text3:    #4e6a88;
+    /* Deep Research Mode */
+    --bg:       #020617;
+    --bg2:      #0f172a;
+    --surface:  #1e293b;
+    --surface2: #334155;
+    --border:   rgba(255, 255, 255, 0.05);
+    --border2:  rgba(56, 189, 248, 0.2);
+    --text:     #f8fafc;
+    --text2:    #cbd5e1;
+    --text3:    #94a3b8;
     --accent:   #38bdf8;
-    --accent-h: #7dd3fc;
-    --glow:     rgba(56,189,248,0.12);
+    --accent-prestige: #fbbf24; /* Citation Gold */
+    --glow:     rgba(56, 189, 248, 0.1);
   }
 
   html {
     scroll-behavior: smooth;
-    font-size: 17px;
+    font-size: 16px; /* Optimized for long-form reading */
   }
 
   body {
     font-family: var(--font-body);
     background-color: var(--bg);
     color: var(--text);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    transition: background-color 0.45s ease, color 0.45s ease;
-    cursor: pointer !important;
-    line-height: 1.7;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  /* ─── EB-1A Specific Typography ─── */
+
+  /* Hero Headline: Large, authoritative, tight tracking */
+  .text-hero {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
-  *,
-  *::before,
-  *::after {
-    cursor: pointer !important;
-  }
-
-  a,
-  button,
-  [role='button'],
-  input[type='button'],
-  input[type='submit'],
-  input[type='reset'],
-  summary,
-  label[for] {
-    cursor: pointer;
-  }
-
-  ::selection {
-    background: rgba(56,189,248,0.25);
+  /* Peer-Reviewed Publication Titles */
+  .text-publication-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
     color: var(--text);
   }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-}
-
-.app-shell {
-  position: relative;
-  isolation: isolate;
-}
-
-.app-ambient {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.app-ambient-grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
-}
-
-.app-ambient-spotlight {
-  position: absolute;
-  inset: -20%;
-  opacity: var(--pointer-opacity);
-  background:
-    radial-gradient(circle 280px at var(--pointer-x) var(--pointer-y), rgba(56, 189, 248, 0.14), transparent 65%),
-    radial-gradient(circle 420px at calc(var(--pointer-x) - 10%) calc(var(--pointer-y) + 8%), rgba(167, 139, 250, 0.08), transparent 70%);
-  transition: opacity 0.25s ease;
-}
-
-.app-ambient-beam {
-  position: absolute;
-  width: 42rem;
-  height: 42rem;
-  border-radius: 999px;
-  filter: blur(90px);
-  opacity: 0.2;
-  animation: ambientFloat 18s ease-in-out infinite;
-}
-
-.app-ambient-beam-a {
-  top: -12rem;
-  right: -10rem;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 65%);
-}
-
-.app-ambient-beam-b {
-  bottom: -16rem;
-  left: -14rem;
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.12), transparent 65%);
-  animation-duration: 22s;
-  animation-delay: -4s;
-}
-
-/* ─── Typography Scale ─── */
-@layer components {
-  .font-display { font-family: var(--font-display); }
-  .font-body    { font-family: var(--font-body); }
-  .font-mono    { font-family: var(--font-mono); }
-
-  /* Hero display headline */
-  .text-hero {
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-  }
-
-  /* Section title */
-  .text-section {
-    font-family: var(--font-display);
-    font-size: clamp(2.35rem, 4.4vw, 3.85rem);
-    font-weight: 600;
-    line-height: 1.0;
-    letter-spacing: -0.035em;
-  }
-
-  /* Card title */
-  .text-card {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  /* Eyebrow label */
+  /* EB-1A Criterion Labels (Judging, Membership, etc.) */
   .text-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
   }
 
-  /* Metric number */
-  .text-metric {
+  /* Metric/Impact Numbers (Citations, Accuracy) */
+  .text-impact-stat {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 5vw, 3.8rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 60%, #34d399 100%);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(to bottom right, var(--text), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
-  .gradient-text-hero {
-    background: linear-gradient(
-      135deg,
-      var(--text) 0%,
-      var(--text) 40%,
-      var(--accent) 70%,
-      #a78bfa 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* ─── Evidence Cards ─── */
+
+  /* The "Excellence" Glass Card */
+  .evidence-card {
+    @apply relative overflow-hidden transition-all duration-500;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
   }
 
-  /* Shimmer text animation */
-  .shimmer-text {
-    background: linear-gradient(
-      90deg,
-      var(--text2) 0%,
-      var(--accent) 40%,
-      #a78bfa 60%,
-      var(--text2) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
+  .evidence-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px -15px var(--glow);
+    transform: translateY(-4px);
   }
 
-  @keyframes shimmer {
-    from { background-position: 0% center; }
-    to   { background-position: 200% center; }
+  /* Gold Citation Badge */
+  .badge-citation {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+    background-color: color-mix(in srgb, var(--accent-prestige) 15%, transparent);
+    color: var(--accent-prestige);
+    border: 1px solid color-mix(in srgb, var(--accent-prestige) 30%, transparent);
+  }
+
+  /* Peer-Review/Journal Tag */
+  .tag-journal {
+    @apply px-2 py-1 text-[10px] font-mono border rounded-md uppercase tracking-tighter;
+    border-color: var(--border2);
+    color: var(--text3);
   }
 }
 
-/* ─── Scroll Reveal ─── */
-.reveal {
+/* ─── Prestige Animations ─── */
+
+/* Subtle background grain for "Premium Paper" feel */
+.noise-overlay::before {
+  content: "";
+  @apply fixed inset-0 pointer-events-none opacity-[0.03] z-[9999];
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* High-impact reveal */
+.reveal-prestige {
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
-.reveal.visible {
+
+.reveal-prestige.visible {
   opacity: 1;
   transform: translateY(0);
-}
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
-
-/* ─── Noise texture overlay ─── */
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: overlay;
-}
-
-/* ─── Animated gradient border ─── */
-.grad-border {
-  position: relative;
-  background: var(--surface);
-  border-radius: 16px;
-}
-.grad-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, var(--accent), #a78bfa, #34d399, var(--accent));
-  background-size: 300% 300%;
-  animation: borderRotate 6s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: -1;
-}
-.grad-border:hover::before { opacity: 1; }
-
-@keyframes borderRotate {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ─── Floating orbs ─── */
-@keyframes float1 {
-  0%,100% { transform: translate(0, 0) scale(1); }
-  33%     { transform: translate(30px, -40px) scale(1.05); }
-  66%     { transform: translate(-20px, 20px) scale(0.97); }
-}
-@keyframes float2 {
-  0%,100% { transform: translate(0, 0) scale(1); }
-  33%     { transform: translate(-40px, 30px) scale(0.95); }
-  66%     { transform: translate(20px, -20px) scale(1.03); }
-}
-.orb1 { animation: float1 12s ease-in-out infinite; }
-.orb2 { animation: float2 16s ease-in-out infinite; }
-
-/* ─── Pulse ring ─── */
-@keyframes pulseRing {
-  0%   { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-.pulse-ring::before, .pulse-ring::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: pulseRing 2.4s ease-out infinite;
-}
-.pulse-ring::after { animation-delay: 1.2s; }
-
-/* ─── Horizontal scroll ticker ─── */
-.ticker-wrap { overflow: hidden; }
-.ticker {
-  display: flex;
-  width: max-content;
-  animation: ticker 28s linear infinite;
-  gap: 0;
-}
-.ticker:hover { animation-play-state: paused; }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ─── Card glow on hover ─── */
-.card-glow {
-  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.3s;
-}
-.card-glow:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 48px var(--glow), 0 0 0 1px var(--border2);
 }
