@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "citations:update": "node scripts/updateScholarCitations.mjs",
+    "citations:update:dry": "node scripts/updateScholarCitations.mjs --dry-run"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

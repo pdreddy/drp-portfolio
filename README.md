@@ -46,6 +46,22 @@ The included `netlify.toml` handles all routing automatically.
 
 All content lives in `src/data.js` — update publications, articles, judging roles, and links there.
 
+### Auto-update Google Scholar citation counts
+
+You can refresh publication citation counts from Google Scholar (via SerpAPI):
+
+```bash
+export SERPAPI_API_KEY=your_key_here
+export GOOGLE_SCHOLAR_AUTHOR_ID=gbBDbl4AAAAJ   # optional (defaults to this profile)
+npm run citations:update
+```
+
+To preview matches without writing changes:
+
+```bash
+npm run citations:update:dry
+```
+
 - **Colours & fonts:** `src/index.css` (CSS variables at `:root` and `.dark`)
 - **Tailwind tokens:** `tailwind.config.js`
 - **Sections:** individual files in `src/components/`
