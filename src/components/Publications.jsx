@@ -16,10 +16,10 @@ export default function Publications() {
         transition={{ duration: 0.5 }}
       >
         <span className="eyebrow">Publications</span>
-        <h2 className="section-title">Peer-Reviewed Research</h2>
+        <h2 className="section-title">Peer-Reviewed Research Portfolio</h2>
         <p className="section-desc">
-          Published in IEEE journals and top-tier venues — spanning AI security, healthcare systems,
-          and privacy-preserving machine learning.
+          Styled as a global top-tier researcher profile while preserving the original section flow —
+          spanning AI security, healthcare systems, and privacy-preserving machine learning.
         </p>
       </motion.div>
 
@@ -58,6 +58,17 @@ export default function Publications() {
                   <span className="pub-link">Google Scholar</span>
                   <span className="pub-link">ResearchGate</span>
                   <span className="pub-link">PDF</span>
+                  <button
+                    type="button"
+                    className="pub-link pub-link-doi"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      window.open(`https://doi.org/${pub.doi}`, '_blank', 'noopener,noreferrer')
+                    }}
+                  >
+                    DOI ↗
+                  </button>
                 </div>
               </div>
 
