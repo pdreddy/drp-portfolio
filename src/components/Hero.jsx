@@ -96,15 +96,6 @@ function GridLines() {
   )
 }
 
-/* ── Floating keyword tags (decorative) ────────────────────────────────────── */
-const FLOATERS = [
-  { text: 'Zero Trust',        top: '14%', right: '6%',   delay: 0.9,  color: '#38bdf8' },
-  { text: 'Agentic AI',        top: '32%', right: '2%',   delay: 1.1,  color: '#a78bfa' },
-  { text: 'Federated Learning',top: '55%', right: '8%',   delay: 1.3,  color: '#34d399' },
-  { text: 'CNN-LSTM',          top: '70%', right: '4%',   delay: 1.5,  color: '#fb923c' },
-  { text: 'MMIS Security',     top: '22%', left: '1%',    delay: 1.0,  color: '#f472b6' },
-]
-
 export default function Hero() {
   const reduced = useReducedMotion()
 
@@ -141,26 +132,6 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating keyword tags — desktop only */}
-        {!reduced && FLOATERS.map((f) => (
-            <motion.div
-                key={f.text}
-                style={{
-                  position: 'absolute', top: f.top, right: f.right, left: f.left,
-                  fontFamily: 'var(--font-mono)', fontSize: '0.6rem', fontWeight: 600,
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                  color: f.color, background: `${f.color}10`,
-                  border: `1px solid ${f.color}28`, borderRadius: 8, padding: '5px 10px',
-                  pointerEvents: 'none', whiteSpace: 'nowrap',
-                }}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 0.65, x: 0 }}
-                transition={{ duration: 0.8, delay: f.delay, ease }}
-            >
-              {f.text}
-            </motion.div>
-        ))}
-
         {/* ── Main content ── */}
         <div
             className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-10"
@@ -187,12 +158,13 @@ export default function Hero() {
           {/* Name */}
           <motion.h1
               className="text-hero mb-5"
+              style={{ maxWidth: '11ch' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.12, ease }}
           >
             <span className="block gradient-text-hero">Damodhara</span>
-            <span className="block gradient-text-hero">Reddy Palavali</span>
+            <span className="block gradient-text" style={{ fontSize: '0.9em', marginTop: '0.05em' }}>Reddy Palavali</span>
           </motion.h1>
 
           {/* Role chips row */}
