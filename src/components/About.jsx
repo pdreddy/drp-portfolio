@@ -1,116 +1,225 @@
 import { motion } from 'framer-motion'
 
+/* 🔥 TAGS (FULL WIDTH CLOUD) */
 const TAGS = [
-  'Artificial Intelligence in Cybersecurity',
   'Agentic AI',
   'Zero Trust Architecture',
-  'Behavioral Biometrics',
+  'Healthcare AI Security',
   'Federated Learning',
-  'Privacy-Preserving Machine Learning',
-  'AI-Driven Threat Detection',
+  'Behavioral Biometrics',
   'Cloud-Native Security',
   'Microservices Security',
-  'Healthcare Data Security',
+  'Privacy-Preserving ML',
   'Explainable AI (XAI)',
-  'DevSecOps','Continuous Authentication',
-  'Anomaly Detection Systems',
+  'DevSecOps',
+  'Continuous Authentication',
   'Cyber Threat Intelligence',
-  'Secure AI Systems',
-  'Identity and Access Management (IAM)','Distributed Systems Security',
-  'Autonomous Security Systems',
-  'AI Security Governance',
-  'Federated AI Systems',
-  'Deep Learning for Cybersecurity',
-  'Trustworthy AI',
 ]
 
+/* 📊 METRICS */
 const METRICS = [
-  ['16+','Years in Software Engineering'],
-  ['9+','Large-Scale Systems'],
-  ['8+','Peer-Reviewed Publications'],
+  ['16+','Years Experience'],
+  ['9+','Enterprise Systems'],
+  ['12+','Publications'],
   ['500K+','Users Impacted'],
 ]
+
 const stagger = { animate: { transition: { staggerChildren: 0.08 } } }
+
 const fadeUp = {
   initial: { opacity:0,y:22 },
-  animate: { opacity:1,y:0,transition:{ duration:0.55,ease:[0.25,0.46,0.45,0.94] } },
+  animate: { opacity:1,y:0,transition:{ duration:0.55 } },
 }
 
 export default function About() {
   return (
-    <section id="about" style={{ background:'var(--bg2)',padding:'clamp(5rem,10vw,8rem) clamp(1.5rem,8vw,7rem)' }}>
-      <div className="max-w-7xl mx-auto">
-        <p className="text-eyebrow mb-4 reveal">Who I Am</p>
+      <section
+          id="about"
+          style={{
+            background:'var(--bg2)',
+            padding:'clamp(5rem,10vw,8rem) clamp(1.5rem,8vw,7rem)'
+          }}
+      >
+        <div className="max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-          {/* Left */}
-          <div>
-            <h2 className="text-section reveal mb-6" style={{ color:'var(--text)' }}>
-              Securing the Future of<br />
-              <span className="gradient-text">Healthcare with AI</span>
+          {/* HEADER */}
+          <p className="text-eyebrow mb-4">Who I Am</p>
+
+          {/* TEXT SECTION */}
+          <div className="max-w-3xl">
+            <h2
+                className="text-section mb-6"
+                style={{ color:'var(--text)' }}
+            >
+              Securing the Future of <br />
+              <span className="gradient-text">
+              Healthcare with AI & Zero Trust
+            </span>
             </h2>
-            <div className="reveal reveal-d1 space-y-4"
-                 style={{ color:'var(--text2)',fontFamily:'var(--font-body)',fontSize:'1.02rem',lineHeight:1.75 }}>
+
+            <div
+                style={{
+                  color:'var(--text2)',
+                  fontFamily:'var(--font-body)',
+                  fontSize:'1.05rem',
+                  lineHeight:1.8
+                }}
+            >
 
               <p>
-                Damodhara Reddy Palavali is a Software Engineer and IEEE Senior Member with 16+ years of experience in
-                cloud-native architectures, microservices, and secure large-scale enterprise and government systems.
-
-                His research focuses on <strong>Artificial Intelligence in Cybersecurity</strong>,
-                <strong>Zero Trust Architecture</strong>, <strong>Federated Learning</strong>,
-                <strong>Agentic AI Systems</strong>, and <strong>Privacy-Preserving Machine Learning</strong>.
-
-                He has contributed to large-scale healthcare and distributed systems, including Medicaid Management Information Systems (MMIS),
-                impacting millions of users across the United States.
-
-                His recent work explores <strong>AI-driven threat detection</strong>,
-                <strong>behavioral biometrics for continuous authentication</strong>,
-                and <strong>autonomous security frameworks for cloud-native environments</strong>.
-
-                He is an active contributor to IEEE conferences and research communities, focusing on scalable, secure, and intelligent systems.
+              <span style={{ color:'var(--text)', fontWeight:600 }}>
+                Damodhara Reddy Palavali
+              </span>{' '}
+                is a{' '}
+                <span style={{ fontWeight:600 }}>
+                Healthcare AI and Cloud Cybersecurity expert
+              </span>{' '}
+                with over{' '}
+                <span style={{ color:'var(--text)', fontWeight:600 }}>
+                16 years of experience
+              </span>{' '}
+                designing and securing large-scale enterprise and government systems.
               </p>
-            </div>
 
-            {/* Tags */}
-            <motion.div className="flex flex-wrap gap-2 mt-8"
-              variants={stagger} initial="initial" whileInView="animate"
-              viewport={{ once:true,amount:0.2 }}>
-              {TAGS.map(t => (
-                <motion.span key={t} variants={fadeUp}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border"
-                  style={{ fontFamily:'var(--font-mono)',background:'rgba(56,189,248,0.05)',
-                           borderColor:'rgba(56,189,248,0.18)',color:'var(--accent)',letterSpacing:'0.04em' }}
-                  whileHover={{ y:-2,background:'rgba(56,189,248,0.12)',borderColor:'rgba(56,189,248,0.4)',
-                                transition:{duration:0.15} }}>
-                  {t}
-                </motion.span>
-              ))}
-            </motion.div>
+              <p style={{ marginTop:'1rem' }}>
+                His work focuses on advancing{' '}
+                <span style={{ color:'var(--accent)', fontWeight:600 }}>
+                Zero Trust architectures
+              </span>{' '}
+                using{' '}
+                <span style={{ color:'#a78bfa', fontWeight:600 }}>
+                Agentic AI
+              </span>{' '}
+                to build intelligent, autonomous security systems for modern cloud environments.
+              </p>
+
+              <p style={{ marginTop:'1rem' }}>
+                He has contributed to large-scale healthcare platforms including{' '}
+                <strong>Medicaid Management Information Systems (MMIS)</strong>,
+                impacting{' '}
+                <span style={{ color:'#34d399', fontWeight:600 }}>
+                hundreds of thousands of users
+              </span>{' '}
+                across the United States.
+              </p>
+
+              <p style={{ marginTop:'1rem' }}>
+                His contributions span{' '}
+                <strong>AI-driven threat detection</strong>,{' '}
+                <strong>behavioral biometrics</strong>,{' '}
+                <strong>continuous authentication</strong>, and{' '}
+                <strong>privacy-preserving machine learning</strong>.
+              </p>
+
+              <p style={{ marginTop:'1rem' }}>
+                He is an active contributor to{' '}
+                <span style={{ color:'var(--text)', fontWeight:600 }}>
+                IEEE conferences and global research communities
+              </span>, with{' '}
+                <span style={{ fontWeight:600 }}>
+                12+ peer-reviewed publications
+              </span>{' '}
+                focused on scalable and secure AI systems.
+              </p>
+
+            </div>
           </div>
 
-          {/* Right: metric cards */}
-          <motion.div className="grid grid-cols-2 gap-4"
-            variants={stagger} initial="initial" whileInView="animate"
-            viewport={{ once:true,amount:0.2 }}>
+          {/* 🔥 FULL WIDTH TAG CLOUD */}
+          <motion.div
+              className="mt-12"
+              variants={stagger}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once:true }}
+          >
+
+            <p
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  color: 'var(--text3)',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  marginBottom: '14px'
+                }}
+            >
+              Expertise
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {TAGS.map(t => (
+                  <motion.span
+                      key={t}
+                      variants={fadeUp}
+                      className="px-4 py-2 rounded-xl text-xs font-medium border"
+                      style={{
+                        fontFamily:'var(--font-mono)',
+                        background:'rgba(56,189,248,0.05)',
+                        borderColor:'rgba(56,189,248,0.18)',
+                        color:'var(--accent)'
+                      }}
+                      whileHover={{
+                        y:-3,
+                        background:'rgba(56,189,248,0.12)',
+                        borderColor:'rgba(56,189,248,0.4)'
+                      }}
+                  >
+                    {t}
+                  </motion.span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* 📊 METRICS */}
+          <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14"
+              variants={stagger}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once:true }}
+          >
             {METRICS.map(([num, label]) => (
-              <motion.div key={label} variants={fadeUp}
-                className="grad-border card-glow p-6"
-                style={{ border:'1px solid var(--border)' }}
-                whileHover={{ y:-5,boxShadow:'0 20px 48px rgba(56,189,248,0.12)',transition:{duration:0.2} }}>
-                <div className="gradient-text mb-1"
-                  style={{ fontFamily:'var(--font-display)',fontSize:'2.8rem',fontWeight:700,
-                           lineHeight:1,letterSpacing:'-0.04em' }}>
-                  {num}
-                </div>
-                <div style={{ fontFamily:'var(--font-mono)',fontSize:'0.72rem',color:'var(--text3)',
-                              letterSpacing:'0.1em',textTransform:'uppercase',marginTop:'6px' }}>
-                  {label}
-                </div>
-              </motion.div>
+                <motion.div
+                    key={label}
+                    variants={fadeUp}
+                    className="card-glow p-6 rounded-xl border"
+                    style={{
+                      border:'1px solid var(--border)',
+                      background:'var(--surface)'
+                    }}
+                    whileHover={{
+                      y:-5,
+                      boxShadow:'0 20px 48px rgba(56,189,248,0.12)'
+                    }}
+                >
+                  <div
+                      style={{
+                        fontFamily:'var(--font-display)',
+                        fontSize:'2.4rem',
+                        fontWeight:700,
+                        color:'var(--accent)'
+                      }}
+                  >
+                    {num}
+                  </div>
+
+                  <div
+                      style={{
+                        fontFamily:'var(--font-mono)',
+                        fontSize:'0.7rem',
+                        color:'var(--text3)',
+                        letterSpacing:'0.1em',
+                        marginTop:'6px'
+                      }}
+                  >
+                    {label}
+                  </div>
+                </motion.div>
             ))}
           </motion.div>
+
         </div>
-      </div>
-    </section>
+      </section>
   )
 }

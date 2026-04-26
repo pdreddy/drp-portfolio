@@ -8,7 +8,6 @@ import Research from './components/Research.jsx'
 import Publications from './components/Publications.jsx'
 import Articles from './components/Articles.jsx'
 import { Judging, Memberships } from './components/JudgingMemberships.jsx'
-import Impact from './components/Impact.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PublicationDetail from './pages/PublicationDetail.jsx'
@@ -27,7 +26,6 @@ function HomePage() {
         <Articles />
         <Judging />
         <Memberships />
-        <Impact />
         <Contact />
       </main>
       <Footer />
