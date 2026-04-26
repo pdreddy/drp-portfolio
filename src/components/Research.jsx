@@ -9,7 +9,7 @@ const card = {
 
 export default function Research() {
   return (
-    <section id="research" style={{ background:'var(--bg)',padding:'clamp(5rem,10vw,8rem) clamp(1.5rem,8vw,7rem)' }}>
+    <section id="research" style={{ background:'var(--bg)',padding:'clamp(3.25rem,7vw,5.5rem) clamp(1.5rem,8vw,7rem)' }}>
       <div className="max-w-7xl mx-auto">
         <p className="text-eyebrow mb-4 reveal">Focus Areas</p>
         <h2 className="text-section reveal mb-4" style={{ color:'var(--text)' }}>

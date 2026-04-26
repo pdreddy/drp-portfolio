@@ -106,7 +106,7 @@ export default function Contact() {
           id="contact"
           style={{
             background: 'var(--bg)',
-            padding: 'clamp(5rem,10vw,8rem) clamp(1.5rem,8vw,7rem)',
+            padding: 'clamp(3.25rem,7vw,5.5rem) clamp(1.5rem,8vw,7rem)',
             position: 'relative',
             overflow: 'hidden',
           }}
