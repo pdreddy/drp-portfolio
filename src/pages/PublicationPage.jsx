@@ -61,6 +61,14 @@ export default function PublicationPage() {
               {pub.num}
             </span>
             <span className="badge badge-purple">IEEE Research</span>
+            <a
+              className="badge badge-doi"
+              href={`https://doi.org/${pub.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DOI ↗
+            </a>
           </div>
 
           <h1 className="pub-page-title">{pub.title}</h1>
@@ -207,7 +215,10 @@ export default function PublicationPage() {
                 </div>
                 <div className="pub-meta-item">
                   <span className="pub-meta-item-label">DOI</span>
-                  <span
+                  <a
+                    href={`https://doi.org/${pub.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="pub-meta-item-value"
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
@@ -216,7 +227,7 @@ export default function PublicationPage() {
                     }}
                   >
                     {pub.doi}
-                  </span>
+                  </a>
                 </div>
                 <div className="pub-meta-item">
                   <span className="pub-meta-item-label">Author</span>

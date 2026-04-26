@@ -687,7 +687,7 @@ img {
 .publications-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 
 .pub-card {
@@ -698,6 +698,12 @@ img {
   align-items: start;
   cursor: pointer;
   text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, rgba(255, 255, 255, 0.25));
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.12), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1), transparent 45%),
+    var(--surface);
+  box-shadow: 0 10px 35px rgba(1, 9, 19, 0.28);
 }
 
 .pub-num {
@@ -736,7 +742,7 @@ img {
 
 .pub-title {
   font-size: 1.0625rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   line-height: 1.4;
   transition: color var(--transition);
@@ -772,12 +778,26 @@ img {
   background: var(--surface);
   transition: all var(--transition);
   text-decoration: none;
+  cursor: default;
 }
 
 .pub-link:hover {
   border-color: var(--cyan);
   color: var(--cyan);
   background: rgba(34, 211, 238, 0.06);
+}
+
+.pub-link-doi {
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.16), rgba(34, 211, 238, 0.1));
+  border-color: rgba(167, 139, 250, 0.42);
+  color: #d9ccff;
+}
+
+.pub-link-doi:hover {
+  border-color: #c4b5fd;
+  color: #ede9fe;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.28), rgba(34, 211, 238, 0.16));
 }
 
 .pub-arrow {
@@ -1062,6 +1082,18 @@ img {
   margin-bottom: 1.5rem;
 }
 
+.badge-doi {
+  text-decoration: none;
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  background: rgba(167, 139, 250, 0.12);
+  color: #e9ddff;
+}
+
+.badge-doi:hover {
+  border-color: rgba(196, 181, 253, 0.7);
+  background: rgba(167, 139, 250, 0.2);
+}
+
 .pub-page-title {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   font-weight: 700;
@@ -1199,6 +1231,7 @@ img {
   font-size: 0.875rem;
   color: var(--text-secondary);
   font-weight: 500;
+  text-decoration: none;
 }
 
 .pub-action-links {
