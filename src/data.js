@@ -5,15 +5,20 @@ export const publications = [
     month: 'September 2025',
     title: 'Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices',
     authors: 'Damodhara Reddy Palavali',
-    citations: 6,
+    doi: 'https://doi.org/10.70153/IJCMI/2025.17302',
+    citation: 'Palavali, D.R. (2025). Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices.',
+    citations: 9, // ✅ fixed
     description:
-      'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1, pp. 17347–17360. DOI: 10.70153/IJCMI/2025.17302.',
+        'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1.',
     venue: 'IJCMI Vol. 17, No. 1 (Sep 2025)',
-    ieee: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
-    researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
+      researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '02',
     year: '2026',
@@ -21,14 +26,18 @@ export const publications = [
     title: 'AI-Driven Claims Adjudication: Optimizing Healthcare Systems with Machine Learning and Deep Neural Networks',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy; Dinesh Kumar Elumalai; Madhusudan Nagaraja',
     citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S.; Elumalai, D.K.; Nagaraja, M. (2026). IEEE ICAIC 2026.',
     description:
-      'Machine learning and deep neural network approach to optimizing healthcare claims adjudication, presented at the IEEE 5th International Conference on AI in Cybersecurity (ICAIC 2026), pp. 1–6.',
+        'Machine learning approach for optimizing healthcare claims adjudication.',
     venue: 'IEEE ICAIC 2026',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '03',
     year: '2026',
@@ -36,14 +45,18 @@ export const publications = [
     title: 'Explainable Ensemble Learning for Detecting Phishing URLs using Lightweight Cyber Threat Intelligence',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
     citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE ICECA 2025.',
     description:
-      'Lightweight, explainable ensemble learning model for real-time phishing URL detection leveraging cyber threat intelligence, published at the 2025 9th International Conference on Electronics, Communication and Aerospace Technology (ICECA).',
+        'Explainable ML model for phishing detection.',
     venue: 'IEEE ICECA 2025',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '04',
     year: '2026',
@@ -51,29 +64,37 @@ export const publications = [
     title: 'Generative AI-Based Hypothesis Generation for Self-Evolving Machine Learning in Research Applications',
     authors: 'Damodhara Reddy Palavali',
     citations: 0,
+    citation: 'Palavali, D.R. (2025). IEEE ETECOM 2025.',
     description:
-      'Novel framework leveraging generative AI to autonomously generate and validate research hypotheses, enabling self-evolving ML pipelines — published at the IEEE International Conference on Emerging Trends in Engineering and Computing (ETECOM 2025).',
+        'Generative AI framework for automated research hypothesis creation.',
     venue: 'IEEE ETECOM 2025',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '05',
     year: '2026',
     month: 'January 2026',
     title: 'Real-Time Anomaly Detection Across Million-Vehicle Fleets Using Quantum-Inspired Classical Algorithms',
     authors: 'Dinesh Kumar Elumalai; Damodhara Reddy Palavali',
-    citations: 0,
+    citations: 1,
+    citation: 'Elumalai, D.K.; Palavali, D.R. (2026). IEEE CCWC 2026.',
     description:
-      'Quantum-inspired classical algorithms enabling scalable, real-time anomaly detection across million-vehicle fleets, presented at IEEE 16th Annual Computing and Communication Workshop and Conference (CCWC), Jan 5–7, 2026.',
+        'Scalable anomaly detection for large vehicle fleets.',
     venue: 'IEEE CCWC 2026',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '06',
     year: '2026',
@@ -81,14 +102,18 @@ export const publications = [
     title: 'Behavioral Biometrics for Zero Trust Authentication: A CNN-LSTM Framework for Continuous Authentication',
     authors: 'Damodhara Reddy Palavali; Dinesh Kumar Elumalai; Suneetha Pothireddy',
     citations: 0,
+    citation: 'Palavali, D.R.; Elumalai, D.K.; Pothireddy, S. (2026). IEEE CCWC 2026.',
     description:
-      'CNN-LSTM deep learning framework for continuous passive authentication using behavioral biometrics in a Zero Trust context, presented at IEEE 16th Annual Computing and Communication Workshop and Conference (CCWC), Jan 5–7, 2026.',
+        'Deep learning for continuous authentication.',
     venue: 'IEEE CCWC 2026',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '07',
     year: '2025',
@@ -96,14 +121,18 @@ export const publications = [
     title: 'Securing Microservices with Agentic AI: A Framework for Context-Aware Zero Trust Environments',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
     citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S. (2025). EAMCON 2025.',
     description:
-      'Context-aware zero trust framework using agentic AI to dynamically enforce security policies across microservice architectures. Published as a book chapter at EAMCON 2025, pp. 396–405. Published via Atlantis Press / Springer Nature.',
-    venue: 'EAMCON 2025 (Atlantis Press)',
-    ieee: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+        'Zero trust enforcement using agentic AI.',
+    venue: 'EAMCON 2025',
+    links: {
+      ieee: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '08',
     year: '2025',
@@ -111,14 +140,18 @@ export const publications = [
     title: 'A Risk-Conscious Cybersecurity for Healthcare via Zebra-Inspired Optimization of Machine Learning Models',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
     citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE ICCST 2025.',
     description:
-      'Zebra-inspired metaheuristic optimization applied to machine learning models for risk-conscious cybersecurity in healthcare environments, presented at the IEEE International Carnahan Conference on Security Technology (ICCST 2025).',
+        'Optimization-based cybersecurity model.',
     venue: 'IEEE ICCST 2025',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
   {
     num: '09',
     year: '2025',
@@ -126,14 +159,58 @@ export const publications = [
     title: 'Privacy-Preserving Federated Learning for Multi-Institutional Diagnosis of Rare Diseases Using Heterogeneous EHR Data',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
     citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE IC3IT 2025.',
     description:
-      'Federated learning architecture enabling privacy-preserving, cross-institutional rare disease diagnosis across heterogeneous Electronic Health Record systems, presented at the 2025 International Conference on Communication, Computer, and Information Technology (IC3IT).',
+        'Federated learning for healthcare.',
     venue: 'IEEE IC3IT 2025',
-    ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-    researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
+
+  // 🔥 NEW ADDED (10–12)
+
+  {
+    num: '10',
+    year: '2026',
+    month: 'March 2026',
+    title: 'Self-Healing Security Orchestration for Financial Fraud Systems: Autonomous Incident Response and Infrastructure Stabilization',
+    authors: 'Madhusudan Nagaraja; Damodhara Reddy Palavali; A Jain; RY Hosamani',
+    citations: 0,
+    citation: 'Nagaraja, M.; Palavali, D.R.; et al. (2026). IEEE SoutheastCon 2026.',
+    description: 'Autonomous AI-driven fraud response system.',
+    venue: 'IEEE SoutheastCon 2026',
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+  },
+
+  {
+    num: '11',
+    year: '2026',
+    month: 'March 2026',
+    title: 'Real-Time Energy Optimization and Predictive Maintenance for Commercial Building Portfolios Using Tensor-Based Multi-Zone Modeling',
+    authors: 'Dinesh Kumar Elumalai; Damodhara Reddy Palavali',
+    citations: 0,
+    citation: 'Elumalai, D.K.; Palavali, D.R. (2026). IEEE SoutheastCon 2026.',
+    description: 'Energy optimization using tensor models.',
+    venue: 'IEEE SoutheastCon 2026',
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+  },
+
+  {
+    num: '12',
+    year: '2026',
+    month: 'April 2026',
+    title: 'Explainable and Auditable AI Framework for Ransomware Detection with Causal Modeling',
+    authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
+    citations: 0,
+    citation: 'Palavali, D.R.; Pothireddy, S. (2026). Taylor & Francis.',
+    description: 'Explainable AI for ransomware detection.',
+    venue: 'Taylor & Francis (Book Chapter)',
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+  }
 ]
 
 export const articles = [
