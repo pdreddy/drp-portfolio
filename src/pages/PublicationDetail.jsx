@@ -18,10 +18,26 @@ const item = {
 }
 
 const externalLinks = (pub) => [
-  { label: 'IEEE Xplore',    href: pub.ieee,        color: '#60a5fa' },
-  { label: 'ResearchGate',   href: pub.researchgate, color: '#34d399' },
-  { label: 'Google Scholar', href: pub.scholar,      color: '#fb923c' },
-  { label: 'PDF',            href: pub.pdf,          color: '#a78bfa' },
+  {
+    label: 'IEEE Xplore',
+    href: (pub.links?.ieee ?? pub.ieee),
+    color: '#60a5fa',
+  },
+  {
+    label: 'ResearchGate',
+    href: (pub.links?.researchgate ?? pub.researchgate),
+    color: '#34d399',
+  },
+  {
+    label: 'Google Scholar',
+    href: (pub.links?.scholar ?? pub.scholar),
+    color: '#fb923c',
+  },
+  {
+    label: 'PDF',
+    href: (pub.links?.pdf ?? pub.pdf),
+    color: '#a78bfa',
+  },
 ]
 
 export default function PublicationDetail() {
@@ -111,7 +127,7 @@ export default function PublicationDetail() {
                      borderColor: 'var(--border)' }}>
             <p className="text-eyebrow mb-4">Research Context</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[['Author', 'Damodhara Reddy Palavali'], ['Year', pub.year], ['Domain', 'AI Cybersecurity & Healthcare']].map(([k, v]) => (
+              {[['Authors', pub.authors], ['Year', pub.year], ['Venue', pub.venue]].map(([k, v]) => (
                 <div key={k}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text3)',
                                 letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '4px' }}>{k}</div>
@@ -119,6 +135,25 @@ export default function PublicationDetail() {
                 </div>
               ))}
             </div>
+            {pub.doi ? (
+              <div style={{ marginTop: '1rem' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text3)',
+                              letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '4px' }}>DOI</div>
+                <a href={pub.doi} target="_blank" rel="noopener noreferrer"
+                   style={{ fontFamily: 'var(--font-body)', color: 'var(--accent)', fontSize: '0.9rem' }}>
+                  {pub.doi}
+                </a>
+              </div>
+            ) : null}
+            {pub.citation ? (
+              <div style={{ marginTop: '1rem' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text3)',
+                              letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '4px' }}>Citation</div>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--text)', lineHeight: 1.6 }}>
+                  {pub.citation}
+                </p>
+              </div>
+            ) : null}
           </motion.div>
 
           {/* External links */}

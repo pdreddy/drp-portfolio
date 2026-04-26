@@ -13,12 +13,25 @@ const PUB_LINK_COLORS = {
   'Google Scholar':'#fb923c', 'PDF':'#a78bfa',
 }
 
+const resolvePublicationLinks = (pub) => pub.links ?? {
+  ieee: pub.ieee,
+  researchgate: pub.researchgate,
+  scholar: pub.scholar,
+  pdf: pub.pdf,
+}
+
 function PubLinks({ pub }) {
+  const links = resolvePublicationLinks(pub)
+
   return (
     <div className="flex flex-wrap gap-2 mt-4">
       {Object.entries(PUB_LINK_COLORS).map(([label, color]) => {
-        const href = { 'IEEE Xplore':pub.ieee,'ResearchGate':pub.researchgate,
-                       'Google Scholar':pub.scholar,'PDF':pub.pdf }[label]
+        const href = {
+          'IEEE Xplore': links.ieee,
+          'ResearchGate': links.researchgate,
+          'Google Scholar': links.scholar,
+          'PDF': links.pdf,
+        }[label]
         return (
           <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border no-underline"
@@ -71,6 +84,12 @@ export default function Publications() {
                 <p style={{ color:'var(--text2)',fontSize:'0.875rem',lineHeight:1.7,fontFamily:'var(--font-body)' }}>
                   {pub.description}
                 </p>
+                {pub.citation ? (
+                  <p style={{ marginTop:'0.8rem',color:'var(--text3)',fontSize:'0.76rem',lineHeight:1.55,
+                              fontFamily:'var(--font-mono)',letterSpacing:'0.01em' }}>
+                    Cite as: {pub.citation}
+                  </p>
+                ) : null}
                 <div className="flex flex-wrap items-center gap-3 mt-4">
                   <motion.button onClick={() => navigate(`/publications/${pub.num}`)}
                     className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold border"

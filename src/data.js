@@ -5,14 +5,18 @@ export const publications = [
     month: 'September 2025',
     title: 'Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices',
     authors: 'Damodhara Reddy Palavali',
+    doi: 'https://doi.org/10.70153/IJCMI/2025.17302',
+    citation: 'Palavali, D.R. (2025). Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices.',
     citations: 6,
     description:
       'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1, pp. 17347–17360. DOI: 10.70153/IJCMI/2025.17302.',
     venue: 'IJCMI Vol. 17, No. 1 (Sep 2025)',
-    ieee: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
-    researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
-    scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    pdf: '#',
+    links: {
+      ieee: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
+      researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
+      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+      pdf: '#',
+    },
   },
   {
     num: '02',
