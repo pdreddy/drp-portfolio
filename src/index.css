@@ -153,10 +153,10 @@
   /* Hero display headline */
   .text-hero {
     font-family: var(--font-display);
-    font-size: clamp(2.45rem, 5.8vw, 5.2rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    font-size: clamp(2rem, 4.8vw, 4.2rem);
+    font-weight: 650;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
   }
 
   /* Section title */
