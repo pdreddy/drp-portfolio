@@ -12,7 +12,7 @@ export const publications = [
         'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1.',
     venue: 'IJCMI Vol. 17, No. 1 (Sep 2025)',
     links: {
-      ieee: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
+      publisher: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
       researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -31,7 +31,6 @@ export const publications = [
         'Machine learning approach for optimizing healthcare claims adjudication.',
     venue: 'IEEE ICAIC 2026',
     links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -40,25 +39,6 @@ export const publications = [
 
   {
     num: '03',
-    year: '2026',
-    month: 'November 2025',
-    title: 'Explainable Ensemble Learning for Detecting Phishing URLs using Lightweight Cyber Threat Intelligence',
-    authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
-    citations: 0,
-    citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE ICECA 2025.',
-    description:
-        'Explainable ML model for phishing detection.',
-    venue: 'IEEE ICECA 2025',
-    links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
-    },
-  },
-
-  {
-    num: '04',
     year: '2026',
     month: 'October 2025',
     title: 'Generative AI-Based Hypothesis Generation for Self-Evolving Machine Learning in Research Applications',
@@ -69,7 +49,6 @@ export const publications = [
         'Generative AI framework for automated research hypothesis creation.',
     venue: 'IEEE ETECOM 2025',
     links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -77,7 +56,7 @@ export const publications = [
   },
 
   {
-    num: '05',
+    num: '04',
     year: '2026',
     month: 'January 2026',
     title: 'Real-Time Anomaly Detection Across Million-Vehicle Fleets Using Quantum-Inspired Classical Algorithms',
@@ -88,7 +67,6 @@ export const publications = [
         'Scalable anomaly detection for large vehicle fleets.',
     venue: 'IEEE CCWC 2026',
     links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -96,7 +74,7 @@ export const publications = [
   },
 
   {
-    num: '06',
+    num: '05',
     year: '2026',
     month: 'January 2026',
     title: 'Behavioral Biometrics for Zero Trust Authentication: A CNN-LSTM Framework for Continuous Authentication',
@@ -107,7 +85,6 @@ export const publications = [
         'Deep learning for continuous authentication.',
     venue: 'IEEE CCWC 2026',
     links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -115,7 +92,7 @@ export const publications = [
   },
 
   {
-    num: '07',
+    num: '06',
     year: '2025',
     month: 'December 2025',
     title: 'Securing Microservices with Agentic AI: A Framework for Context-Aware Zero Trust Environments',
@@ -126,7 +103,7 @@ export const publications = [
         'Zero trust enforcement using agentic AI.',
     venue: 'EAMCON 2025',
     links: {
-      ieee: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
+      publisher: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -134,7 +111,7 @@ export const publications = [
   },
 
   {
-    num: '08',
+    num: '07',
     year: '2025',
     month: 'October 2025',
     title: 'A Risk-Conscious Cybersecurity for Healthcare via Zebra-Inspired Optimization of Machine Learning Models',
@@ -145,7 +122,6 @@ export const publications = [
         'Optimization-based cybersecurity model.',
     venue: 'IEEE ICCST 2025',
     links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
       pdf: '#',
@@ -153,28 +129,7 @@ export const publications = [
   },
 
   {
-    num: '09',
-    year: '2025',
-    month: '2025',
-    title: 'Privacy-Preserving Federated Learning for Multi-Institutional Diagnosis of Rare Diseases Using Heterogeneous EHR Data',
-    authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
-    citations: 0,
-    citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE IC3IT 2025.',
-    description:
-        'Federated learning for healthcare.',
-    venue: 'IEEE IC3IT 2025',
-    links: {
-      ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
-    },
-  },
-
-  // 🔥 NEW ADDED (10–12)
-
-  {
-    num: '10',
+    num: '08',
     year: '2026',
     month: 'March 2026',
     title: 'Self-Healing Security Orchestration for Financial Fraud Systems: Autonomous Incident Response and Infrastructure Stabilization',
@@ -187,7 +142,7 @@ export const publications = [
   },
 
   {
-    num: '11',
+    num: '09',
     year: '2026',
     month: 'March 2026',
     title: 'Real-Time Energy Optimization and Predictive Maintenance for Commercial Building Portfolios Using Tensor-Based Multi-Zone Modeling',
@@ -200,7 +155,7 @@ export const publications = [
   },
 
   {
-    num: '12',
+    num: '10',
     year: '2026',
     month: 'April 2026',
     title: 'Explainable and Auditable AI Framework for Ransomware Detection with Causal Modeling',
@@ -212,6 +167,8 @@ export const publications = [
     links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
   }
 ]
+
+export const publicationCount = publications.length
 
 export const articles = [
   // ── DZone (5 articles · ~100K+ combined views) ──────────────────────────────
@@ -376,64 +333,106 @@ export const articles = [
 ]
 
 
-export const judgingRoles = [
-  { icon: '🏆', title: 'AI Excellence Awards', org: 'Artificial Intelligence Excellence Awards — International Judge' },
-  { icon: '🎖️', title: 'BIG Awards for Business', org: 'Business Intelligence Group — Technology Category' },
-  { icon: '☁️', title: 'Stratus Awards', org: 'Business Intelligence Group — Cloud Computing Track' },
-  { icon: '⚡', title: 'Cybersecurity Hackathon', org: 'SANS Institute Cyber Innovation Challenge' },
-  { icon: '🔬', title: 'Healthcare AI Hackathon', org: 'CMS Innovation Center — AI Solutions Track' },
-  { icon: '🛡️', title: 'Zero Trust Summit', org: 'Forrester Zero Trust Security Track Evaluator' },
+export const expertise = [
+  {
+    number: '01',
+    title: 'Zero Trust & Identity Security',
+    summary: 'Identity-first controls for enterprise, cloud, and public-sector systems.',
+    technologies: ['OAuth 2.0', 'OIDC', 'JWT', 'mTLS', 'RBAC', 'FICAM', 'NIST 800-63', 'Federated Identity'],
+  },
+  {
+    number: '02',
+    title: 'Agentic AI Security',
+    summary: 'Governed AI agents, adaptive policy enforcement, and autonomous security workflows.',
+    technologies: ['Agentic AI', 'LLM Security', 'Policy Engines', 'Threat Detection', 'AI Governance'],
+  },
+  {
+    number: '03',
+    title: 'Enterprise Java & Spring',
+    summary: 'Modern Java platforms designed for reliability, maintainability, and long-term scale.',
+    technologies: ['Java', 'Spring Boot', 'Spring Batch', 'REST APIs', 'Kafka', 'Redis'],
+  },
+  {
+    number: '04',
+    title: 'Cloud & Microservices Architecture',
+    summary: 'Secure service architectures spanning distributed workloads and hybrid environments.',
+    technologies: ['Microservices', 'AWS', 'Containers', 'Event-Driven Systems', 'Observability', 'DevSecOps'],
+  },
+  {
+    number: '05',
+    title: 'Healthcare Technology / MMIS',
+    summary: 'Modernization of regulated healthcare workflows and Medicaid enterprise systems.',
+    technologies: ['MMIS', 'Claims', 'Provider Systems', 'Enrollment', 'Interoperability', 'Auditability'],
+  },
+  {
+    number: '06',
+    title: 'Behavioral Biometrics & Applied AI',
+    summary: 'Applied machine learning for continuous authentication and security decision support.',
+    technologies: ['CNN-LSTM', 'Continuous Authentication', 'Anomaly Detection', 'Explainable AI'],
+  },
+]
+
+export const caseStudies = [
+  {
+    sector: 'Public Sector',
+    title: 'Government Identity Modernization',
+    challenge: 'Modernize authentication across mission-critical citizen services while strengthening identity assurance.',
+    contribution: 'Architecture leadership for federated identity, Zero Trust controls, and Java-based platform modernization.',
+    technology: ['Federated identity', 'Login.gov', 'Java / Spring', 'Zero Trust'],
+    impact: 'A more consistent, security-led foundation for large-scale government access journeys.',
+  },
+  {
+    sector: 'Healthcare',
+    title: 'Healthcare / Medicaid MMIS',
+    challenge: 'Evolve complex claims, provider, and enrollment capabilities without compromising reliability or compliance.',
+    contribution: 'Designed and modernized secure service architectures across multi-state Medicaid technology programs.',
+    technology: ['MMIS', 'Claims systems', 'APIs', 'Cloud modernization'],
+    impact: 'Improved platform resilience and modernization readiness for essential healthcare operations.',
+  },
+  {
+    sector: 'Financial Services',
+    title: 'Financial Services Modernization',
+    challenge: 'Move tightly coupled enterprise workloads toward secure, independently scalable services.',
+    contribution: 'Advanced event-driven microservices and modern Java delivery patterns with security built into the architecture.',
+    technology: ['Java', 'Spring', 'Kafka', 'Microservices'],
+    impact: 'Created a clearer path to scalable delivery, operational visibility, and controlled change.',
+  },
+  {
+    sector: 'Automotive',
+    title: 'Connected Vehicle Platforms',
+    challenge: 'Support high-volume vehicle-data workflows and dependable distribution across connected services.',
+    contribution: 'Contributed cloud-native patterns for vehicle data, VIN-oriented workflows, and distributed processing.',
+    technology: ['Cloud platforms', 'Event streaming', 'APIs', 'Distributed systems'],
+    impact: 'Strengthened the architecture for reliable, high-throughput connected-vehicle services.',
+  },
+]
+
+export const serviceCategories = [
+  { title: 'Conference Speaking', description: 'Technical sessions and practitioner discussions on secure architecture, AI, and enterprise modernization.' },
+  { title: 'IEEE Activities', description: 'Senior Member participation and contribution to the broader engineering community.' },
+  { title: 'Peer Review', description: 'Review of technical and research work across applied AI, cybersecurity, and software systems.' },
+  { title: 'Judging', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
+  { title: 'Technical Writing', description: 'Published practical guidance through DZone, HackerNoon, Medium, and Cyber Defense Magazine.' },
+  { title: 'Professional Memberships', description: 'IEEE Senior Member, IETE Fellow, and IAENG Member.' },
 ]
 
 export const memberships = [
-  { icon: '🔷', acronym: 'IEEE', name: 'IEEE', tier: 'Senior Member', desc: 'Institute of Electrical and Electronics Engineers' },
-  { icon: '📡', acronym: 'IETE', name: 'IETE', tier: 'Fellow', desc: 'Institution of Electronics and Telecom Engineers' },
-  { icon: '⚙️', acronym: 'IAENG', name: 'IAENG', tier: 'Member', desc: 'International Association of Engineers' },
-  { icon: '🦅', acronym: 'RF', name: 'Raptor Fellowship', tier: 'Fellow', desc: 'Technology Leadership Fellowship Program' },
+  { name: 'IEEE', tier: 'Senior Member' },
+  { name: 'IETE', tier: 'Fellow' },
+  { name: 'IAENG', tier: 'Member' },
 ]
 
-export const researchAreas = [
-  {
-    icon: '🤖',
-    title: 'Agentic AI & Autonomous Security',
-    desc: 'Self-directed AI agents for real-time threat detection, adaptive policy enforcement, and autonomous incident response.',
-    color: '#38bdf8',
-  },
-  {
-    icon: '🔒',
-    title: 'Zero Trust Architecture',
-    desc: 'Never-trust-always-verify frameworks for multi-cloud, hybrid, and government-scale deployments.',
-    color: '#a78bfa',
-  },
-  {
-    icon: '🧠',
-    title: 'Behavioral Biometrics (CNN-LSTM)',
-    desc: 'Deep learning models analyzing keystroke dynamics and behavioral patterns for continuous passive authentication.',
-    color: '#34d399',
-  },
-  {
-    icon: '🏥',
-    title: 'AI in Healthcare Claims',
-    desc: 'ML and deep neural networks for automated healthcare claims adjudication maintaining full regulatory compliance and auditability.',
-    color: '#fb923c',
-  },
-  {
-    icon: '🔗',
-    title: 'Microservices Security',
-    desc: 'Agentic AI frameworks for context-aware zero trust enforcement across cloud-native microservice architectures.',
-    color: '#f472b6',
-  },
-  {
-    icon: '🌐',
-    title: 'Federated Learning & Privacy',
-    desc: 'Cross-institutional federated learning for rare disease diagnosis without centralizing sensitive EHR data.',
-    color: '#fbbf24',
-  },
+export const careerDomains = [
+  { label: 'Healthcare / MMIS', text: 'Secure healthcare platforms spanning claims, provider, and enrollment capabilities.' },
+  { label: 'Automotive', text: 'Cloud and data services supporting connected-vehicle workflows at scale.' },
+  { label: 'Financial Services', text: 'Enterprise Java, event-driven systems, and microservices modernization.' },
+  { label: 'Government / Identity', text: 'Identity modernization, federated access, and Zero Trust architecture for public systems.' },
 ]
 
-export const impactStats = [
-  { number: 9, suffix: '', label: 'Publications', sub: 'Peer-reviewed research papers', color: '#38bdf8' },
-  { number: 100, suffix: 'K+', label: 'Article Views', sub: 'DZone combined page views', color: '#a78bfa' },
-  { number: 6, suffix: '+', label: 'Citations', sub: 'Google Scholar indexed', color: '#34d399' },
-  { number: 16, suffix: '+', label: 'Years Experience', sub: 'Government & enterprise IT', color: '#fb923c' },
-]
+export const profileLinks = {
+  linkedin: 'https://www.linkedin.com/in/damodharap/',
+  email: 'mailto:damodharapalavali@gmail.com',
+  scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
+  ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
+  researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+}

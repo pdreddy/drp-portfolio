@@ -1,88 +1,31 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
+import SelectedImpact from './components/SelectedImpact.jsx'
+import Expertise from './components/Expertise.jsx'
 import Research from './components/Research.jsx'
-import Publications from './components/Publications.jsx'
+import ProfessionalService from './components/ProfessionalService.jsx'
 import Articles from './components/Articles.jsx'
-import { Judging, Memberships } from './components/JudgingMemberships.jsx'
+import CareerTimeline from './components/CareerTimeline.jsx'
+import MembershipStrip from './components/MembershipStrip.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
-import PublicationDetail from './pages/PublicationDetail.jsx'
+import ResearchPage from './pages/ResearchPage.jsx'
+import ArticlesPage from './pages/ArticlesPage.jsx'
 import { useScrollReveal } from './hooks.js'
-import TickerBar from './components/TickerBar.jsx'
 
-function HomePage() {
-  useScrollReveal()
-  return (
-    <>
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Research />
-        <Publications />
-        <Articles />
-        <Judging />
-        <Memberships />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+function HomePage(){useScrollReveal();return <main id="main-content"><Hero/><About/><SelectedImpact/><Expertise/><Research/><ProfessionalService/><Articles/><CareerTimeline/><MembershipStrip/><Contact/></main>}
+
+const routeMeta={
+  '/research':['Research | Damodhara Reddy Palavali','Applied research in Zero Trust, identity security, behavioral authentication, AI security, and enterprise systems.'],
+  '/articles':['Technical Writing | Damodhara Reddy Palavali','Technical writing on Zero Trust, identity, Agentic AI, Java, Spring, cloud, and enterprise architecture.'],
 }
 
-export default function App() {
-  const [dark, setDark] = useState(true)
-  const location = useLocation()
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
-  }, [dark])
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
-
-  useEffect(() => {
-    let frame = null
-    const move = (e) => {
-      if (frame) cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        document.documentElement.style.setProperty('--pointer-x', `${e.clientX}px`)
-        document.documentElement.style.setProperty('--pointer-y', `${e.clientY}px`)
-      })
-    }
-    const show = () => document.documentElement.style.setProperty('--pointer-opacity', '1')
-    const hide = () => document.documentElement.style.setProperty('--pointer-opacity', '0')
-    window.addEventListener('mousemove', move)
-    window.addEventListener('mouseenter', show)
-    window.addEventListener('mouseleave', hide)
-    return () => {
-      if (frame) cancelAnimationFrame(frame)
-      window.removeEventListener('mousemove', move)
-      window.removeEventListener('mouseenter', show)
-      window.removeEventListener('mouseleave', hide)
-    }
-  }, [])
-
-  return (
-    <div className="app-shell">
-      <div className="app-ambient" aria-hidden="true">
-        <div className="app-ambient-grid" />
-        <div className="app-ambient-spotlight" />
-        <div className="app-ambient-beam app-ambient-beam-a" />
-        <div className="app-ambient-beam app-ambient-beam-b" />
-      </div>
-      <Nav dark={dark} setDark={setDark} />
-      <TickerBar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/publications/:id" element={<PublicationDetail />} />
-        </Routes>
-      </AnimatePresence>
-    </div>
-  )
-}
+export default function App(){const location=useLocation();useEffect(()=>{
+  const [title,description]=routeMeta[location.pathname]||['Damodhara Reddy Palavali | Zero Trust & Identity Security Architect','Zero Trust and Identity Security architect, Agentic AI researcher, and enterprise Java and cloud security leader building trustworthy systems at scale.']
+  document.title=title;document.querySelector('meta[name="description"]')?.setAttribute('content',description)
+  const canonical=document.querySelector('link[rel="canonical"]'); if(canonical) canonical.href=`https://damodharapalavali.com${location.pathname === '/' ? '/' : location.pathname}`
+  requestAnimationFrame(() => { const target=location.hash && document.querySelector(location.hash); target ? target.scrollIntoView() : window.scrollTo({top:0,behavior:'instant'}) })
+},[location.pathname,location.hash]);return <><a className="skip-link" href="#main-content">Skip to content</a><Nav/><Routes><Route path="/" element={<HomePage/>}/><Route path="/research" element={<ResearchPage/>}/><Route path="/articles" element={<ArticlesPage/>}/><Route path="*" element={<HomePage/>}/></Routes><Footer/></>}

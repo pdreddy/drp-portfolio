@@ -1,0 +1,3 @@
+import { careerDomains } from '../data.js'
+import SectionHeading from './SectionHeading.jsx'
+export default function CareerTimeline(){return <section className="section section--light"><div className="shell timeline-layout"><SectionHeading eyebrow="Career Perspective" title="A career built across complex domains" description="Progression from data-intensive enterprise platforms to identity-first security and AI-assisted architecture."/><ol className="timeline">{careerDomains.map((item,i)=><li key={item.label}><span>0{i+1}</span><div><h3>{item.label}</h3><p>{item.text}</p></div></li>)}</ol></div></section>}

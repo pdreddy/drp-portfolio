@@ -7,7 +7,7 @@ Professional  portfolio website built with **React + Vite + Tailwind CSS**.
 - **React 18** — UI components
 - **Vite 5** — build tool / dev server
 - **Tailwind CSS 3** — utility styling
-- **Clash Display** + **Cabinet Grotesk** + **Fira Code** — typography
+- **Clash Display** + **Cabinet Grotesk** — typography
 
 ## Local Development
 
@@ -44,7 +44,7 @@ The included `netlify.toml` handles all routing automatically.
 
 ## Customization
 
-All content lives in `src/data.js` — update publications, articles, judging roles, and links there.
+Structured content lives in `src/data.js` — update publications, articles, expertise, case studies, professional service, memberships, and profile links there.
 
 ### Auto-update Google Scholar citation counts
 
@@ -62,7 +62,7 @@ To preview matches without writing changes:
 npm run citations:update:dry
 ```
 
-- **Colours & fonts:** `src/index.css` (CSS variables at `:root` and `.dark`)
+- **Colours & fonts:** `src/index.css` (CSS variables at `:root`)
 - **Tailwind tokens:** `tailwind.config.js`
 - **Sections:** individual files in `src/components/`
 
@@ -70,20 +70,27 @@ npm run citations:update:dry
 
 ```
 src/
-├── App.jsx                       # Root — assembles all sections
-├── main.jsx                      # Entry point
-├── index.css                     # Global styles + CSS variables
-├── data.js                       # All content data
-├── hooks.js                      # useScrollReveal, useCountUp, useInView
+├── App.jsx                       # Routes and page composition
+├── main.jsx                      # React entry point
+├── index.css                     # Responsive global design system
+├── data.js                       # Publications and structured profile content
+├── hooks.js                      # Scroll reveal utilities
+├── pages/
+│   ├── ResearchPage.jsx          # Complete verified research list
+│   └── ArticlesPage.jsx          # Complete technical writing list
 └── components/
-    ├── Nav.jsx
+    ├── Nav.jsx                   # Compact responsive navigation
     ├── Hero.jsx
     ├── About.jsx
+    ├── SelectedImpact.jsx
+    ├── Expertise.jsx
     ├── Research.jsx
-    ├── Publications.jsx
+    ├── ProfessionalService.jsx
     ├── Articles.jsx
-    ├── JudgingMemberships.jsx
-    ├── Impact.jsx
+    ├── CareerTimeline.jsx
+    ├── MembershipStrip.jsx
     ├── Contact.jsx
-    └── Footer.jsx
+    ├── Footer.jsx
+    ├── Icon.jsx
+    └── SectionHeading.jsx
 ```
