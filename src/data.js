@@ -15,7 +15,6 @@ export const publications = [
       publisher: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
       researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -33,7 +32,6 @@ export const publications = [
     links: {
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -51,7 +49,6 @@ export const publications = [
     links: {
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -69,7 +66,6 @@ export const publications = [
     links: {
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -87,7 +83,6 @@ export const publications = [
     links: {
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -106,7 +101,6 @@ export const publications = [
       publisher: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -124,7 +118,6 @@ export const publications = [
     links: {
       researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
       scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-      pdf: '#',
     },
   },
 
@@ -138,7 +131,7 @@ export const publications = [
     citation: 'Nagaraja, M.; Palavali, D.R.; et al. (2026). IEEE SoutheastCon 2026.',
     description: 'Autonomous AI-driven fraud response system.',
     venue: 'IEEE SoutheastCon 2026',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
   },
 
   {
@@ -151,7 +144,7 @@ export const publications = [
     citation: 'Elumalai, D.K.; Palavali, D.R. (2026). IEEE SoutheastCon 2026.',
     description: 'Energy optimization using tensor models.',
     venue: 'IEEE SoutheastCon 2026',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
   },
 
   {
@@ -164,7 +157,7 @@ export const publications = [
     citation: 'Palavali, D.R.; Pothireddy, S. (2026). Taylor & Francis.',
     description: 'Explainable AI for ransomware detection.',
     venue: 'Taylor & Francis (Book Chapter)',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en', pdf: '#' },
+    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
   }
 ]
 
@@ -175,6 +168,7 @@ export const articles = [
   {
     title: 'Exploring MCP, A2A, and Functional Calling: The Modern Innovations for Enterprise LLM Architecture',
     platform: 'DZone',
+    topic: 'Agentic AI & Enterprise Architecture',
     platformColor: '#e07b39',
     description:
       'MCP, A2A, and functional calling are crucial for next-generation AI ecosystems. Learn more about integrating these approaches in your organizational AI strategies.',
@@ -185,6 +179,7 @@ export const articles = [
   {
     title: 'Caching Mechanisms Using Spring Boot With Redis or AWS ElastiCache',
     platform: 'DZone',
+    topic: 'Java, Spring & Cloud',
     platformColor: '#e07b39',
     description:
       'From database bottlenecks to lightning-fast APIs, improve your app\'s performance by implementing caching in Spring Boot with Redis and ElastiCache for microservices.',
@@ -195,6 +190,7 @@ export const articles = [
   {
     title: 'Spring Batch Process XML Delete/Move Files After Processing',
     platform: 'DZone',
+    topic: 'Enterprise Java',
     platformColor: '#e07b39',
     description:
       'This example covers multiple Spring Batch concepts that we need in most of our daily routine batch job implementations.',
@@ -205,6 +201,7 @@ export const articles = [
   {
     title: 'Spring Boot REST Service: Download Files',
     platform: 'DZone',
+    topic: 'Spring Boot & APIs',
     platformColor: '#e07b39',
     description:
       'See how to download files from a Spring Boot REST service using HBase REST API — single file or multiple files as a ZIP.',
@@ -215,6 +212,7 @@ export const articles = [
   {
     title: 'Spring Boot/Batch Tutorial: Integration With HBase REST API and Data Ingestion',
     platform: 'DZone',
+    topic: 'Data Engineering',
     platformColor: '#e07b39',
     description:
         'How to integrate Spring Boot/Batch with HBase REST API for scalable data ingestion, running directly from a Windows environment without Unix/Linux deployment.',
@@ -333,6 +331,17 @@ export const articles = [
 ]
 
 
+export const dzoneArticles = articles.filter((article) => article.platform === 'DZone')
+
+export const dzoneProfile = {
+  name: 'Damodhara Reddy Palavali',
+  memberSince: 'September 2018',
+  contributorSince: '2018',
+  articles: dzoneArticles.length,
+  pageviews: '101.8K',
+  profile: 'https://dzone.com/users/3429919/pdreddy1985.html',
+}
+
 export const expertise = [
   {
     number: '01',
@@ -411,9 +420,9 @@ export const serviceCategories = [
   { title: 'Conference Speaking', description: 'Technical sessions and practitioner discussions on secure architecture, AI, and enterprise modernization.' },
   { title: 'IEEE Activities', description: 'Senior Member participation and contribution to the broader engineering community.' },
   { title: 'Peer Review', description: 'Review of technical and research work across applied AI, cybersecurity, and software systems.' },
-  { title: 'Judging', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
+  { title: 'Technical Judging', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
   { title: 'Technical Writing', description: 'Published practical guidance through DZone, HackerNoon, Medium, and Cyber Defense Magazine.' },
-  { title: 'Professional Memberships', description: 'IEEE Senior Member, IETE Fellow, and IAENG Member.' },
+  { title: 'Professional Service', description: 'Ongoing contribution through engineering communities, technical review, and practitioner knowledge-sharing.' },
 ]
 
 export const memberships = [

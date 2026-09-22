@@ -9,14 +9,14 @@ import Research from './components/Research.jsx'
 import ProfessionalService from './components/ProfessionalService.jsx'
 import Articles from './components/Articles.jsx'
 import CareerTimeline from './components/CareerTimeline.jsx'
-import MembershipStrip from './components/MembershipStrip.jsx'
+import Recognition from './components/Recognition.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import ResearchPage from './pages/ResearchPage.jsx'
 import ArticlesPage from './pages/ArticlesPage.jsx'
 import { useScrollReveal } from './hooks.js'
 
-function HomePage(){useScrollReveal();return <main id="main-content"><Hero/><About/><SelectedImpact/><Expertise/><Research/><ProfessionalService/><Articles/><CareerTimeline/><MembershipStrip/><Contact/></main>}
+function HomePage(){useScrollReveal();return <main id="main-content"><Hero/><About/><SelectedImpact/><Expertise/><Research/><Articles/><ProfessionalService/><CareerTimeline/><Recognition/><Contact/></main>}
 
 const routeMeta={
   '/research':['Research | Damodhara Reddy Palavali','Applied research in Zero Trust, identity security, behavioral authentication, AI security, and enterprise systems.'],

@@ -88,7 +88,7 @@ src/
     ├── ProfessionalService.jsx
     ├── Articles.jsx
     ├── CareerTimeline.jsx
-    ├── MembershipStrip.jsx
+    ├── Recognition.jsx
     ├── Contact.jsx
     ├── Footer.jsx
     ├── Icon.jsx
