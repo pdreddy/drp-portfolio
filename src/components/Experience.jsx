@@ -1,4 +1,4 @@
-import { caseStudies } from '../data.js'
+import { caseStudies, metricText, profile } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
 
 export default function Experience() {
@@ -8,7 +8,7 @@ export default function Experience() {
         <SectionHeading
           eyebrow="experience"
           title="Architecture across mission-critical systems"
-          description="16+ years designing and modernizing secure platforms in regulated, high-scale environments."
+          description={`${profile.experienceLabel} designing and modernizing secure platforms in regulated, high-scale environments. Figures are approximate or estimated and shared at a non-confidential level.`}
         />
         <ol className="timeline">
           {caseStudies.map((item) => (
@@ -20,6 +20,17 @@ export default function Experience() {
                 <p className="timeline-challenge">{item.challenge}</p>
                 <p>{item.contribution}</p>
                 <p className="timeline-impact">{item.impact}</p>
+                {item.metrics && (
+                  <ul className="metric-list" aria-label={`${item.title} impact metrics`}>
+                    {item.metrics.map((metric) => (
+                      <li key={metric.label} aria-label={metricText(metric)}>
+                        <span className="metric-qualifier" aria-hidden="true">{metric.qualifier === 'Estimated' ? 'Est.' : 'Approx.'}</span>
+                        <strong aria-hidden="true">{metric.value}</strong>
+                        <span aria-hidden="true">{metric.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <ul className="tags" aria-label={`${item.title} technologies`}>
                   {item.technology.map((technology) => <li key={technology}>{technology}</li>)}
                 </ul>

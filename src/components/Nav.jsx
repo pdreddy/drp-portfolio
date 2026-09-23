@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import { profileLinks } from '../data.js'
 
@@ -7,6 +7,7 @@ const links = [
   ['Work', '/work'],
   ['Research', '/research'],
   ['Writing', '/writing'],
+  ['Speaking', '/speaking'],
   ['About', '/about'],
 ]
 
@@ -32,7 +33,7 @@ export default function Nav() {
           <Icon name={open ? 'close' : 'menu'} size={22} />
         </button>
         <nav id="primary-navigation" className={`nav-links${open ? ' is-open' : ''}`} aria-label="Primary navigation">
-          {links.map(([label, to]) => <Link key={to} className={location.pathname === to ? 'is-active' : ''} to={to} onClick={() => setOpen(false)}>{label}</Link>)}
+          {links.map(([label, to]) => <NavLink key={to} className={({ isActive }) => (isActive ? 'is-active' : undefined)} to={to} onClick={() => setOpen(false)}>{label}</NavLink>)}
           <a className="nav-cta" href={profileLinks.linkedin} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>LinkedIn <Icon name="external" size={13} /></a>
         </nav>
       </div>

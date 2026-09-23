@@ -1,17 +1,26 @@
 import {
   careerDomains,
   caseStudies,
+  certifications,
   dzoneArticles,
   dzoneProfile,
+  education,
   expertise,
   memberships,
+  metricText,
+  profile,
   profileLinks,
-  publications,
-  serviceCategories,
+  publicArticles,
+  publicationStatusLabels,
+  researchGroups,
+  researchStats,
+  speakingActivities,
+  speakingStatusLabels,
 } from './data.js'
 
+// Every answer below is derived from src/data.js so it matches the pages.
 const featuredWriting = [dzoneArticles[3], dzoneArticles[2], dzoneArticles[1]]
-const selectedResearch = publications.slice(0, 4)
+const publishedResearch = researchGroups.find((group) => group.id === 'published').items
 
 export const profileCategories = [
   { id: 'about', label: 'About' },
@@ -29,16 +38,17 @@ export const profileKnowledge = {
   about: {
     eyebrow: 'Executive Profile',
     title: 'Technology grounded in trust.',
-    summary: 'Damodhara Reddy Palavali is a technologist and researcher with more than 16 years of experience across government, healthcare, financial services, and automotive technology. His work spans Zero Trust, identity modernization, enterprise Java, cloud platforms, behavioral authentication, and applied AI security.',
+    summary: `${profile.name} is a technologist and researcher with more than ${profile.experienceYears} years of experience across government, healthcare, financial services, and automotive technology. His work spans Zero Trust, identity modernization, enterprise Java, cloud platforms, behavioral authentication, and applied AI security.`,
+    stats: [profile.currentRole.summary.replace(/\.$/, ''), profile.location],
     links: [{ label: 'Read the full profile', to: '/about' }],
   },
   impact: {
     eyebrow: 'Selected Impact',
     title: 'Modernization across mission-critical systems.',
     summary: 'Selected architecture work is presented at a public, non-confidential level.',
-    items: caseStudies.map(({ title, contribution, technology }) => ({
+    items: caseStudies.map(({ title, contribution, technology, metrics }) => ({
       title,
-      text: contribution,
+      text: metrics ? `${contribution} ${metrics.map(metricText).join('; ')}.` : contribution,
       meta: technology.slice(0, 3).join(' · '),
     })),
     links: [{ label: 'Explore selected work', to: '/work' }],
@@ -53,17 +63,18 @@ export const profileKnowledge = {
   research: {
     eyebrow: 'Research',
     title: 'Applied research with operational relevance.',
-    summary: 'Research supports the broader architecture practice across Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise decision intelligence.',
-    items: selectedResearch.map(({ title, venue, year, description }) => ({
+    summary: 'Applied research across Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise decision intelligence. Papers count as published only when a direct DOI, publisher, IEEE Xplore, or proceedings record is linked.',
+    stats: [`${researchStats.published} published`, `${researchStats.accepted} accepted / forthcoming`, `${researchStats.citations} citations (published records)`],
+    items: publishedResearch.map(({ title, venue, month, description, status }) => ({
       title,
       text: description,
-      meta: `${venue} · ${year}`,
+      meta: `${venue} · ${month} · ${publicationStatusLabels[status]}`,
     })),
     links: [{ label: 'View all research', to: '/research' }],
   },
   writing: {
     eyebrow: 'Technical Writing',
-    title: `${dzoneProfile.pageviews} DZone pageviews across ${dzoneProfile.articles} articles.`,
+    title: `${publicArticles.length} technical articles, ${dzoneProfile.pageviews} DZone pageviews.`,
     summary: 'Practical perspectives on enterprise architecture, Java, cloud-native engineering, Zero Trust, identity security, and emerging AI systems.',
     stats: [`${dzoneProfile.pageviews} pageviews`, `${dzoneProfile.articles} DZone articles`, `Contributor since ${dzoneProfile.contributorSince}`],
     items: featuredWriting.map(({ title, description, date }) => ({ title, text: description, meta: `DZone · ${date}` })),
@@ -72,8 +83,12 @@ export const profileKnowledge = {
   speaking: {
     eyebrow: 'Speaking & Service',
     title: 'Technical communication and professional contribution.',
-    summary: 'Public profile information includes conference speaking, IEEE activities, peer review, technical judging, and practitioner knowledge-sharing.',
-    items: serviceCategories.slice(0, 4).map(({ title, description }) => ({ title, text: description })),
+    summary: 'Speaking, peer review, and judging activities on record. Entries without a direct evidence link are marked as pending.',
+    items: speakingActivities.map(({ event, date, role, activity, recognition, status }) => ({
+      title: recognition ? `${event} — ${recognition}` : event,
+      text: [role, activity].filter(Boolean).join(' · ') || 'Details not yet recorded',
+      meta: `${date || 'Date not yet recorded'} · ${speakingStatusLabels[status]}`,
+    })),
     links: [{ label: 'View speaking and service', to: '/speaking' }],
   },
   skills: {
@@ -89,12 +104,12 @@ export const profileKnowledge = {
   },
   recognition: {
     eyebrow: 'Recognition',
-    title: 'Professional membership and service.',
-    summary: 'Recognition is presented through verified memberships and documented professional contribution rather than promotional claims.',
+    title: 'Memberships, certifications, and education.',
+    summary: 'Memberships, certifications, and education on record.',
     items: [
-      ...memberships.map(({ name, tier }) => ({ title: name, text: tier })),
-      { title: 'Peer Review', text: 'Applied AI, cybersecurity, and software systems.' },
-      { title: 'Technical Judging', text: 'AI, cloud computing, cybersecurity, and innovation programs.' },
+      ...memberships.map(({ name, tier }) => ({ title: `${name} ${tier}`, text: 'Professional membership', meta: 'Membership' })),
+      ...certifications.map(({ name, issuer }) => ({ title: name, text: issuer, meta: 'Certification' })),
+      ...education.map(({ program, institution, status }) => ({ title: program, text: institution, meta: `Education · ${status}` })),
     ],
     links: [{ label: 'View professional service', to: '/speaking' }],
   },
@@ -118,9 +133,9 @@ const categoryTerms = {
   experience: ['experience', 'career', 'history', 'worked', 'domain'],
   research: ['research', 'publication', 'paper', 'study', 'scholar'],
   writing: ['writing', 'article', 'dzone', 'author', 'writes', 'write'],
-  speaking: ['speaking', 'speaker', 'spoken', 'conference', 'presentation', 'service'],
+  speaking: ['speaking', 'speaker', 'spoken', 'conference', 'presentation', 'service', 'review', 'judging', 'judge', 'talk', 'interview'],
   skills: ['skill', 'technology', 'technologies', 'stack', 'java', 'spring', 'cloud', 'zero trust', 'identity', 'iam', 'agentic', 'biometric'],
-  recognition: ['recognition', 'membership', 'ieee', 'iete', 'review', 'judging'],
+  recognition: ['recognition', 'membership', 'ieee', 'iete', 'certification', 'certified', 'aws', 'education', 'degree'],
   contact: ['contact', 'email', 'linkedin', 'reach', 'connect', 'hire'],
 }
 

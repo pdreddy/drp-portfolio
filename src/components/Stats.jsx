@@ -1,9 +1,9 @@
-import { articles, dzoneProfile, publicationCount } from '../data.js'
+import { dzoneProfile, publicArticles, researchStats } from '../data.js'
 
 const stats = [
-  ['16+', 'Years of Experience'],
-  [String(publicationCount), 'Research Publications'],
-  [String(articles.length), 'Technical Articles'],
+  [String(researchStats.published), 'Published Papers'],
+  [String(researchStats.accepted), 'Accepted / Forthcoming'],
+  [String(publicArticles.length), 'Technical Articles'],
   [dzoneProfile.pageviews, 'DZone Pageviews'],
 ]
 

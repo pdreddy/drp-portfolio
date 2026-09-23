@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerenderMeta.mjs",
     "preview": "vite preview",
     "citations:update": "node scripts/updateScholarCitations.mjs",
     "citations:update:dry": "node scripts/updateScholarCitations.mjs --dry-run"

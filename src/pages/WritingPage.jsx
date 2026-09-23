@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { articles, dzoneProfile } from '../data.js'
+import { dzoneProfile, publicArticles } from '../data.js'
 import { WritingCard } from '../components/Articles.jsx'
 import Icon from '../components/Icon.jsx'
 
@@ -19,7 +19,7 @@ export default function WritingPage() {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: 'Technical writing by Damodhara Reddy Palavali',
-      itemListElement: articles.map((article, index) => ({
+      itemListElement: publicArticles.map((article, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
@@ -53,7 +53,7 @@ export default function WritingPage() {
       </header>
       <section className="section">
         <div className="shell card-grid card-grid--3">
-          {articles.map((article) => <WritingCard key={`${article.platform}-${article.title}`} article={article} />)}
+          {publicArticles.map((article) => <WritingCard key={`${article.platform}-${article.title}`} article={article} />)}
         </div>
       </section>
     </main>

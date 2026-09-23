@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import ProfessionalService from '../components/ProfessionalService.jsx'
+import SpeakingActivities from '../components/SpeakingActivities.jsx'
 import Icon from '../components/Icon.jsx'
 
 export default function SpeakingPage() {
@@ -13,7 +13,7 @@ export default function SpeakingPage() {
           <p>Technical communication and professional contribution across secure architecture, applied AI, and enterprise modernization.</p>
         </div>
       </header>
-      <ProfessionalService />
+      <SpeakingActivities />
     </main>
   )
 }

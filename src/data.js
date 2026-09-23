@@ -1,3 +1,8 @@
+// ── Research records ─────────────────────────────────────────────────────────
+// status: 'published' requires a direct DOI / publisher / IEEE Xplore / proceedings link in `links`.
+//         'accepted' = accepted or forthcoming; the published record has not been verified yet.
+// type:   'journal' | 'conference' | 'chapter'
+// `citations` is maintained by scripts/updateScholarCitations.mjs (keep `num` first in each record).
 export const publications = [
   {
     num: '01',
@@ -5,163 +10,184 @@ export const publications = [
     month: 'September 2025',
     title: 'Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices',
     authors: 'Damodhara Reddy Palavali',
-    doi: 'https://doi.org/10.70153/IJCMI/2025.17302',
+    type: 'journal',
+    status: 'published',
+    citations: 9,
     citation: 'Palavali, D.R. (2025). Agentic AI for Self-Sovereign Identity: A Decentralized Zero Trust Framework for Autonomous Microservices.',
-    citations: 9, // ✅ fixed
     description:
-        'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1.',
+      'Decentralized zero trust framework combining agentic AI with self-sovereign identity (SSI) and verifiable credentials (VCs) to secure autonomous microservices. Published in IJCMI Vol. 17, No. 1.',
     venue: 'IJCMI Vol. 17, No. 1 (Sep 2025)',
-    links: {
-      publisher: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61',
-      researchgate: 'https://www.researchgate.net/publication/395614051_Agentic_AI_for_Self-Sovereign_Identity_A_Decentralized_Zero_Trust_Framework_for_Autonomous_Microservices',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [
+      { label: 'DOI', url: 'https://doi.org/10.70153/IJCMI/2025.17302' },
+      { label: 'Publisher', url: 'https://www.ijcmi.in/index.php/ijcmi/article/view/61' },
+    ],
   },
-
   {
     num: '02',
     year: '2026',
     month: 'February 2026',
     title: 'AI-Driven Claims Adjudication: Optimizing Healthcare Systems with Machine Learning and Deep Neural Networks',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy; Dinesh Kumar Elumalai; Madhusudan Nagaraja',
+    type: 'conference',
+    status: 'published',
     citations: 0,
     citation: 'Palavali, D.R.; Pothireddy, S.; Elumalai, D.K.; Nagaraja, M. (2026). IEEE ICAIC 2026.',
-    description:
-        'Machine learning approach for optimizing healthcare claims adjudication.',
+    description: 'Machine learning approach for optimizing healthcare claims adjudication.',
     venue: 'IEEE ICAIC 2026',
-    links: {
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [{ label: 'IEEE Xplore', url: 'https://ieeexplore.ieee.org/document/11395689' }],
   },
-
   {
     num: '03',
-    year: '2026',
+    year: '2026', // NOTE: month and venue say 2025 — confirm the correct year.
     month: 'October 2025',
     title: 'Generative AI-Based Hypothesis Generation for Self-Evolving Machine Learning in Research Applications',
     authors: 'Damodhara Reddy Palavali',
+    type: 'conference',
+    status: 'accepted',
     citations: 0,
     citation: 'Palavali, D.R. (2025). IEEE ETECOM 2025.',
-    description:
-        'Generative AI framework for automated research hypothesis creation.',
+    description: 'Generative AI framework for automated research hypothesis creation.',
     venue: 'IEEE ETECOM 2025',
-    links: {
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [],
   },
-
   {
     num: '04',
     year: '2026',
     month: 'January 2026',
     title: 'Real-Time Anomaly Detection Across Million-Vehicle Fleets Using Quantum-Inspired Classical Algorithms',
     authors: 'Dinesh Kumar Elumalai; Damodhara Reddy Palavali',
+    type: 'conference',
+    status: 'accepted',
     citations: 1,
     citation: 'Elumalai, D.K.; Palavali, D.R. (2026). IEEE CCWC 2026.',
-    description:
-        'Scalable anomaly detection for large vehicle fleets.',
+    description: 'Scalable anomaly detection for large vehicle fleets.',
     venue: 'IEEE CCWC 2026',
-    links: {
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [],
   },
-
   {
     num: '05',
     year: '2026',
     month: 'January 2026',
     title: 'Behavioral Biometrics for Zero Trust Authentication: A CNN-LSTM Framework for Continuous Authentication',
     authors: 'Damodhara Reddy Palavali; Dinesh Kumar Elumalai; Suneetha Pothireddy',
+    type: 'conference',
+    status: 'published',
     citations: 0,
     citation: 'Palavali, D.R.; Elumalai, D.K.; Pothireddy, S. (2026). IEEE CCWC 2026.',
-    description:
-        'Deep learning for continuous authentication.',
+    description: 'Deep learning for continuous authentication.',
     venue: 'IEEE CCWC 2026',
-    links: {
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [{ label: 'IEEE Xplore', url: 'https://ieeexplore.ieee.org/document/11393860' }],
   },
-
   {
     num: '06',
     year: '2025',
     month: 'December 2025',
     title: 'Securing Microservices with Agentic AI: A Framework for Context-Aware Zero Trust Environments',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
+    type: 'conference',
+    status: 'published',
     citations: 0,
     citation: 'Palavali, D.R.; Pothireddy, S. (2025). EAMCON 2025.',
-    description:
-        'Zero trust enforcement using agentic AI.',
+    description: 'Zero trust enforcement using agentic AI.',
     venue: 'EAMCON 2025',
-    links: {
-      publisher: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751',
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [{ label: 'Atlantis Press proceedings', url: 'https://www.atlantis-press.com/proceedings/eamcon-25/126020751' }],
   },
-
   {
     num: '07',
     year: '2025',
     month: 'October 2025',
     title: 'A Risk-Conscious Cybersecurity for Healthcare via Zebra-Inspired Optimization of Machine Learning Models',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
+    type: 'conference',
+    status: 'accepted',
     citations: 0,
     citation: 'Palavali, D.R.; Pothireddy, S. (2025). IEEE ICCST 2025.',
-    description:
-        'Optimization-based cybersecurity model.',
+    description: 'Optimization-based cybersecurity model.',
     venue: 'IEEE ICCST 2025',
-    links: {
-      researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
-      scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
-    },
+    links: [],
   },
-
   {
     num: '08',
     year: '2026',
     month: 'March 2026',
     title: 'Self-Healing Security Orchestration for Financial Fraud Systems: Autonomous Incident Response and Infrastructure Stabilization',
     authors: 'Madhusudan Nagaraja; Damodhara Reddy Palavali; A Jain; RY Hosamani',
+    type: 'conference',
+    status: 'accepted',
     citations: 0,
     citation: 'Nagaraja, M.; Palavali, D.R.; et al. (2026). IEEE SoutheastCon 2026.',
     description: 'Autonomous AI-driven fraud response system.',
     venue: 'IEEE SoutheastCon 2026',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
+    links: [],
   },
-
   {
     num: '09',
     year: '2026',
     month: 'March 2026',
     title: 'Real-Time Energy Optimization and Predictive Maintenance for Commercial Building Portfolios Using Tensor-Based Multi-Zone Modeling',
     authors: 'Dinesh Kumar Elumalai; Damodhara Reddy Palavali',
+    type: 'conference',
+    status: 'accepted',
     citations: 0,
     citation: 'Elumalai, D.K.; Palavali, D.R. (2026). IEEE SoutheastCon 2026.',
     description: 'Energy optimization using tensor models.',
     venue: 'IEEE SoutheastCon 2026',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
+    links: [],
   },
-
   {
     num: '10',
     year: '2026',
     month: 'April 2026',
     title: 'Explainable and Auditable AI Framework for Ransomware Detection with Causal Modeling',
     authors: 'Damodhara Reddy Palavali; Suneetha Pothireddy',
+    type: 'chapter',
+    status: 'accepted',
     citations: 0,
     citation: 'Palavali, D.R.; Pothireddy, S. (2026). Taylor & Francis.',
     description: 'Explainable AI for ransomware detection.',
     venue: 'Taylor & Francis (Book Chapter)',
-    links: { scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en' },
-  }
+    links: [],
+  },
 ]
 
-export const publicationCount = publications.length
+export const publicationStatusLabels = {
+  published: 'Published',
+  accepted: 'Accepted · publication record pending',
+}
+
+const isPublished = (publication) => publication.status === 'published' && publication.links.length > 0
+
+export const researchGroups = [
+  {
+    id: 'published',
+    title: 'Published',
+    description: 'Papers with a verified DOI, publisher, IEEE Xplore, or proceedings record.',
+    items: publications.filter((publication) => publication.type !== 'chapter' && isPublished(publication)),
+  },
+  {
+    id: 'accepted',
+    title: 'Accepted / Forthcoming',
+    description: 'Accepted work whose published record has not been verified yet. Not counted as published.',
+    items: publications.filter((publication) => publication.type !== 'chapter' && !isPublished(publication)),
+  },
+  {
+    id: 'chapters',
+    title: 'Book Chapters',
+    description: 'Chapters in edited volumes.',
+    items: publications.filter((publication) => publication.type === 'chapter'),
+  },
+]
+
+// Counts derive only from the records above.
+export const researchStats = {
+  total: publications.length,
+  published: publications.filter(isPublished).length,
+  accepted: publications.filter((publication) => !isPublished(publication)).length,
+  chapters: publications.filter((publication) => publication.type === 'chapter').length,
+  citations: publications.filter(isPublished).reduce((sum, publication) => sum + publication.citations, 0),
+}
+
+export const publicationCount = researchStats.total
 
 export const articles = [
   // ── DZone (5 articles · 101.8K verified pageviews) ──────────────────────────────
@@ -245,7 +271,7 @@ export const articles = [
     views: '207',
   },
 
-  // ── Cyber Defense Magazine (2 articles) ────────────────────────────────────
+  // ── Cyber Defense Magazine (1 article, online + print) ────────────────────────────────────
   {
     title: 'Zero Trust at Scale: Securing Identity Across Hybrid Cloud Infrastructures',
     platform: 'Cyber Defense Magazine',
@@ -253,17 +279,9 @@ export const articles = [
     description:
       'A deep-dive into Zero Trust identity architecture for hybrid and multi-cloud environments — covering federated IAM, JIT/JEA access, workload identity, mTLS service mesh, context-aware policy engines, and quantum-resistant cryptography. Includes a global financial services case study achieving 94% reduction in privileged account sprawl.',
     link: 'https://www.cyberdefensemagazine.com/zero-trust-at-scale-securing-identity-across-hybrid-cloud-infrastructures/',
+    // The same article also ran in print; listed once so it is counted once.
+    extraLinks: [{ label: 'Print edition (Nov 2025, p. 245)', url: 'https://www.cyberdefensemagazine.com/newsletters/november-2025/mobile/index.html#p=245' }],
     date: 'Dec 20, 2025',
-    views: '',
-  },
-  {
-    title: 'Zero Trust at Scale: Securing Identity Across Hybrid Cloud Infrastructures (CDM November 2025 Newsletter — p. 245)',
-    platform: 'Cyber Defense Magazine',
-    platformColor: '#c0392b',
-    description:
-      'Featured in the Cyber Defense Magazine November 2025 print edition at page 245 — the same Zero Trust identity article covering hybrid cloud IAM, micro-segmentation, and decentralized identity for modern enterprise security.',
-    link: 'https://www.cyberdefensemagazine.com/newsletters/november-2025/mobile/index.html#p=245',
-    date: 'Nov 2025',
     views: '',
   },
 
@@ -320,6 +338,9 @@ export const articles = [
   },
   {
     title: 'Spring Boot Batch Integration with HBase REST API (Extended)',
+    // Same Medium post ID (ee3181251aad) as "Data Ingestion Using Spring Boot Batch and HBase REST API".
+    // Hidden and not counted until the correct link is confirmed.
+    needsReview: true,
     platform: 'Medium',
     platformColor: '#00ab6c',
     description:
@@ -330,6 +351,7 @@ export const articles = [
   },
 ]
 
+export const publicArticles = articles.filter((article) => !article.needsReview)
 
 export const dzoneArticles = articles.filter((article) => article.platform === 'DZone')
 
@@ -403,6 +425,9 @@ export const caseStudies = [
     contribution: 'Designed and modernized secure service architectures across multi-state Medicaid technology programs.',
     technology: ['MMIS', 'Claims systems', 'APIs', 'Cloud modernization'],
     impact: 'Improved platform resilience and modernization readiness for essential healthcare operations.',
+    metrics: [
+      { qualifier: 'Approximately', value: '500,000', label: 'Medicaid beneficiaries supported across multi-state systems' },
+    ],
   },
   {
     sector: 'Financial Services',
@@ -411,6 +436,10 @@ export const caseStudies = [
     contribution: 'Advanced event-driven microservices and modern Java delivery patterns with security built into the architecture.',
     technology: ['Java', 'Spring', 'Kafka', 'Microservices'],
     impact: 'Created a clearer path to scalable delivery, operational visibility, and controlled change.',
+    metrics: [
+      { qualifier: 'Approximately', value: '100,000', label: 'daily users supported' },
+      { qualifier: 'Estimated', value: '>$1M', label: 'annual infrastructure savings' },
+    ],
   },
   {
     sector: 'Automotive',
@@ -419,17 +448,17 @@ export const caseStudies = [
     contribution: 'Contributed cloud-native patterns for vehicle data, VIN-oriented workflows, and distributed processing.',
     technology: ['Cloud platforms', 'Event streaming', 'APIs', 'Distributed systems'],
     impact: 'Strengthened the architecture for reliable, high-throughput connected-vehicle services.',
+    metrics: [
+      { qualifier: 'Approximately', value: '1.2–1.5M', label: 'vehicles supported annually' },
+      { qualifier: 'Approximately', value: '500K–600K', label: 'records per weekly XML feed' },
+      { qualifier: 'Approximately', value: '60% → 99.5%', label: 'accuracy improvement' },
+      { qualifier: 'Approximately', value: '80%', label: 'reduction in manual effort' },
+      { qualifier: 'Estimated', value: '$300K', label: 'annual savings' },
+    ],
   },
 ]
 
-export const serviceCategories = [
-  { title: 'Conference Speaking', icon: 'mic', description: 'Technical sessions and practitioner discussions on secure architecture, AI, and enterprise modernization.' },
-  { title: 'IEEE Activities', icon: 'award', description: 'Senior Member participation and contribution to the broader engineering community.' },
-  { title: 'Peer Review', icon: 'check', description: 'Review of technical and research work across applied AI, cybersecurity, and software systems.' },
-  { title: 'Technical Judging', icon: 'users', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
-  { title: 'Technical Writing', icon: 'pen', description: 'Published practical guidance through DZone, HackerNoon, Medium, and Cyber Defense Magazine.' },
-  { title: 'Professional Service', icon: 'users', description: 'Ongoing contribution through engineering communities, technical review, and practitioner knowledge-sharing.' },
-]
+export const metricText = ({ qualifier, value, label }) => `${qualifier} ${value} ${label}`
 
 export const memberships = [
   { name: 'IEEE', tier: 'Senior Member' },
@@ -444,11 +473,21 @@ export const careerDomains = [
   { label: 'Government / Identity', text: 'Identity modernization, federated access, and Zero Trust architecture for public systems.' },
 ]
 
+const EXPERIENCE_YEARS = 16
+
 export const profile = {
   name: 'Damodhara Reddy Palavali',
   title: 'Zero Trust & Identity Security',
+  experienceYears: EXPERIENCE_YEARS,
+  experienceLabel: `${EXPERIENCE_YEARS}+ years`,
+  location: 'Prosper, Texas',
+  currentRole: {
+    title: 'Lead Java Developer',
+    employer: 'Base Technologies',
+    summary: 'Lead Java Developer with Base Technologies, supporting identity-modernization initiatives for the Social Security Administration.',
+  },
   summary:
-    'Technologist and researcher with 16+ years of experience building and modernizing secure enterprise systems across government, healthcare, financial services, and automotive technology.',
+    `Technologist and researcher with ${EXPERIENCE_YEARS}+ years of experience building and modernizing secure enterprise systems across government, healthcare, financial services, and automotive technology.`,
   // Drop a square headshot at public/profile.jpg; the hero falls back to initials until then.
   photo: '/profile.jpg',
 }
@@ -459,4 +498,99 @@ export const profileLinks = {
   scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
   ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
   researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+}
+
+export const certifications = [
+  { name: 'AWS Certified Developer – Associate', issuer: 'Amazon Web Services' },
+  { name: 'AWS Certified Solutions Architect – Associate', issuer: 'Amazon Web Services' },
+]
+
+export const education = [
+  { program: 'Postgraduate program in Generative AI and Machine Learning', institution: 'Illinois Institute of Technology', status: 'In progress' },
+]
+
+// ── Speaking & service ───────────────────────────────────────────────────────
+// Only details already on record are filled in; `null` renders as "Not yet recorded".
+// status: 'verified' once `evidence` holds a direct link, otherwise 'evidence-pending'.
+const PENDING = null
+
+export const speakingActivities = [
+  {
+    id: 'ccwc-2026',
+    kind: 'Presentation',
+    event: 'IEEE CCWC 2026',
+    date: 'January 2026',
+    activity: 'Conference paper presentation',
+    title: PENDING,
+    role: 'Presenter',
+    recognition: 'Best Presenter',
+    relatedWork: publications.filter((publication) => publication.venue === 'IEEE CCWC 2026').map((publication) => publication.title),
+    evidence: PENDING,
+  },
+  {
+    id: 'iccst-2025',
+    kind: 'Conference',
+    event: 'IEEE ICCST 2025',
+    date: 'October 2025',
+    activity: PENDING,
+    title: PENDING,
+    role: PENDING,
+    relatedWork: publications.filter((publication) => publication.venue === 'IEEE ICCST 2025').map((publication) => publication.title),
+    evidence: PENDING,
+  },
+  {
+    id: 'rcsm-2025',
+    kind: 'Invited talk',
+    event: 'RCSM 2025',
+    date: '2025',
+    activity: 'Invited talk',
+    title: PENDING,
+    role: 'Invited speaker',
+    evidence: PENDING,
+  },
+  {
+    id: 'acm-austin',
+    kind: 'Community',
+    event: 'ACM Austin',
+    date: PENDING,
+    activity: PENDING,
+    title: PENDING,
+    role: PENDING,
+    evidence: PENDING,
+  },
+  {
+    id: 'xraised',
+    kind: 'Interview',
+    event: 'XRaised',
+    date: PENDING,
+    activity: 'Interview',
+    title: PENDING,
+    role: 'Interviewee',
+    evidence: PENDING,
+  },
+  {
+    id: 'ieee-review',
+    kind: 'Peer review',
+    event: 'IEEE',
+    date: PENDING,
+    activity: 'Peer review of technical and research submissions in applied AI, cybersecurity, and software systems',
+    title: PENDING,
+    role: 'Reviewer',
+    evidence: PENDING,
+  },
+  {
+    id: 'judging',
+    kind: 'Judging',
+    event: 'Hackathons and technology competitions',
+    date: PENDING,
+    activity: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs',
+    title: PENDING,
+    role: 'Judge',
+    evidence: PENDING,
+  },
+].map((entry) => ({ ...entry, status: entry.evidence ? 'verified' : 'evidence-pending' }))
+
+export const speakingStatusLabels = {
+  verified: 'Verified',
+  'evidence-pending': 'Evidence link pending',
 }

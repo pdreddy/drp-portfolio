@@ -18,6 +18,7 @@ const paths = {
   check: <><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></>,
   award: <><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></>,
   pen: <><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></>,
+  pin: <><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></>,
   quote: <><path d="M3 21c3 0 7-1 7-8V5H3v7h4c0 4-2 6-4 6Z"/><path d="M14 21c3 0 7-1 7-8V5h-7v7h4c0 4-2 6-4 6Z"/></>,
 }
 
