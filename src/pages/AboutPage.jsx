@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
 import { careerDomains } from '../data.js'
 import Icon from '../components/Icon.jsx'
-import { useScrollReveal } from '../hooks.js'
 
 const focus = ['Zero Trust Architecture', 'Identity Security', 'Agentic AI Security', 'Behavioral Authentication', 'Secure Cloud-Native Systems']
 
 export default function AboutPage() {
-  useScrollReveal()
   return (
     <main id="main-content" className="page-main">
       <header className="page-hero page-hero--light">
@@ -22,12 +20,12 @@ export default function AboutPage() {
       </header>
       <section className="section about-page-section">
         <div className="shell about-page-grid">
-          <div className="about-narrative reveal">
+          <div className="about-narrative">
             <h2>Architecture grounded in delivery</h2>
             <p>His work spans Zero Trust architecture, identity modernization, enterprise Java and cloud platforms, behavioral authentication, and applied AI security.</p>
             <p>Across complex and regulated environments, the focus remains consistent: reduce architectural risk, modernize responsibly, and build secure platforms that teams can operate with confidence.</p>
           </div>
-          <aside className="focus-list reveal" aria-labelledby="focus-heading">
+          <aside className="focus-list" aria-labelledby="focus-heading">
             <h2 id="focus-heading">Current Focus</h2>
             <ul>{focus.map((item) => <li key={item}>{item}</li>)}</ul>
           </aside>

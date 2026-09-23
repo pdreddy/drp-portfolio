@@ -7,10 +7,12 @@ const featured = [dzoneArticles[3], dzoneArticles[2], dzoneArticles[1]]
 
 export function WritingRow({ article }) {
   return (
-    <article className="writing-row reveal">
+    <article className="writing-row">
       <p className="writing-meta">{article.platform} · {article.date}</p>
-      <h3>{article.title}</h3>
-      <p>{article.description}</p>
+      <div className="row-content">
+        <h3>{article.title}</h3>
+        <p>{article.description}</p>
+      </div>
       <a className="arrow-link" href={article.link} target="_blank" rel="noreferrer">
         Read article <Icon name="arrow" size={15} />
       </a>
@@ -29,9 +31,9 @@ export default function Articles() {
           </Link>
         </div>
         <div className="writing-proof" aria-label="DZone writing profile">
-          <p><strong>{dzoneProfile.pageviews}</strong><span>DZone Pageviews</span></p>
-          <p><strong>{dzoneProfile.articles}</strong><span>DZone Articles</span></p>
-          <p><strong>{dzoneProfile.contributorSince}</strong><span>Contributor Since</span></p>
+          <p><strong>{dzoneProfile.pageviews}</strong><span>Pageviews</span></p>
+          <p><strong>{dzoneProfile.articles}</strong><span>Articles</span></p>
+          <p><strong>{dzoneProfile.contributorSince}</strong><span>Since</span></p>
         </div>
         <div className="writing-list">
           {featured.map((article) => <WritingRow key={article.title} article={article} />)}

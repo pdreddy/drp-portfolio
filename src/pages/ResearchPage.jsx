@@ -2,10 +2,8 @@ import { Link } from 'react-router-dom'
 import { publicationCount, publications } from '../data.js'
 import { ResearchRow } from '../components/Research.jsx'
 import Icon from '../components/Icon.jsx'
-import { useScrollReveal } from '../hooks.js'
 
 export default function ResearchPage() {
-  useScrollReveal()
   return (
     <main id="main-content" className="page-main">
       <header className="page-hero">

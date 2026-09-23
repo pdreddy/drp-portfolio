@@ -13,10 +13,8 @@ import Footer from './components/Footer.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ResearchPage from './pages/ResearchPage.jsx'
 import WritingPage from './pages/WritingPage.jsx'
-import { useScrollReveal } from './hooks.js'
 
 function HomePage() {
-  useScrollReveal()
   return <main id="main-content"><Hero /><Credibility /><SelectedImpact /><Expertise /><Research /><Articles /><ProfessionalService /><Contact /></main>
 }
 

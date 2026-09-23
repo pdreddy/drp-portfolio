@@ -8,7 +8,7 @@ export default function Expertise() {
         <SectionHeading eyebrow="Capabilities" title="Expertise" />
         <div className="expertise-grid">
           {expertise.map((item) => (
-            <article className="expertise-item reveal" key={item.number}>
+            <article className="expertise-item" key={item.number}>
               <span>{item.number}</span>
               <h3>{item.title.replace('Cloud & Microservices Architecture', 'Cloud & Microservices').replace('Behavioral Biometrics & Applied AI', 'Behavioral Biometrics')}</h3>
               <p>{item.summary}</p>

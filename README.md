@@ -73,7 +73,6 @@ src/
 ├── main.jsx                      # React entry point
 ├── index.css                     # Responsive global design system
 ├── data.js                       # Publications and structured profile content
-├── hooks.js                      # Reduced-motion-aware reveal utility
 ├── pages/
 │   ├── AboutPage.jsx             # Executive profile and career context
 │   ├── ResearchPage.jsx          # Complete verified research list

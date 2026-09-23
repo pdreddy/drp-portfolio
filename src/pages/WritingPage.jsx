@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { articles, dzoneProfile } from '../data.js'
 import { WritingRow } from '../components/Articles.jsx'
 import Icon from '../components/Icon.jsx'
-import { useScrollReveal } from '../hooks.js'
 
 function toIsoDate(date) {
   const parsed = new Date(date)
@@ -11,7 +10,6 @@ function toIsoDate(date) {
 }
 
 export default function WritingPage() {
-  useScrollReveal()
 
   useEffect(() => {
     const script = document.createElement('script')

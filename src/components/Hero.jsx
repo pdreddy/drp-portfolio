@@ -4,7 +4,7 @@ import Icon from './Icon.jsx'
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="shell hero-inner reveal">
+      <div className="shell hero-inner">
         <p className="eyebrow">ZERO TRUST · IDENTITY SECURITY · ENTERPRISE AI</p>
         <h1 id="hero-title">Damodhara Reddy Palavali</h1>
         <p className="hero-statement">Securing Digital Identity<br />and AI Systems at Scale</p>

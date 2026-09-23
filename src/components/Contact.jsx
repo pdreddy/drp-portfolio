@@ -4,7 +4,7 @@ import Icon from './Icon.jsx'
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <div className="shell contact-inner reveal">
+      <div className="shell contact-inner">
         <p className="eyebrow">Contact</p>
         <h2>Let&apos;s Build More Trustworthy Digital Systems</h2>
         <p>
