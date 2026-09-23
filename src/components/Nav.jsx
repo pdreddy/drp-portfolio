@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Icon from './Icon.jsx'
-import { profileLinks } from '../data.js'
 
 const links = [
-  ['Work', '#work'],
+  ['Experience', '#experience'],
   ['Expertise', '#expertise'],
   ['Research', '#research'],
   ['Writing', '#writing'],
@@ -30,7 +29,7 @@ export default function Nav() {
   return (
     <header className={`site-nav${compact ? ' site-nav--compact' : ''}`}>
       <div className="shell nav-inner">
-        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home">DRP</Link>
+        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home"><span className="accent">&lt;</span>DRP<span className="accent"> /&gt;</span></Link>
         <button
           className="menu-button"
           type="button"
@@ -46,8 +45,8 @@ export default function Nav() {
             ? <Link key={href} to={href} onClick={() => setOpen(false)}>{label}</Link>
             : <a key={href} href={resolveHref(href)} onClick={() => setOpen(false)}>{label}</a>
           )}
-          <a className="nav-cta" href={profileLinks.linkedin} onClick={() => setOpen(false)} target="_blank" rel="noreferrer">
-            LinkedIn <Icon name="arrow" size={14} />
+          <a className="nav-cta" href={resolveHref('#contact')} onClick={() => setOpen(false)}>
+            Contact <Icon name="arrow" size={14} />
           </a>
         </nav>
       </div>

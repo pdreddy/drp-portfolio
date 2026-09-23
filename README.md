@@ -7,7 +7,7 @@ Professional portfolio website built with **React + Vite** and a custom responsi
 - **React 18** — UI components
 - **Vite 5** — build tool / dev server
 - **React Router 6** — dedicated profile, research, and writing routes
-- **Clash Display** + **Cabinet Grotesk** — typography
+- **Space Grotesk**, **Inter** + **JetBrains Mono** — typography (dark, developer-style theme)
 
 ## Local Development
 
@@ -44,7 +44,11 @@ The included `netlify.toml` handles all routing automatically.
 
 ## Customization
 
-Structured content lives in `src/data.js` — update publications, articles, expertise, case studies, professional service, memberships, and profile links there.
+Structured content lives in `src/data.js` — update the `profile` block (name, title, summary, photo), publications, articles, expertise, case studies, professional service, memberships, and profile links there.
+
+### Profile photo
+
+Add a square headshot at `public/profile.jpg`. Until it exists, the hero shows a gradient ring with initials.
 
 ### Auto-update Google Scholar citation counts
 

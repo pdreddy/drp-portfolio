@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { articles, dzoneProfile } from '../data.js'
-import { WritingRow } from '../components/Articles.jsx'
+import { WritingCard } from '../components/Articles.jsx'
 import Icon from '../components/Icon.jsx'
 
 function toIsoDate(date) {
@@ -40,8 +40,8 @@ export default function WritingPage() {
     <main id="main-content" className="page-main">
       <header className="page-hero">
         <div className="shell page-hero-inner">
-          <Link className="back-link back-link--dark" to="/"><Icon name="arrow" size={15} /> Home</Link>
-          <p className="eyebrow">Writing</p>
+          <Link className="back-link" to="/"><Icon name="arrow" size={15} /> Home</Link>
+          <p className="eyebrow"><span aria-hidden="true">//</span> writing</p>
           <h1>Technical writing for practitioners.</h1>
           <p>Practical guidance on enterprise architecture, Zero Trust, identity security, Java, cloud-native engineering, and emerging AI technologies.</p>
           <div className="page-proof">
@@ -52,8 +52,8 @@ export default function WritingPage() {
         </div>
       </header>
       <section className="section">
-        <div className="shell writing-archive">
-          {articles.map((article) => <WritingRow key={`${article.platform}-${article.title}`} article={article} />)}
+        <div className="shell card-grid card-grid--3">
+          {articles.map((article) => <WritingCard key={`${article.platform}-${article.title}`} article={article} />)}
         </div>
       </section>
     </main>

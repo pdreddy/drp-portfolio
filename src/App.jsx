@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
-import Credibility from './components/Credibility.jsx'
-import SelectedImpact from './components/SelectedImpact.jsx'
+import Stats from './components/Stats.jsx'
+import Experience from './components/Experience.jsx'
 import Expertise from './components/Expertise.jsx'
 import Research from './components/Research.jsx'
 import Articles from './components/Articles.jsx'
@@ -13,9 +13,10 @@ import Footer from './components/Footer.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ResearchPage from './pages/ResearchPage.jsx'
 import WritingPage from './pages/WritingPage.jsx'
+import useReveal from './useReveal.js'
 
 function HomePage() {
-  return <main id="main-content"><Hero /><Credibility /><SelectedImpact /><Expertise /><Research /><Articles /><ProfessionalService /><Contact /></main>
+  return <main id="main-content"><Hero /><Stats /><Experience /><Expertise /><Research /><Articles /><ProfessionalService /><Contact /></main>
 }
 
 const routeMeta = {
@@ -26,6 +27,7 @@ const routeMeta = {
 
 export default function App() {
   const location = useLocation()
+  useReveal(location.pathname)
 
   useEffect(() => {
     const [title, description] = routeMeta[location.pathname] || [

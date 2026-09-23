@@ -10,15 +10,17 @@ export function getPrimaryPublicationLink(publication) {
   return { label: 'View on Scholar', url: publication.links?.scholar }
 }
 
-export function ResearchRow({ publication }) {
+export function ResearchCard({ publication }) {
   const primary = getPrimaryPublicationLink(publication)
   return (
-    <article className="research-row">
-      <p className="research-meta">{publication.venue} · {publication.year}</p>
-      <div className="row-content">
-        <h3>{publication.title}</h3>
-        <p>{publication.description}</p>
+    <article className="card pub-card reveal">
+      <div className="card-top">
+        <span className="badge">{publication.venue}</span>
+        {publication.citations > 0 && <span className="badge badge--accent">{publication.citations} citations</span>}
       </div>
+      <h3>{publication.title}</h3>
+      <p className="pub-authors">{publication.authors}</p>
+      <p>{publication.description}</p>
       {primary.url && (
         <a className="arrow-link" href={primary.url} target="_blank" rel="noreferrer">
           {primary.label} <Icon name="external" size={14} />
@@ -30,18 +32,18 @@ export function ResearchRow({ publication }) {
 
 export default function Research() {
   return (
-    <section id="research" className="section editorial-section">
+    <section id="research" className="section">
       <div className="shell">
         <div className="section-header-row">
           <SectionHeading
-            eyebrow="Research"
-            title="Selected Research"
+            eyebrow="research"
+            title="Selected publications"
             description="Applied work spanning Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise decision intelligence."
           />
-          <Link className="arrow-link section-link" to="/research">View All Research <Icon name="arrow" /></Link>
+          <Link className="arrow-link section-link" to="/research">All publications <Icon name="arrow" /></Link>
         </div>
-        <div className="research-list">
-          {publications.slice(0, 4).map((publication) => <ResearchRow key={publication.title} publication={publication} />)}
+        <div className="card-grid card-grid--2">
+          {publications.slice(0, 4).map((publication) => <ResearchCard key={publication.title} publication={publication} />)}
         </div>
       </div>
     </section>

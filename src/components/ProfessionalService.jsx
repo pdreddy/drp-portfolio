@@ -1,5 +1,6 @@
 import { memberships, serviceCategories } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
+import Icon from './Icon.jsx'
 
 const selectedService = serviceCategories.filter(({ title }) =>
   ['Conference Speaking', 'IEEE Activities', 'Peer Review', 'Technical Judging'].includes(title)
@@ -7,25 +8,27 @@ const selectedService = serviceCategories.filter(({ title }) =>
 
 export default function ProfessionalService() {
   return (
-    <section id="speaking" className="section editorial-section">
-      <div className="shell service-layout">
+    <section id="speaking" className="section">
+      <div className="shell">
         <SectionHeading
-          eyebrow="Community"
-          title="Speaking & Professional Service"
-          description="Professional participation through technical communication, peer contribution, and engineering communities."
+          eyebrow="community"
+          title="Speaking & professional service"
+          description="Contributing through technical communication, peer review, and engineering communities."
         />
-        <div className="service-list">
+        <div className="card-grid card-grid--4">
           {selectedService.map((item) => (
-            <article key={item.title}>
+            <article className="card service-card reveal" key={item.title}>
+              <span className="icon-tile"><Icon name={item.icon} size={20} /></span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
           ))}
-          <article>
-            <h3>Professional Memberships</h3>
-            <p>{memberships.map(({ name, tier }) => `${name} ${tier}`).join(' · ')}</p>
-          </article>
         </div>
+        <ul className="membership-row reveal" aria-label="Professional memberships">
+          {memberships.map(({ name, tier }) => (
+            <li key={name}><strong>{name}</strong> <span>{tier}</span></li>
+          ))}
+        </ul>
       </div>
     </section>
   )

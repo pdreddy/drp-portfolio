@@ -345,36 +345,42 @@ export const dzoneProfile = {
 export const expertise = [
   {
     number: '01',
+    icon: 'shield',
     title: 'Zero Trust & Identity Security',
     summary: 'Identity-first controls for enterprise, cloud, and public-sector systems.',
     technologies: ['OAuth 2.0', 'OIDC', 'JWT', 'mTLS', 'RBAC', 'FICAM', 'NIST 800-63', 'Federated Identity'],
   },
   {
     number: '02',
+    icon: 'cpu',
     title: 'Agentic AI Security',
     summary: 'Governed AI agents, adaptive policy enforcement, and autonomous security workflows.',
     technologies: ['Agentic AI', 'LLM Security', 'Policy Engines', 'Threat Detection', 'AI Governance'],
   },
   {
     number: '03',
+    icon: 'code',
     title: 'Enterprise Java & Spring',
     summary: 'Modern Java platforms designed for reliability, maintainability, and long-term scale.',
     technologies: ['Java', 'Spring Boot', 'Spring Batch', 'REST APIs', 'Kafka', 'Redis'],
   },
   {
     number: '04',
+    icon: 'cloud',
     title: 'Cloud & Microservices Architecture',
     summary: 'Secure service architectures spanning distributed workloads and hybrid environments.',
     technologies: ['Microservices', 'AWS', 'Containers', 'Event-Driven Systems', 'Observability', 'DevSecOps'],
   },
   {
     number: '05',
+    icon: 'heart',
     title: 'Healthcare Technology / MMIS',
     summary: 'Modernization of regulated healthcare workflows and Medicaid enterprise systems.',
     technologies: ['MMIS', 'Claims', 'Provider Systems', 'Enrollment', 'Interoperability', 'Auditability'],
   },
   {
     number: '06',
+    icon: 'fingerprint',
     title: 'Behavioral Biometrics & Applied AI',
     summary: 'Applied machine learning for continuous authentication and security decision support.',
     technologies: ['CNN-LSTM', 'Continuous Authentication', 'Anomaly Detection', 'Explainable AI'],
@@ -417,12 +423,12 @@ export const caseStudies = [
 ]
 
 export const serviceCategories = [
-  { title: 'Conference Speaking', description: 'Technical sessions and practitioner discussions on secure architecture, AI, and enterprise modernization.' },
-  { title: 'IEEE Activities', description: 'Senior Member participation and contribution to the broader engineering community.' },
-  { title: 'Peer Review', description: 'Review of technical and research work across applied AI, cybersecurity, and software systems.' },
-  { title: 'Technical Judging', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
-  { title: 'Technical Writing', description: 'Published practical guidance through DZone, HackerNoon, Medium, and Cyber Defense Magazine.' },
-  { title: 'Professional Service', description: 'Ongoing contribution through engineering communities, technical review, and practitioner knowledge-sharing.' },
+  { title: 'Conference Speaking', icon: 'mic', description: 'Technical sessions and practitioner discussions on secure architecture, AI, and enterprise modernization.' },
+  { title: 'IEEE Activities', icon: 'award', description: 'Senior Member participation and contribution to the broader engineering community.' },
+  { title: 'Peer Review', icon: 'check', description: 'Review of technical and research work across applied AI, cybersecurity, and software systems.' },
+  { title: 'Technical Judging', icon: 'users', description: 'Technology-category evaluation for AI, cloud computing, cybersecurity, and innovation programs.' },
+  { title: 'Technical Writing', icon: 'pen', description: 'Published practical guidance through DZone, HackerNoon, Medium, and Cyber Defense Magazine.' },
+  { title: 'Professional Service', icon: 'users', description: 'Ongoing contribution through engineering communities, technical review, and practitioner knowledge-sharing.' },
 ]
 
 export const memberships = [
@@ -437,6 +443,15 @@ export const careerDomains = [
   { label: 'Financial Services', text: 'Enterprise Java, event-driven systems, and microservices modernization.' },
   { label: 'Government / Identity', text: 'Identity modernization, federated access, and Zero Trust architecture for public systems.' },
 ]
+
+export const profile = {
+  name: 'Damodhara Reddy Palavali',
+  title: 'Zero Trust & Identity Security Architect',
+  summary:
+    'Technology architect and researcher with 16+ years of experience building and modernizing secure enterprise systems across government, healthcare, financial services, and automotive technology.',
+  // Drop a square headshot at public/profile.jpg; the hero falls back to initials until then.
+  photo: '/profile.jpg',
+}
 
 export const profileLinks = {
   linkedin: 'https://www.linkedin.com/in/damodharap/',
