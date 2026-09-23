@@ -72,21 +72,23 @@ src/
 ├── App.jsx                       # Routes and page composition
 ├── main.jsx                      # React entry point
 ├── index.css                     # Responsive global design system
-├── data.js                       # Publications and structured profile content
+├── data.js                       # Canonical publications and writing data
+├── profile.js                    # Verified conversational profile knowledge
 ├── pages/
 │   ├── AboutPage.jsx             # Executive profile and career context
+│   ├── WorkPage.jsx              # Selected impact and expertise
 │   ├── ResearchPage.jsx          # Complete verified research list
-│   └── WritingPage.jsx           # Complete technical writing list
+│   ├── WritingPage.jsx           # Complete technical writing list
+│   └── SpeakingPage.jsx          # Speaking and professional service
 └── components/
     ├── Nav.jsx                   # Compact responsive navigation
-    ├── Hero.jsx
-    ├── Credibility.jsx
+    ├── Hero.jsx                 # Minimal identity and explorer shell
+    ├── ProfileExplorer.jsx       # Deterministic profile Q&A
     ├── SelectedImpact.jsx
     ├── Expertise.jsx
     ├── Research.jsx
     ├── ProfessionalService.jsx
     ├── Articles.jsx
-    ├── Contact.jsx
     ├── Footer.jsx
     ├── Icon.jsx
     └── SectionHeading.jsx

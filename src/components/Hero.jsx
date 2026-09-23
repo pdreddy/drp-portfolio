@@ -1,24 +1,21 @@
-import { profileLinks } from '../data.js'
-import Icon from './Icon.jsx'
+import ProfileExplorer from './ProfileExplorer.jsx'
 
 export default function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
-      <div className="shell hero-inner">
-        <p className="eyebrow">ZERO TRUST · IDENTITY SECURITY · ENTERPRISE AI</p>
-        <h1 id="hero-title">Damodhara Reddy Palavali</h1>
-        <p className="hero-statement">Securing Digital Identity<br />and AI Systems at Scale</p>
-        <p className="hero-summary">
-          Technology architect and researcher with 16+ years of experience building and modernizing
-          secure enterprise systems across government, healthcare, financial services, and automotive technology.
-        </p>
-        <div className="hero-actions">
-          <a className="button button--primary" href="#work">View My Work <Icon name="arrow" /></a>
-          <a className="button button--quiet" href={profileLinks.linkedin} target="_blank" rel="noreferrer">
-            Connect on LinkedIn <Icon name="external" size={15} />
-          </a>
+    <main id="main-content" className="home-main">
+      <section className="home-hero" aria-labelledby="hero-title">
+        <div className="shell home-grid">
+          <div className="identity-intro">
+            <p className="availability"><span aria-hidden="true" /> Available for speaking &amp; collaboration</p>
+            <h1 id="hero-title">Damodhara Reddy Palavali</h1>
+            <p className="identity-line">ZERO TRUST · IDENTITY SECURITY · AGENTIC AI</p>
+            <h2>Securing Digital Identity<br />and AI Systems at Scale</h2>
+            <p className="identity-summary">Technology architect and researcher with 16+ years of experience building secure enterprise systems across government, healthcare, financial services, and automotive technology.</p>
+            <p className="micro-credibility">16+ years <span>·</span> IEEE Senior Member <span>·</span> 101.8K DZone views <span>·</span> Enterprise &amp; Government Systems</p>
+          </div>
+          <ProfileExplorer />
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
