@@ -1,12 +1,12 @@
 # Damodhara Reddy Palavali — Portfolio
 
-Professional  portfolio website built with **React + Vite + Tailwind CSS**.
+Professional portfolio website built with **React + Vite** and a custom responsive CSS design system.
 
 ## Tech Stack
 
 - **React 18** — UI components
 - **Vite 5** — build tool / dev server
-- **Tailwind CSS 3** — utility styling
+- **React Router 6** — dedicated profile, research, and writing routes
 - **Clash Display** + **Cabinet Grotesk** — typography
 
 ## Local Development
@@ -63,7 +63,6 @@ npm run citations:update:dry
 ```
 
 - **Colours & fonts:** `src/index.css` (CSS variables at `:root`)
-- **Tailwind tokens:** `tailwind.config.js`
 - **Sections:** individual files in `src/components/`
 
 ## Project Structure
@@ -74,21 +73,20 @@ src/
 ├── main.jsx                      # React entry point
 ├── index.css                     # Responsive global design system
 ├── data.js                       # Publications and structured profile content
-├── hooks.js                      # Scroll reveal utilities
+├── hooks.js                      # Reduced-motion-aware reveal utility
 ├── pages/
+│   ├── AboutPage.jsx             # Executive profile and career context
 │   ├── ResearchPage.jsx          # Complete verified research list
-│   └── ArticlesPage.jsx          # Complete technical writing list
+│   └── WritingPage.jsx           # Complete technical writing list
 └── components/
     ├── Nav.jsx                   # Compact responsive navigation
     ├── Hero.jsx
-    ├── About.jsx
+    ├── Credibility.jsx
     ├── SelectedImpact.jsx
     ├── Expertise.jsx
     ├── Research.jsx
     ├── ProfessionalService.jsx
     ├── Articles.jsx
-    ├── CareerTimeline.jsx
-    ├── Recognition.jsx
     ├── Contact.jsx
     ├── Footer.jsx
     ├── Icon.jsx

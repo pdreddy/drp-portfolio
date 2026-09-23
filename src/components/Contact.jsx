@@ -1,4 +1,28 @@
 import { profileLinks } from '../data.js'
 import Icon from './Icon.jsx'
-const links=[['LinkedIn','linkedin','linkedin'],['Email','email','mail'],['Google Scholar','scholar','book'],['IEEE','ieee','external'],['ResearchGate','researchgate','external']]
-export default function Contact(){return <section id="contact" className="contact-section"><div className="shell contact-inner reveal"><p className="eyebrow">Start a Conversation</p><h2>Let&apos;s Build More Trustworthy Digital Systems</h2><p>Available for technical speaking, research collaboration, industry discussions, and professional opportunities related to Zero Trust, identity security, Agentic AI, and enterprise architecture.</p><div className="contact-links">{links.map(([label,key,icon])=><a key={key} className={key==='linkedin'?'button button--primary':'button button--secondary'} href={profileLinks[key]} target={key==='email'?undefined:'_blank'} rel={key==='email'?undefined:'noreferrer'}><Icon name={icon}/>{label}</a>)}</div></div></section>}
+
+export default function Contact() {
+  return (
+    <section id="contact" className="contact-section">
+      <div className="shell contact-inner reveal">
+        <p className="eyebrow">Contact</p>
+        <h2>Let&apos;s Build More Trustworthy Digital Systems</h2>
+        <p>
+          Available for technical speaking, research collaboration, and industry discussions around
+          Zero Trust, identity security, Agentic AI, and enterprise architecture.
+        </p>
+        <div className="contact-actions">
+          <a className="button button--primary" href={profileLinks.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn <Icon name="external" size={15} />
+          </a>
+          <a className="button button--quiet button--on-dark" href={profileLinks.email}>Email</a>
+        </div>
+        <nav className="contact-secondary" aria-label="Professional profiles">
+          <a href={profileLinks.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+          <a href={profileLinks.ieee} target="_blank" rel="noreferrer">IEEE</a>
+          <a href={profileLinks.researchgate} target="_blank" rel="noreferrer">ResearchGate</a>
+        </nav>
+      </div>
+    </section>
+  )
+}

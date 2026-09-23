@@ -1,23 +1,30 @@
-import { serviceCategories } from '../data.js'
+import { memberships, serviceCategories } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
+
+const selectedService = serviceCategories.filter(({ title }) =>
+  ['Conference Speaking', 'IEEE Activities', 'Peer Review', 'Technical Judging'].includes(title)
+)
 
 export default function ProfessionalService() {
   return (
-    <section id="speaking" className="section section--light">
-      <div className="shell">
+    <section id="speaking" className="section editorial-section">
+      <div className="shell service-layout">
         <SectionHeading
-          eyebrow="Professional Service"
-          title="Speaking, Reviewing & Professional Service"
-          description="Professional participation across technical communication, engineering communities, and evidence-based evaluation."
+          eyebrow="Community"
+          title="Speaking & Professional Service"
+          description="Professional participation through technical communication, peer contribution, and engineering communities."
         />
-        <div className="service-grid">
-          {serviceCategories.map((item, index) => (
-            <article className="service-item reveal" key={item.title}>
-              <span>0{index + 1}</span>
+        <div className="service-list">
+          {selectedService.map((item) => (
+            <article key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
           ))}
+          <article>
+            <h3>Professional Memberships</h3>
+            <p>{memberships.map(({ name, tier }) => `${name} ${tier}`).join(' · ')}</p>
+          </article>
         </div>
       </div>
     </section>

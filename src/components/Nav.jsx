@@ -4,14 +4,11 @@ import Icon from './Icon.jsx'
 import { profileLinks } from '../data.js'
 
 const links = [
-  ['About', '#about'],
-  ['Impact', '#impact'],
+  ['Work', '#work'],
   ['Expertise', '#expertise'],
   ['Research', '#research'],
   ['Writing', '#writing'],
-  ['Speaking', '#speaking'],
-  ['Recognition', '#recognition'],
-  ['Contact', '#contact'],
+  ['About', '/about'],
 ]
 
 export default function Nav() {
@@ -20,7 +17,7 @@ export default function Nav() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setCompact(window.scrollY > 32)
+    const onScroll = () => setCompact(window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -28,28 +25,29 @@ export default function Nav() {
 
   useEffect(() => setOpen(false), [location.pathname, location.hash])
 
-  const homeHref = (hash) => location.pathname === '/' ? hash : `/${hash}`
+  const resolveHref = (href) => href.startsWith('#') && location.pathname !== '/' ? `/${href}` : href
 
   return (
     <header className={`site-nav${compact ? ' site-nav--compact' : ''}`}>
-      <div className="nav-inner">
-        <Link to="/" className="brand" aria-label="Damodhara Reddy Palavali home">
-          <span>DRP</span>
-        </Link>
+      <div className="shell nav-inner">
+        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home">DRP</Link>
         <button
           className="menu-button"
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="primary-navigation"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((value) => !value)}
         >
           <Icon name={open ? 'close' : 'menu'} size={22} />
         </button>
         <nav id="primary-navigation" className={`nav-links${open ? ' is-open' : ''}`} aria-label="Primary navigation">
-          {links.map(([label, href]) => <a key={href} href={homeHref(href)}>{label}</a>)}
-          <a className="button button--nav" href={profileLinks.linkedin} target="_blank" rel="noreferrer">
-            Connect on LinkedIn <Icon name="external" size={14} />
+          {links.map(([label, href]) => href.startsWith('/')
+            ? <Link key={href} to={href} onClick={() => setOpen(false)}>{label}</Link>
+            : <a key={href} href={resolveHref(href)} onClick={() => setOpen(false)}>{label}</a>
+          )}
+          <a className="nav-cta" href={profileLinks.linkedin} onClick={() => setOpen(false)} target="_blank" rel="noreferrer">
+            LinkedIn <Icon name="arrow" size={14} />
           </a>
         </nav>
       </div>

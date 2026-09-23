@@ -1,31 +1,66 @@
 import { useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
+import Credibility from './components/Credibility.jsx'
 import SelectedImpact from './components/SelectedImpact.jsx'
 import Expertise from './components/Expertise.jsx'
 import Research from './components/Research.jsx'
-import ProfessionalService from './components/ProfessionalService.jsx'
 import Articles from './components/Articles.jsx'
-import CareerTimeline from './components/CareerTimeline.jsx'
-import Recognition from './components/Recognition.jsx'
+import ProfessionalService from './components/ProfessionalService.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import AboutPage from './pages/AboutPage.jsx'
 import ResearchPage from './pages/ResearchPage.jsx'
-import ArticlesPage from './pages/ArticlesPage.jsx'
+import WritingPage from './pages/WritingPage.jsx'
 import { useScrollReveal } from './hooks.js'
 
-function HomePage(){useScrollReveal();return <main id="main-content"><Hero/><About/><SelectedImpact/><Expertise/><Research/><Articles/><ProfessionalService/><CareerTimeline/><Recognition/><Contact/></main>}
-
-const routeMeta={
-  '/research':['Research | Damodhara Reddy Palavali','Applied research in Zero Trust, identity security, behavioral authentication, AI security, and enterprise systems.'],
-  '/articles':['Technical Writing | Damodhara Reddy Palavali','Technical writing on Zero Trust, identity, Agentic AI, Java, Spring, cloud, and enterprise architecture.'],
+function HomePage() {
+  useScrollReveal()
+  return <main id="main-content"><Hero /><Credibility /><SelectedImpact /><Expertise /><Research /><Articles /><ProfessionalService /><Contact /></main>
 }
 
-export default function App(){const location=useLocation();useEffect(()=>{
-  const [title,description]=routeMeta[location.pathname]||['Damodhara Reddy Palavali | Zero Trust & Identity Security Architect','Zero Trust and Identity Security architect, Agentic AI researcher, and enterprise Java and cloud security leader building trustworthy systems at scale.']
-  document.title=title;document.querySelector('meta[name="description"]')?.setAttribute('content',description)
-  const canonical=document.querySelector('link[rel="canonical"]'); if(canonical) canonical.href=`https://damodharapalavali.com${location.pathname === '/' ? '/' : location.pathname}`
-  requestAnimationFrame(() => { const target=location.hash && document.querySelector(location.hash); target ? target.scrollIntoView() : window.scrollTo({top:0,behavior:'instant'}) })
-},[location.pathname,location.hash]);return <><a className="skip-link" href="#main-content">Skip to content</a><Nav/><Routes><Route path="/" element={<HomePage/>}/><Route path="/research" element={<ResearchPage/>}/><Route path="/articles" element={<ArticlesPage/>}/><Route path="*" element={<HomePage/>}/></Routes><Footer/></>}
+const routeMeta = {
+  '/about': ['About | Damodhara Reddy Palavali', 'Technology architect focused on Zero Trust, identity security, enterprise Java, cloud platforms, and trustworthy AI systems.'],
+  '/research': ['Research | Damodhara Reddy Palavali', 'Applied research in Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise architecture.'],
+  '/writing': ['Technical Writing | Damodhara Reddy Palavali', 'Technical writing on Zero Trust, identity security, enterprise Java, cloud platforms, and emerging AI technologies.'],
+}
+
+export default function App() {
+  const location = useLocation()
+
+  useEffect(() => {
+    const [title, description] = routeMeta[location.pathname] || [
+      'Damodhara Reddy Palavali | Zero Trust & Identity Security Architect',
+      'Zero Trust and identity security architect with 16+ years of experience across government, healthcare, financial services, cloud, Java, and enterprise security.',
+    ]
+    const canonicalUrl = `https://damodharapalavali.com${location.pathname === '/' ? '/' : location.pathname}`
+    document.title = title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.href = canonicalUrl
+    requestAnimationFrame(() => {
+      const target = location.hash && document.querySelector(location.hash)
+      target ? target.scrollIntoView() : window.scrollTo({ top: 0, behavior: 'instant' })
+    })
+  }, [location.pathname, location.hash])
+
+  return (
+    <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/writing" element={<WritingPage />} />
+        <Route path="/articles" element={<Navigate to="/writing" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <Footer />
+    </>
+  )
+}

@@ -164,7 +164,7 @@ export const publications = [
 export const publicationCount = publications.length
 
 export const articles = [
-  // ── DZone (5 articles · ~100K+ combined views) ──────────────────────────────
+  // ── DZone (5 articles · 101.8K verified pageviews) ──────────────────────────────
   {
     title: 'Exploring MCP, A2A, and Functional Calling: The Modern Innovations for Enterprise LLM Architecture',
     platform: 'DZone',
@@ -408,7 +408,7 @@ export const caseStudies = [
   },
   {
     sector: 'Automotive',
-    title: 'Connected Vehicle Platforms',
+    title: 'Automotive Digital Platforms',
     challenge: 'Support high-volume vehicle-data workflows and dependable distribution across connected services.',
     contribution: 'Contributed cloud-native patterns for vehicle data, VIN-oriented workflows, and distributed processing.',
     technology: ['Cloud platforms', 'Event streaming', 'APIs', 'Distributed systems'],

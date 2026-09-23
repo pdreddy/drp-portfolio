@@ -3,19 +3,16 @@ import { dzoneArticles, dzoneProfile } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
 import Icon from './Icon.jsx'
 
-const featuredDZone = [dzoneArticles[3], dzoneArticles[2], dzoneArticles[1]]
+const featured = [dzoneArticles[3], dzoneArticles[2], dzoneArticles[1]]
 
-export function ArticleCard({ article, linkLabel }) {
+export function WritingRow({ article }) {
   return (
-    <article className="article-card reveal">
-      <div className="card-meta">
-        <span>{article.topic || article.platform}</span>
-        <span>{article.date}</span>
-      </div>
+    <article className="writing-row reveal">
+      <p className="writing-meta">{article.platform} · {article.date}</p>
       <h3>{article.title}</h3>
       <p>{article.description}</p>
-      <a className="article-link" href={article.link} target="_blank" rel="noreferrer">
-        {linkLabel || `Read on ${article.platform}`} <Icon name="external" size={14} />
+      <a className="arrow-link" href={article.link} target="_blank" rel="noreferrer">
+        Read article <Icon name="arrow" size={15} />
       </a>
     </article>
   )
@@ -23,35 +20,21 @@ export function ArticleCard({ article, linkLabel }) {
 
 export default function Articles() {
   return (
-    <section id="writing" className="section section--ink writing-section">
+    <section id="writing" className="section section--dark">
       <div className="shell">
-        <div className="section-heading-row">
-          <SectionHeading
-            light
-            eyebrow="Technical Writing"
-            title="Technical Writing & Industry Insights"
-            description="I write about enterprise architecture, Zero Trust, identity security, Java, cloud-native engineering, and emerging AI technologies—translating complex engineering challenges into practical guidance for technology professionals."
-          />
-          <a className="button button--light" href={dzoneProfile.profile} target="_blank" rel="noreferrer">
-            DZone Profile <Icon name="external" size={14} />
-          </a>
-        </div>
-
-        <div className="writing-metrics" aria-label="DZone contributor statistics">
-          <p><strong>{dzoneProfile.pageviews}</strong><span>Pageviews</span></p>
-          <p><strong>{dzoneProfile.articles}</strong><span>Published Articles</span></p>
-          <p><strong>Since {dzoneProfile.contributorSince}</strong><span>DZone Contributor</span></p>
-        </div>
-
-        <div className="article-grid">
-          {featuredDZone.map((article) => (
-            <ArticleCard key={article.title} article={article} linkLabel="Read on DZone" />
-          ))}
-        </div>
-        <div className="section-footer-action">
-          <Link className="button button--light" to="/articles">
-            View All Articles <Icon name="arrow" />
+        <div className="section-header-row">
+          <SectionHeading light eyebrow="Ideas in Practice" title="Technical Writing" />
+          <Link className="arrow-link arrow-link--light section-link" to="/writing">
+            View All Writing <Icon name="arrow" />
           </Link>
+        </div>
+        <div className="writing-proof" aria-label="DZone writing profile">
+          <p><strong>{dzoneProfile.pageviews}</strong><span>DZone Pageviews</span></p>
+          <p><strong>{dzoneProfile.articles}</strong><span>DZone Articles</span></p>
+          <p><strong>{dzoneProfile.contributorSince}</strong><span>Contributor Since</span></p>
+        </div>
+        <div className="writing-list">
+          {featured.map((article) => <WritingRow key={article.title} article={article} />)}
         </div>
       </div>
     </section>

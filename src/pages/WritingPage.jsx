@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { articles, dzoneProfile } from '../data.js'
-import { ArticleCard } from '../components/Articles.jsx'
+import { WritingRow } from '../components/Articles.jsx'
 import Icon from '../components/Icon.jsx'
 import { useScrollReveal } from '../hooks.js'
 
@@ -10,7 +10,7 @@ function toIsoDate(date) {
   return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString().slice(0, 10)
 }
 
-export default function ArticlesPage() {
+export default function WritingPage() {
   useScrollReveal()
 
   useEffect(() => {
@@ -41,26 +41,21 @@ export default function ArticlesPage() {
   return (
     <main id="main-content" className="page-main">
       <header className="page-hero">
-        <div className="shell">
-          <Link className="back-link" to="/"><Icon name="arrow" size={16} /> Back to profile</Link>
-          <p className="eyebrow">Technical Writing</p>
-          <h1>Ideas translated into practice</h1>
-          <p>Writing on Zero Trust, identity architecture, Agentic AI, Java, Spring, cloud platforms, and secure enterprise delivery.</p>
-          <div className="page-proof" aria-label="DZone profile highlights">
+        <div className="shell page-hero-inner">
+          <Link className="back-link back-link--dark" to="/"><Icon name="arrow" size={15} /> Home</Link>
+          <p className="eyebrow">Writing</p>
+          <h1>Technical writing for practitioners.</h1>
+          <p>Practical guidance on enterprise architecture, Zero Trust, identity security, Java, cloud-native engineering, and emerging AI technologies.</p>
+          <div className="page-proof">
             <span>{dzoneProfile.pageviews} DZone Pageviews</span>
             <span>{dzoneProfile.articles} DZone Articles</span>
             <span>Contributor Since {dzoneProfile.contributorSince}</span>
           </div>
         </div>
       </header>
-      <section className="section section--light" aria-labelledby="writing-portfolio-title">
-        <div className="shell">
-          <h2 className="visually-hidden" id="writing-portfolio-title">Complete writing portfolio</h2>
-          <div className="article-grid article-grid--all">
-            {articles.map((article) => (
-              <ArticleCard key={`${article.platform}-${article.title}`} article={article} />
-            ))}
-          </div>
+      <section className="section">
+        <div className="shell writing-archive">
+          {articles.map((article) => <WritingRow key={`${article.platform}-${article.title}`} article={article} />)}
         </div>
       </section>
     </main>

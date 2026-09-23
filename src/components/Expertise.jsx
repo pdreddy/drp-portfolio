@@ -1,6 +1,24 @@
 import { expertise } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
-export default function Expertise(){return <section id="expertise" className="section section--light"><div className="shell">
-  <SectionHeading eyebrow="Core Expertise" title="Security depth. Enterprise breadth." description="Six connected disciplines shaped by hands-on architecture and modernization work."/>
-  <div className="expertise-list">{expertise.map(item=><article className="expertise-row reveal" key={item.number} tabIndex="0"><span>{item.number}</span><div><h3>{item.title}</h3><p>{item.summary}</p></div><ul>{item.technologies.map(t=><li key={t}>{t}</li>)}</ul></article>)}</div>
-</div></section>}
+
+export default function Expertise() {
+  return (
+    <section id="expertise" className="section section--soft">
+      <div className="shell">
+        <SectionHeading eyebrow="Capabilities" title="Expertise" />
+        <div className="expertise-grid">
+          {expertise.map((item) => (
+            <article className="expertise-item reveal" key={item.number}>
+              <span>{item.number}</span>
+              <h3>{item.title.replace('Cloud & Microservices Architecture', 'Cloud & Microservices').replace('Behavioral Biometrics & Applied AI', 'Behavioral Biometrics')}</h3>
+              <p>{item.summary}</p>
+              <ul aria-label={`${item.title} technologies`}>
+                {item.technologies.slice(0, 5).map((technology) => <li key={technology}>{technology}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

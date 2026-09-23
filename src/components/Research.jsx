@@ -3,53 +3,44 @@ import { publications } from '../data.js'
 import SectionHeading from './SectionHeading.jsx'
 import Icon from './Icon.jsx'
 
-function PaperLinks({ publication }) {
-  const options = [
-    ['Publisher', publication.links?.publisher],
-    ['DOI', publication.doi],
-    ['ResearchGate', publication.links?.researchgate],
-    ['Google Scholar', publication.links?.scholar],
-  ].filter(([, url]) => url)
-
-  return (
-    <div className="card-links">
-      {options.map(([label, url]) => (
-        <a key={label} href={url} target="_blank" rel="noreferrer">
-          {label} <Icon name="external" size={13} />
-        </a>
-      ))}
-    </div>
-  )
+export function getPrimaryPublicationLink(publication) {
+  if (publication.links?.publisher) return { label: 'View publication', url: publication.links.publisher }
+  if (publication.doi) return { label: 'View DOI', url: publication.doi }
+  if (publication.links?.researchgate) return { label: 'View publication', url: publication.links.researchgate }
+  return { label: 'View on Google Scholar', url: publication.links?.scholar }
 }
 
-export function ResearchCard({ publication }) {
+export function ResearchRow({ publication }) {
+  const primary = getPrimaryPublicationLink(publication)
   return (
-    <article className="research-card reveal">
-      <p className="card-meta">{publication.year} · {publication.venue}</p>
+    <article className="research-row reveal">
+      <p className="research-meta">{publication.venue} · {publication.year}</p>
       <h3>{publication.title}</h3>
       <p>{publication.description}</p>
-      <PaperLinks publication={publication} />
+      {primary.url && (
+        <a className="arrow-link" href={primary.url} target="_blank" rel="noreferrer">
+          {primary.label} <Icon name="external" size={14} />
+        </a>
+      )}
     </article>
   )
 }
 
 export default function Research() {
   return (
-    <section id="research" className="section section--soft">
+    <section id="research" className="section editorial-section">
       <div className="shell">
-        <div className="section-heading-row">
+        <div className="section-header-row">
           <SectionHeading
-            eyebrow="Selected Research"
-            title="Applied research with operational relevance"
+            eyebrow="Research"
+            title="Selected Research"
             description="Applied research spanning Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise decision intelligence."
           />
-          <Link className="button button--secondary" to="/research">
-            View All Research <Icon name="arrow" />
-          </Link>
+          <Link className="arrow-link section-link" to="/research">View All Research <Icon name="arrow" /></Link>
         </div>
-        <div className="research-grid">
+        <div className="research-list">
           {publications.slice(0, 4).map((publication) => (
-            <ResearchCard key={publication.title} publication={publication} />
+            <ResearchRow key={publication.title} publication={publication} />
           ))}
         </div>
       </div>
