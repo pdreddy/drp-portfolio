@@ -7,9 +7,11 @@ export default function Footer() {
       <div className="shell footer-inner">
         <p><span className="mono accent">&lt;DRP /&gt;</span> © {new Date().getFullYear()} Damodhara Reddy Palavali</p>
         <nav aria-label="Footer navigation">
-          <Link to="/about">About</Link>
+          <Link to="/work">Work</Link>
           <Link to="/research">Research</Link>
           <Link to="/writing">Writing</Link>
+          <Link to="/speaking">Speaking</Link>
+          <Link to="/about">About</Link>
           <a href={profileLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </nav>
       </div>
