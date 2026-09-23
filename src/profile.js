@@ -28,7 +28,7 @@ export const profileCategories = [
 export const profileKnowledge = {
   about: {
     eyebrow: 'Executive Profile',
-    title: 'Technologisture grounded in trust.',
+    title: 'Technology grounded in trust.',
     summary: 'Damodhara Reddy Palavali is a technologist and researcher with more than 16 years of experience across government, healthcare, financial services, and automotive technology. His work spans Zero Trust, identity modernization, enterprise Java, cloud platforms, behavioral authentication, and applied AI security.',
     links: [{ label: 'Read the full profile', to: '/about' }],
   },
