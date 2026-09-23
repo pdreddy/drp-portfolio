@@ -13,7 +13,7 @@ export default function AboutPage() {
           <p className="eyebrow"><span aria-hidden="true">//</span> about</p>
           <h1>Engineering <span className="gradient-text">trust</span> into large-scale digital systems.</h1>
           <p>
-            Damodhara Reddy Palavali is a technology architect and researcher with more than 16 years
+            Damodhara Reddy Palavali is a technologist and researcher with more than 16 years
             of experience across government, healthcare, financial services, and automotive technology.
           </p>
         </div>

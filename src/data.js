@@ -446,9 +446,9 @@ export const careerDomains = [
 
 export const profile = {
   name: 'Damodhara Reddy Palavali',
-  title: 'Zero Trust & Identity Security Architect',
+  title: 'Zero Trust & Identity Security',
   summary:
-    'Technology architect and researcher with 16+ years of experience building and modernizing secure enterprise systems across government, healthcare, financial services, and automotive technology.',
+    'Technologist and researcher with 16+ years of experience building and modernizing secure enterprise systems across government, healthcare, financial services, and automotive technology.',
   // Drop a square headshot at public/profile.jpg; the hero falls back to initials until then.
   photo: '/profile.jpg',
 }

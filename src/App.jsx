@@ -11,7 +11,7 @@ import WritingPage from './pages/WritingPage.jsx'
 import useReveal from './useReveal.js'
 
 const routeMeta = {
-  '/about': ['About | Damodhara Reddy Palavali', 'Technology architect focused on Zero Trust, identity security, enterprise Java, cloud platforms, and trustworthy AI systems.'],
+  '/about': ['About | Damodhara Reddy Palavali', 'Technologist focused on Zero Trust, identity security, enterprise Java, cloud platforms, and trustworthy AI systems.'],
   '/work': ['Selected Work | Damodhara Reddy Palavali', 'Selected identity, healthcare, financial-services, and automotive architecture work by Damodhara Reddy Palavali.'],
   '/research': ['Research | Damodhara Reddy Palavali', 'Applied research in Zero Trust, behavioral authentication, AI security, healthcare systems, and enterprise architecture.'],
   '/writing': ['Technical Writing | Damodhara Reddy Palavali', 'Technical writing on Zero Trust, identity security, enterprise Java, cloud platforms, and emerging AI technologies.'],
@@ -24,8 +24,8 @@ export default function App() {
 
   useEffect(() => {
     const [title, description] = routeMeta[location.pathname] || [
-      'Damodhara Reddy Palavali | Zero Trust & Identity Security Architect',
-      'Technology architect specializing in Zero Trust, identity security, Agentic AI, enterprise Java and secure cloud systems.',
+      'Damodhara Reddy Palavali | Zero Trust & Identity Security',
+      'Technologist specializing in Zero Trust, identity security, Agentic AI, enterprise Java and secure cloud systems.',
     ]
     const canonicalUrl = `https://damodharapalavali.com${location.pathname === '/' ? '/' : location.pathname}`
     document.title = title
