@@ -498,7 +498,39 @@ export const profileLinks = {
   scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
   ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
   researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+  // Add the verified GitHub profile URL here when available. The UI intentionally hides missing links.
+  github: null,
 }
+
+// Concise homepage content. Keep organization names out unless they are supported by a public record.
+export const portfolioExperience = [
+  {
+    label: 'Social Security Administration · via Base Technologies',
+    title: 'Government identity modernization',
+    description: 'Supporting identity-provider integration, federated access, Zero Trust controls, and Java platform modernization for public-facing services.',
+  },
+  {
+    label: 'Financial services',
+    title: 'Secure enterprise platforms',
+    description: 'Modernizing tightly coupled Java workloads with event-driven microservices, clearer service boundaries, and security built into the architecture.',
+  },
+  {
+    label: 'American automotive platforms',
+    title: 'Vehicle data modernization',
+    description: 'Contributing cloud-native patterns for vehicle-data workflows, APIs, event streaming, and dependable distributed processing.',
+  },
+  {
+    label: 'Multi-state Medicaid MMIS programs',
+    title: 'Claims and provider systems',
+    description: 'Designing and modernizing service architectures for regulated claims, provider, enrollment, and healthcare operations.',
+  },
+]
+
+export const selectedWork = caseStudies.map(({ title, contribution, technology }) => ({
+  title,
+  description: contribution,
+  tags: technology,
+}))
 
 export const certifications = [
   { name: 'AWS Certified Developer – Associate', issuer: 'Amazon Web Services' },

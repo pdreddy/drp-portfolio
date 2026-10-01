@@ -28,8 +28,12 @@ export default function App() {
     setMeta('meta[name="twitter:description"]', description)
     const canonical = document.querySelector('link[rel="canonical"]')
     if (canonical) canonical.href = canonicalUrl
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [location.pathname])
+    if (location.hash) {
+      window.requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView())
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [location.pathname, location.hash])
 
   return (
     <>

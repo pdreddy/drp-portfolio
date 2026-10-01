@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import { profileLinks } from '../data.js'
 
 const links = [
-  ['Work', '/work'],
-  ['Research', '/research'],
-  ['Writing', '/writing'],
-  ['Speaking', '/speaking'],
-  ['About', '/about'],
+  ['About', '/#about'],
+  ['Experience', '/#experience'],
+  ['Research & Speaking', '/#research'],
+  ['Articles', '/#articles'],
+  ['Contact', '/#contact'],
 ]
 
 export default function Nav() {
@@ -28,13 +28,13 @@ export default function Nav() {
   return (
     <header className={`site-nav${compact ? ' site-nav--compact' : ''}`}>
       <div className="shell nav-inner">
-        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home">Damodhara Palavali<span className="brand-dot">.</span></Link>
+        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home"><span className="brand-full">Damodhara Reddy Palavali</span><span className="brand-short">DRP</span><span className="brand-dot">.</span></Link>
         <button className="menu-button" type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen((value) => !value)}>
           <Icon name={open ? 'close' : 'menu'} size={22} />
         </button>
         <nav id="primary-navigation" className={`nav-links${open ? ' is-open' : ''}`} aria-label="Primary navigation">
-          {links.map(([label, to]) => <NavLink key={to} className={({ isActive }) => (isActive ? 'is-active' : undefined)} to={to} onClick={() => setOpen(false)}>{label}</NavLink>)}
-          <a className="nav-cta" href={profileLinks.email} onClick={() => setOpen(false)}>Contact</a>
+          {links.map(([label, to]) => <Link key={to} to={to} onClick={() => setOpen(false)}>{label}</Link>)}
+          <a className="nav-cta" href={profileLinks.email} onClick={() => setOpen(false)}>Get in Touch</a>
         </nav>
       </div>
     </header>
