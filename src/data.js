@@ -498,7 +498,60 @@ export const profileLinks = {
   scholar: 'https://scholar.google.com/citations?user=gbBDbl4AAAAJ&hl=en',
   ieee: 'https://ieeexplore.ieee.org/author/315152596090113',
   researchgate: 'https://www.researchgate.net/profile/Damodhara-Reddy-Palavali/research',
+  // Add the verified GitHub profile URL here when available. The UI intentionally hides missing links.
+  github: null,
 }
+
+// Concise homepage content. Keep organization names out unless they are supported by a public record.
+export const portfolioExperience = [
+  {
+    label: 'Social Security Administration · via Base Technologies',
+    title: 'Government identity modernization',
+    contributions: [
+      'Support federated identity and identity-provider integration for public-facing services.',
+      'Apply Zero Trust controls while modernizing Java-based enterprise platforms.',
+    ],
+  },
+  {
+    label: 'Financial services',
+    title: 'Secure enterprise platforms',
+    contributions: [
+      'Modernized tightly coupled Java workloads using microservices and event-driven patterns.',
+      'Built security, operational visibility, and controlled change into platform design.',
+    ],
+  },
+  {
+    label: 'American automotive platforms',
+    title: 'Vehicle data modernization',
+    contributions: [
+      'Contributed cloud-native patterns for vehicle-data workflows and APIs.',
+      'Worked with event streaming and distributed processing for dependable data delivery.',
+    ],
+  },
+  {
+    label: 'Multi-state Medicaid MMIS programs',
+    title: 'Claims and provider systems',
+    contributions: [
+      'Designed services supporting claims, provider, member, and enrollment capabilities.',
+      'Modernized regulated healthcare workflows with reliability and auditability in mind.',
+    ],
+  },
+]
+
+export const selectedWork = caseStudies.map(({ title, challenge, contribution, impact, technology }) => ({
+  title,
+  context: challenge,
+  contribution,
+  outcome: impact,
+  tags: technology,
+}))
+
+export const focusAreas = [
+  { title: 'Identity security and federation', description: 'Federated sign-in, identity-provider integration, access controls, and identity assurance for enterprise and public-sector systems.' },
+  { title: 'Zero Trust architecture', description: 'Identity-first policies and service-to-service protections for distributed and hybrid environments.' },
+  { title: 'Enterprise modernization', description: 'Practical migration of Java platforms toward maintainable APIs, microservices, and event-driven systems.' },
+  { title: 'AI security and healthcare', description: 'Applied research in behavioral authentication, secure AI agents, claims adjudication, and fraud detection.' },
+]
 
 export const certifications = [
   { name: 'AWS Certified Developer – Associate', issuer: 'Amazon Web Services' },

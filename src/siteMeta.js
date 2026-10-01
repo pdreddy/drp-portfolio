@@ -12,7 +12,7 @@ export const OG_IMAGE = {
   alt: `${profile.name} — Zero Trust, identity security, and applied AI research`,
 }
 
-const homeDescription = `Technologist and researcher with ${profile.experienceLabel} of experience in Zero Trust, identity security, Agentic AI, enterprise Java, and secure cloud systems.`
+const homeDescription = `Technology leader and researcher with ${profile.experienceLabel} of experience in identity security, Zero Trust, secure enterprise modernization, and applied AI.`
 
 export const routeMeta = {
   '/': {
