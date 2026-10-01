@@ -1,88 +1,51 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
-import Research from './components/Research.jsx'
-import Publications from './components/Publications.jsx'
-import Articles from './components/Articles.jsx'
-import { Judging, Memberships } from './components/JudgingMemberships.jsx'
-import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
-import PublicationDetail from './pages/PublicationDetail.jsx'
-import { useScrollReveal } from './hooks.js'
-import TickerBar from './components/TickerBar.jsx'
-
-function HomePage() {
-  useScrollReveal()
-  return (
-    <>
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Research />
-        <Publications />
-        <Articles />
-        <Judging />
-        <Memberships />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
-}
+import AboutPage from './pages/AboutPage.jsx'
+import ResearchPage from './pages/ResearchPage.jsx'
+import SpeakingPage from './pages/SpeakingPage.jsx'
+import WorkPage from './pages/WorkPage.jsx'
+import WritingPage from './pages/WritingPage.jsx'
+import useReveal from './useReveal.js'
+import { canonicalFor, getRouteMeta } from './siteMeta.js'
 
 export default function App() {
-  const [dark, setDark] = useState(true)
   const location = useLocation()
+  useReveal(location.pathname)
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
-  }, [dark])
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
+    const { title, description } = getRouteMeta(location.pathname)
+    const canonicalUrl = canonicalFor(location.pathname)
+    const setMeta = (selector, value) => document.querySelector(selector)?.setAttribute('content', value)
+    document.title = title
+    setMeta('meta[name="description"]', description)
+    setMeta('meta[property="og:title"]', title)
+    setMeta('meta[property="og:description"]', description)
+    setMeta('meta[property="og:url"]', canonicalUrl)
+    setMeta('meta[name="twitter:title"]', title)
+    setMeta('meta[name="twitter:description"]', description)
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.href = canonicalUrl
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [location.pathname])
 
-  useEffect(() => {
-    let frame = null
-    const move = (e) => {
-      if (frame) cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        document.documentElement.style.setProperty('--pointer-x', `${e.clientX}px`)
-        document.documentElement.style.setProperty('--pointer-y', `${e.clientY}px`)
-      })
-    }
-    const show = () => document.documentElement.style.setProperty('--pointer-opacity', '1')
-    const hide = () => document.documentElement.style.setProperty('--pointer-opacity', '0')
-    window.addEventListener('mousemove', move)
-    window.addEventListener('mouseenter', show)
-    window.addEventListener('mouseleave', hide)
-    return () => {
-      if (frame) cancelAnimationFrame(frame)
-      window.removeEventListener('mousemove', move)
-      window.removeEventListener('mouseenter', show)
-      window.removeEventListener('mouseleave', hide)
-    }
-  }, [])
-
   return (
-    <div className="app-shell">
-      <div className="app-ambient" aria-hidden="true">
-        <div className="app-ambient-grid" />
-        <div className="app-ambient-spotlight" />
-        <div className="app-ambient-beam app-ambient-beam-a" />
-        <div className="app-ambient-beam app-ambient-beam-b" />
-      </div>
-      <Nav dark={dark} setDark={setDark} />
-      <TickerBar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/publications/:id" element={<PublicationDetail />} />
-        </Routes>
-      </AnimatePresence>
-    </div>
+    <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/work" element={<WorkPage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/writing" element={<WritingPage />} />
+        <Route path="/speaking" element={<SpeakingPage />} />
+        <Route path="/articles" element={<Navigate to="/writing" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <Footer />
+    </>
   )
 }

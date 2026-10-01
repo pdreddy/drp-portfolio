@@ -2,6 +2,32 @@
   command = "npm run build"
   publish = "dist"
 
+# Serve the prerendered page (route-specific social metadata) before the SPA fallback.
+[[redirects]]
+  from = "/about"
+  to = "/about/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/work"
+  to = "/work/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/research"
+  to = "/research/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/writing"
+  to = "/writing/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/speaking"
+  to = "/speaking/index.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
