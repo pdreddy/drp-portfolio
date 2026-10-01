@@ -41,7 +41,7 @@ export default function WritingPage() {
       <header className="page-hero">
         <div className="shell page-hero-inner">
           <Link className="back-link" to="/"><Icon name="arrow" size={15} /> Home</Link>
-          <p className="eyebrow"><span aria-hidden="true">//</span> writing</p>
+          <p className="eyebrow">writing</p>
           <h1>Technical writing for practitioners.</h1>
           <p>Practical guidance on enterprise architecture, Zero Trust, identity security, Java, cloud-native engineering, and emerging AI technologies.</p>
           <div className="page-proof">

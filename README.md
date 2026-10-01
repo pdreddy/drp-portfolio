@@ -7,7 +7,7 @@ Professional portfolio website built with **React + Vite** and a custom responsi
 - **React 18** — UI components
 - **Vite 5** — build tool / dev server
 - **React Router 6** — dedicated profile, research, and writing routes
-- **Space Grotesk**, **Inter** + **JetBrains Mono** — typography (dark, developer-style theme)
+- **Fraunces** (serif headings), **Inter** + **JetBrains Mono** — typography (light editorial theme with automatic dark mode)
 
 ## Local Development
 
@@ -96,7 +96,7 @@ npm run citations:update:dry
 src/
 ├── App.jsx                       # Routes and page composition
 ├── main.jsx                      # React entry point
-├── index.css                     # Dark responsive design system
+├── index.css                     # Light editorial design system (+ dark mode)
 ├── useReveal.js                  # Scroll-reveal animation hook
 ├── data.js                       # Single source of truth (see "Content data" below)
 ├── siteMeta.js                   # Per-route title/description/canonical + OG image

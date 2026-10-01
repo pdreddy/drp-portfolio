@@ -9,7 +9,7 @@ export default function ResearchPage() {
       <header className="page-hero">
         <div className="shell page-hero-inner">
           <Link className="back-link" to="/"><Icon name="arrow" size={15} /> Home</Link>
-          <p className="eyebrow"><span aria-hidden="true">//</span> research</p>
+          <p className="eyebrow">research</p>
           <h1>Applied research for trustworthy systems.</h1>
           <p>
             {researchStats.published} published papers and {researchStats.accepted} accepted or forthcoming works
@@ -30,7 +30,7 @@ export default function ResearchPage() {
         <section key={group.id} id={group.id} className={`section${index % 2 ? ' section--alt' : ''}`} aria-labelledby={`${group.id}-title`}>
           <div className="shell">
             <header className="section-heading reveal">
-              <p className="eyebrow"><span aria-hidden="true">//</span> {group.items.length} {group.items.length === 1 ? 'record' : 'records'}</p>
+              <p className="eyebrow">{group.items.length} {group.items.length === 1 ? 'record' : 'records'}</p>
               <h2 id={`${group.id}-title`}>{group.title}</h2>
               <p className="section-intro">{group.description}</p>
             </header>

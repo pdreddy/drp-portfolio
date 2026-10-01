@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
-        <p><span className="mono accent">&lt;DRP /&gt;</span> © {new Date().getFullYear()} Damodhara Reddy Palavali</p>
+        <p>© {new Date().getFullYear()} Damodhara Reddy Palavali</p>
         <nav aria-label="Footer navigation">
           <Link to="/work">Work</Link>
           <Link to="/research">Research</Link>

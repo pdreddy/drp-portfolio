@@ -8,7 +8,7 @@ export default function SpeakingPage() {
       <header className="page-hero">
         <div className="shell page-hero-inner">
           <Link className="back-link" to="/"><Icon name="arrow" size={15} /> Home</Link>
-          <p className="eyebrow"><span aria-hidden="true">//</span> speaking &amp; service</p>
+          <p className="eyebrow">speaking &amp; service</p>
           <h1>Sharing practical architecture experience.</h1>
           <p>Technical communication and professional contribution across secure architecture, applied AI, and enterprise modernization.</p>
         </div>

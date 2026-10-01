@@ -10,7 +10,7 @@ export default function AboutPage() {
       <header className="page-hero">
         <div className="shell page-hero-inner">
           <Link className="back-link" to="/"><Icon name="arrow" size={15} /> Home</Link>
-          <p className="eyebrow"><span aria-hidden="true">//</span> about</p>
+          <p className="eyebrow">about</p>
           <h1>Engineering <span className="gradient-text">trust</span> into large-scale digital systems.</h1>
           <p>
             {profile.name} is a technologist and researcher with more than {profile.experienceYears} years
@@ -43,7 +43,7 @@ export default function AboutPage() {
       <section className="section section--alt" aria-labelledby="credentials-title">
         <div className="shell">
           <header className="section-heading reveal">
-            <p className="eyebrow"><span aria-hidden="true">//</span> credentials</p>
+            <p className="eyebrow">credentials</p>
             <h2 id="credentials-title">Certifications &amp; education</h2>
           </header>
           <div className="card-grid card-grid--3">
@@ -69,7 +69,7 @@ export default function AboutPage() {
       <section className="section">
         <div className="shell">
           <header className="section-heading reveal">
-            <p className="eyebrow"><span aria-hidden="true">//</span> career</p>
+            <p className="eyebrow">career</p>
             <h2>Experience across complex domains</h2>
           </header>
           <div className="card-grid card-grid--4">

@@ -112,7 +112,7 @@ export default function ProfileExplorer() {
   return (
     <div className="profile-explorer" id="explore">
       <form className="question-form" onSubmit={submitQuestion} role="search">
-        <label htmlFor="profile-question">Ask about my work</label>
+        <label htmlFor="profile-question">What would you like to know?</label>
         <div className="question-control">
           <Icon name="book" size={18} />
           <input

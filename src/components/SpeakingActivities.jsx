@@ -17,7 +17,7 @@ export default function SpeakingActivities() {
     <section className="section" aria-labelledby="activities-title">
       <div className="shell">
         <header className="section-heading reveal">
-          <p className="eyebrow"><span aria-hidden="true">//</span> {speakingActivities.length} activities</p>
+          <p className="eyebrow">{speakingActivities.length} activities</p>
           <h2 id="activities-title">Speaking, reviewing &amp; judging</h2>
           <p className="section-intro">Each entry lists what is on record. Missing details are marked rather than filled in, and entries stay “Evidence link pending” until a direct link is added.</p>
         </header>

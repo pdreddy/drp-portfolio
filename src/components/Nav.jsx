@@ -28,13 +28,13 @@ export default function Nav() {
   return (
     <header className={`site-nav${compact ? ' site-nav--compact' : ''}`}>
       <div className="shell nav-inner">
-        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home"><span className="accent">&lt;</span>DRP<span className="accent"> /&gt;</span></Link>
+        <Link className="brand" to="/" aria-label="Damodhara Reddy Palavali home">Damodhara Palavali<span className="brand-dot">.</span></Link>
         <button className="menu-button" type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen((value) => !value)}>
           <Icon name={open ? 'close' : 'menu'} size={22} />
         </button>
         <nav id="primary-navigation" className={`nav-links${open ? ' is-open' : ''}`} aria-label="Primary navigation">
           {links.map(([label, to]) => <NavLink key={to} className={({ isActive }) => (isActive ? 'is-active' : undefined)} to={to} onClick={() => setOpen(false)}>{label}</NavLink>)}
-          <a className="nav-cta" href={profileLinks.linkedin} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>LinkedIn <Icon name="external" size={13} /></a>
+          <a className="nav-cta" href={profileLinks.email} onClick={() => setOpen(false)}>Contact</a>
         </nav>
       </div>
     </header>
