@@ -4,10 +4,11 @@ import Icon from './Icon.jsx'
 import { profileLinks } from '../data.js'
 
 const links = [
-  ['About', '/#about'],
+  ['Profile', '/#profile'],
   ['Experience', '/#experience'],
-  ['Research & Speaking', '/#research'],
-  ['Articles', '/#articles'],
+  ['Research', '/#research'],
+  ['Publications', '/#publications'],
+  ['Recognition', '/#recognition'],
   ['Contact', '/#contact'],
 ]
 

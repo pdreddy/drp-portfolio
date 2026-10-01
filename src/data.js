@@ -507,30 +507,51 @@ export const portfolioExperience = [
   {
     label: 'Social Security Administration · via Base Technologies',
     title: 'Government identity modernization',
-    description: 'Supporting identity-provider integration, federated access, Zero Trust controls, and Java platform modernization for public-facing services.',
+    contributions: [
+      'Support federated identity and identity-provider integration for public-facing services.',
+      'Apply Zero Trust controls while modernizing Java-based enterprise platforms.',
+    ],
   },
   {
     label: 'Financial services',
     title: 'Secure enterprise platforms',
-    description: 'Modernizing tightly coupled Java workloads with event-driven microservices, clearer service boundaries, and security built into the architecture.',
+    contributions: [
+      'Modernized tightly coupled Java workloads using microservices and event-driven patterns.',
+      'Built security, operational visibility, and controlled change into platform design.',
+    ],
   },
   {
     label: 'American automotive platforms',
     title: 'Vehicle data modernization',
-    description: 'Contributing cloud-native patterns for vehicle-data workflows, APIs, event streaming, and dependable distributed processing.',
+    contributions: [
+      'Contributed cloud-native patterns for vehicle-data workflows and APIs.',
+      'Worked with event streaming and distributed processing for dependable data delivery.',
+    ],
   },
   {
     label: 'Multi-state Medicaid MMIS programs',
     title: 'Claims and provider systems',
-    description: 'Designing and modernizing service architectures for regulated claims, provider, enrollment, and healthcare operations.',
+    contributions: [
+      'Designed services supporting claims, provider, member, and enrollment capabilities.',
+      'Modernized regulated healthcare workflows with reliability and auditability in mind.',
+    ],
   },
 ]
 
-export const selectedWork = caseStudies.map(({ title, contribution, technology }) => ({
+export const selectedWork = caseStudies.map(({ title, challenge, contribution, impact, technology }) => ({
   title,
-  description: contribution,
+  context: challenge,
+  contribution,
+  outcome: impact,
   tags: technology,
 }))
+
+export const focusAreas = [
+  { title: 'Identity security and federation', description: 'Federated sign-in, identity-provider integration, access controls, and identity assurance for enterprise and public-sector systems.' },
+  { title: 'Zero Trust architecture', description: 'Identity-first policies and service-to-service protections for distributed and hybrid environments.' },
+  { title: 'Enterprise modernization', description: 'Practical migration of Java platforms toward maintainable APIs, microservices, and event-driven systems.' },
+  { title: 'AI security and healthcare', description: 'Applied research in behavioral authentication, secure AI agents, claims adjudication, and fraud detection.' },
+]
 
 export const certifications = [
   { name: 'AWS Certified Developer – Associate', issuer: 'Amazon Web Services' },
