@@ -49,7 +49,7 @@ export default function Hero() {
       <section id="top" className="portfolio-hero" aria-labelledby="hero-title">
         <div className="shell portfolio-hero__grid">
           <div>
-            <p className="eyebrow">{profile.name}</p>
+            <p className="hero-name">{profile.name}</p>
             <p className="professional-title">Zero Trust &amp; Identity Security Specialist</p>
             <h1 id="hero-title">Enterprise identity security, secure modernization, and applied AI</h1>
             <p className="hero-summary">I am a technology leader and researcher with 15+ years of experience building and modernizing enterprise systems across federal government, healthcare, financial services, and automotive technology. My work focuses on identity security, Zero Trust, secure system modernization, and applied AI.</p>
@@ -60,7 +60,7 @@ export default function Hero() {
         <div className="shell credibility" aria-label="Professional credibility">
           <a href="#publications"><strong>{researchStats.published}</strong><span>published papers with public records</span></a>
           <ExternalLink href={dzoneProfile.profile} className="credibility__item"><strong>{dzoneProfile.articles}</strong><span>DZone articles · {dzoneProfile.pageviews} recorded pageviews</span></ExternalLink>
-          <ExternalLink href={profileLinks.ieee} className="credibility__item"><strong>IEEE</strong><span>Senior Member · author profile</span></ExternalLink>
+          <ExternalLink href={profileLinks.ieee} className="credibility__item"><strong>IEEE</strong><span>Senior Member in site records · author profile</span></ExternalLink>
         </div>
       </section>
 
@@ -92,7 +92,7 @@ export default function Hero() {
 
       <section id="recognition" className="compact-section"><div className="shell">
         <SectionHeading eyebrow="Recognition & service" title="Professional membership and contribution" description="Categories are kept separate so memberships are not confused with awards or completed service." />
-        <div className="recognition-grid"><article><p className="card-kicker">Professional memberships</p><ul>{memberships.map(item => <li key={item.name}><strong>{item.name}</strong><span>{item.tier}</span></li>)}</ul></article><article><p className="card-kicker">Public profiles</p><ul>{socialLinks.filter(([label]) => label !== 'Email').map(([label, href]) => <li key={label}><ExternalLink href={href}>{label}</ExternalLink></li>)}</ul></article><article><p className="card-kicker">Review &amp; speaking</p><p>Peer review, judging, and speaking activities remain on the detailed service page and are explicitly marked when evidence is pending.</p><Link className="arrow-link" to="/speaking">Review service records <Icon name="arrow" size={14} /></Link></article></div>
+        <div className="recognition-grid"><article><p className="card-kicker">Memberships in site records</p><ul>{memberships.map(item => <li key={item.name}><strong>{item.name}</strong><span>{item.tier}</span></li>)}</ul></article><article><p className="card-kicker">Public profiles</p><ul>{socialLinks.filter(([label]) => label !== 'Email').map(([label, href]) => <li key={label}><ExternalLink href={href}>{label}</ExternalLink></li>)}</ul></article><article><p className="card-kicker">Review &amp; speaking</p><p>Peer review, judging, and speaking activities remain on the detailed service page and are explicitly marked when evidence is pending.</p><Link className="arrow-link" to="/speaking">Review service records <Icon name="arrow" size={14} /></Link></article></div>
       </div></section>
 
       <section id="contact" className="compact-section contact-section"><div className="shell contact-layout"><div><p className="eyebrow">Contact</p><h2>Let’s discuss a useful collaboration.</h2><p>For speaking, research, or professional collaboration, feel free to reach out.</p></div><div className="contact-links"><a className="button button--primary" href={profileLinks.email}><Icon name="mail" /> Email me</a><ExternalLink href={profileLinks.linkedin} className="button button--ghost">LinkedIn</ExternalLink><ExternalLink href={profileLinks.ieee} className="button button--ghost">IEEE profile</ExternalLink></div></div></section>
